@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ctgraphdep.graphdep.controllers.admin.EAdminController"
+            stylesheets="@../../css/admin-styles.css, @../../css/header-styles.css">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+    <center>
+        <VBox spacing="20" styleClass="main-content">
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
+                <ImageView fx:id="logoImage" styleClass="logo-image"/>
+                <Label text="Admin Dashboard" styleClass="dashboard-title"/>
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="welcomeLabel" styleClass="welcome-label" />
+                <Button fx:id="userStatusButton" text="Users" onAction="#onUserStatusButton" styleClass="nav-button"/>
+                <Button fx:id="workIntervalButton" text="Work Interval" onAction="#onWorkIntervalButton" styleClass="nav-button"/>
+                <Button fx:id="settingsButton" text="Settings" onAction="#onSettingsButton" styleClass="nav-button"/>
+                <Button fx:id="logoutButton" text="Logout" onAction="#onLogoutButton" styleClass="nav-button"/>
+            </HBox>
+            <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
+                <Label text="Welcome to the Admin Dashboard" styleClass="section-title"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ctgraphdep.controllers.AdminTimeController"
+            stylesheets="@../../css/admin-styles.css, @../../css/header-styles.css">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+    <center>
+        <VBox spacing="20" styleClass="main-content" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
+                <ImageView fx:id="logoImage" styleClass="logo-image"/>
+                <Label text="Monthly Time View" styleClass="dashboard-title"/>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button onAction="#onBackButton" text="Back to Admin Page" styleClass="nav-button"/>
+            </HBox>
+            <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
+                <HBox spacing="10" alignment="CENTER">
+                    <ComboBox fx:id="yearComboBox" promptText="Select Year"/>
+                    <ComboBox fx:id="monthComboBox" promptText="Select Month"/>
+                    <Button onAction="#onWorkTimeButton" text="View Monthly Worked Hours" styleClass="action-button"/>
+                    <Button fx:id="exportToExcelButton" onAction="#onExportToExcelButtonClick" text="Export to Excel" />
+                </HBox>
+                <HBox spacing="10" alignment="CENTER">
+                    <DatePicker fx:id="holidayDatePicker"/>
+                    <Button onAction="#onAddNationalHolidayClick" text="Add National Holiday" />
+                </HBox>
+                <VBox fx:id="tableContainer" VBox.vgrow="ALWAYS">
+                    <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" fitToHeight="true">
+                        <TableView fx:id="scheduleTable" VBox.vgrow="ALWAYS"/>
+                    </ScrollPane>
+                </VBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

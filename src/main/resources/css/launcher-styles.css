@@ -1,0 +1,94 @@
+/* Root style for the entire application */
+.root {
+    -fx-font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    -fx-background-color: #f4f4f4;
+}
+
+/* Main content area */
+.main-content {
+    -fx-background-color: white;
+    -fx-padding: 20px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);
+}
+
+.main-image {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Form control styles */
+.text-field, .password-field {
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 4px;
+    -fx-padding: 8px;
+    -fx-pref-width: 200px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #007bff;
+    -fx-border-width: 2px;
+}
+
+/* Button styles */
+.button {
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 4px;
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+}
+
+.button:hover, .button:focused {
+    -fx-background-color: #0056b3;
+}
+
+.button:pressed {
+    -fx-background-color: #004085;
+}
+
+.button:focused {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 10, 0, 0, 0);
+}
+
+/* Login button specific styles */
+.login-button {
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 4px;
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+}
+
+.login-button:hover, .login-button:focused {
+    -fx-background-color: #0056b3;
+}
+
+.login-button:pressed {
+    -fx-background-color: #004085;
+}
+
+.login-button:focused {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 10, 0, 0, 0);
+}
+
+/* Navigation button styles */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #007bff;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover, .nav-button:focused {
+    -fx-background-color: #f8f9fa;
+}
+
+.nav-button:pressed {
+    -fx-background-color: #e2e6ea;
+}
+
+.nav-button:focused {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 10, 0, 0, 0);
+}

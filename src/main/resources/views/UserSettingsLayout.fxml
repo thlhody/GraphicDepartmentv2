@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ctgraphdep.controllers.UserSettingsController"
+            stylesheets="@../../css/user-styles.css, @../../css/header-styles.css">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
+            <ImageView fx:id="logoImage" styleClass="logo-image"/>
+            <Label text="My Account Settings" styleClass="dashboard-title"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Back" onAction="#onBackButton" styleClass="nav-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20" styleClass="main-content">
+            <VBox spacing="10" styleClass="settings-section">
+                <Label styleClass="section-title" text="Change Password" />
+                <PasswordField fx:id="currentPasswordField" promptText="Current Password"/>
+                <PasswordField fx:id="newPasswordField" promptText="New Password"/>
+                <PasswordField fx:id="confirmPasswordField" promptText="Confirm New Password"/>
+                <Button text="Change Password" onAction="#onChangePassword"/>
+            </VBox>
+            <Label fx:id="statusLabel" styleClass="status-label"/>
+        </VBox>
+    </center>
+
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+</BorderPane>
