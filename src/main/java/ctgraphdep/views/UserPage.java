@@ -1,10 +1,12 @@
-package cottontex.graphdep.views;
+package ctgraphdep.views;
+
+import ctgraphdep.constants.AppPaths;
 
 public class UserPage extends BasePage {
 
     @Override
     protected String getFxmlPath() {
-        return "UserPageLayout.fxml";
+        return AppPaths.USER_PAGE_LAYOUT;
     }
 
     @Override

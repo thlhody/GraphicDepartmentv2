@@ -1,9 +1,12 @@
-package cottontex.graphdep.controllers;
+package ctgraphdep.controllers;
 
+import ctgraphdep.constants.AppPaths;
+import ctgraphdep.services.ServiceFactory;
+import ctgraphdep.utils.LoggerUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class AdminController {
+public class AdminController extends BaseController {
 
     @FXML
     private Button workIntervalButton;
@@ -12,20 +15,28 @@ public class AdminController {
     @FXML
     private Button statusButton;
 
-    //all the business logic should be in the AdminService in services package
-
     @FXML
-    public void onStatusButton(){
-        // this should open the StatusDialogController
+    @Override
+    public void initializeServices(ServiceFactory serviceFactory) {
+        super.initializeServices(serviceFactory);
+        this.serviceFactory = serviceFactory;
+        LoggerUtil.error("AdminController service intialized"+ serviceFactory.isInitialized());
+        setCurrentFXMLPath(AppPaths.ADMIN_PAGE_LAYOUT);
+        setupLogoImage();
     }
 
     @FXML
-    public void onSettingsButton(){
-        // it should open the AdminSettingsController
+    protected void onStatusButton() {
+        StatusDialogController.openStatusDialog(serviceFactory);
     }
 
     @FXML
-    public void onWorkIntervalButton(){
-        // this should open the AdminTimeController
+    public void onSettingsButton() {
+        serviceFactory.getNavigationService().toAdminSettings();
+    }
+
+    @FXML
+    public void onWorkIntervalButton() {
+        serviceFactory.getNavigationService().toAdminWorkInterval();
     }
 }

@@ -1,4 +1,4 @@
-package cottontex.graphdep.utils;
+package ctgraphdep.utils;
 
 import lombok.Setter;
 

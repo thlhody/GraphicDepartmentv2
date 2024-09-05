@@ -1,23 +1,50 @@
-package cottontex.graphdep.models;
+package ctgraphdep.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class WorkTimeTable {
-    private Integer id;
+
+
+    @JsonProperty("userId")
     private Integer userId;
-    private Timestamp firstStartTime;
+
+    @JsonProperty("firstStartTime")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime firstStartTime;
+
+    @JsonProperty("breaks")
     private Integer breaks;
-    private Time totalBreakTime;
-    private Timestamp endStartTime;
-    private Time totalWorkedTime;
+
+    @JsonProperty("breaksTime")
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime breaksTime;
+
+    @JsonProperty("endTime")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime endTime;
+
+    @JsonProperty("totalWorkedTime")
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime totalWorkedTime;
+
+    @JsonProperty("timeOffType")
     private String timeOffType;
-    private Date workedDate;
-    private Time totalWorkedSeconds;
+
+    @JsonProperty("workDate")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate workDate;
+
+    @JsonProperty("totalWorkedSeconds")
+    private Long totalWorkedSeconds;
+
 }

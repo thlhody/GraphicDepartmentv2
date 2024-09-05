@@ -1,51 +1,127 @@
-package cottontex.graphdep.controllers;
+package ctgraphdep.controllers;
 
-import cottontex.graphdep.models.WorkTimeTable;
-import cottontex.graphdep.services.AdminTimeService;
+import ctgraphdep.constants.AppPaths;
+import ctgraphdep.models.MonthlyWorkSummary;
+import ctgraphdep.services.ServiceFactory;
+import ctgraphdep.utils.AlertUtil;
+import ctgraphdep.utils.ExportExcelUtil;
+import ctgraphdep.utils.HelperUtil;
+import ctgraphdep.utils.LoggerUtil;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Objects;
 
 public class AdminTimeController extends BaseController {
-
-    private AdminTimeService adminTimeService;
 
     @FXML
     private ComboBox<Integer> yearComboBox;
     @FXML
-    private ComboBox<Integer> monthComboBox;
-    @FXML
-    private Button exportToExcelButton;
-    @FXML
-    private TableView<WorkTimeTable> workTimeTableView;
+    private ComboBox<Month> monthComboBox;
     @FXML
     private DatePicker holidayDatePicker;
+    @FXML
+    private Label selectedUserLabel;
+    @FXML
+    private TableView<MonthlyWorkSummary> workTimeTableView;
+    @FXML
+    private VBox tableContainer;
+    @FXML
+    private Button exportToExcelButton;
 
     @FXML
-    protected void onWorkTimeButton() {
-        // this based on yearComboBox (year) and monthComboBox ( month) needs to populate a table list with user worked hours/time off (SN-national holiday,CO-time off,CM- medical leave)
-        // it should display how much worked time the user registered in the work_interval.json o a specific day for the whole month and year / and should display in the table only this format HH:mm
-        // package - TimeOffCodes.NATIONAL_HOLIDAY_CODE = "SN";
-        // package - TimeOffCodes.TIME_OFF_CODE = "CO";
-        // package - TimeOffCodes.MEDICAL_LEAVE_CODE = "CM";
-        // the fxml is correct AdminTimeLayout
-        // there is a AdmineTimeService - handles business logic.
-
+    @Override
+    public void initializeServices(ServiceFactory serviceFactory) {
+        super.initializeServices(serviceFactory);
+        setupUI();
     }
 
     @FXML
-    protected void onExportToExcelButtonClick() {
-        // this should export to excel the table created by the onWorkTimeButton
-        // ExportExcelUtil should handle that
-
+    public void onWorkTimeButton() {
+        LoggerUtil.info("Work Time button clicked");
+        refreshWorkTimeData();
     }
 
     @FXML
-    protected void onAddNationalHolidayClick() {
-        // this needs to add  SN to every user in the table on a specific date
-        // this needs to update the work_interval.json
+    public void onAddNationalHoliday() {
+        LocalDate selectedDate = holidayDatePicker.getValue();
+        boolean success = serviceFactory.getAdminTimeService().addNationalHoliday(selectedDate);
+        if (success) {
+            AlertUtil.showAlert("Success", "National holiday added successfully.");
+            refreshWorkTimeData();
+        } else {
+            AlertUtil.showAlert("Error", "Failed to add national holiday.");
+        }
+    }
 
+    @FXML
+    public void onExportToExcelButton() {
+        int selectedYear = yearComboBox.getValue();
+        Month selectedMonth = monthComboBox.getValue();
+        Stage stage = (Stage) exportToExcelButton.getScene().getWindow();
+        boolean success = ExportExcelUtil.exportMonthlyWorkSummaryToExcel(
+                workTimeTableView.getItems(),
+                selectedYear,
+                selectedMonth.getValue(),
+                stage
+        );
+        if (success) {
+            AlertUtil.showAlert("Success", "Data exported to Excel successfully.");
+        } else {
+            AlertUtil.showAlert("Error", "Failed to export data to Excel.");
+        }
+    }
+
+    @FXML
+    public void onBackButton() {
+        serviceFactory.getNavigationService().toAdminPage();
+    }
+
+    private void setupUI() {
+        LoggerUtil.info("Setting up UI in AdminTimeController");
+        HelperUtil.setupYearComboBox(yearComboBox);
+        HelperUtil.setupMonthComboBox(monthComboBox);
+        holidayDatePicker.setValue(LocalDate.now());
+        exportToExcelButton.setVisible(false);
+        applyCSS();
+
+        workTimeTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                HelperUtil.updateSelectedUserLabel(selectedUserLabel, newSelection, yearComboBox.getValue(), monthComboBox.getValue().getValue());
+            }
+        });
+    }
+
+    private void applyCSS() {
+        String tableStylesPath = Objects.requireNonNull(getClass().getResource(AppPaths.TABLE_STYLES_A)).toExternalForm();
+        LoggerUtil.info("Loading table styles from: " + tableStylesPath);
+        workTimeTableView.getStylesheets().add(tableStylesPath);
+
+        workTimeTableView.getStyleClass().add("custom-table");
+        tableContainer.getStyleClass().add("main-content");
+        selectedUserLabel.getStyleClass().add("selected-user-info");
+
+        // Ensure the table view is using the custom-table style class
+        if (!workTimeTableView.getStyleClass().contains("custom-table")) {
+            workTimeTableView.getStyleClass().add("custom-table");
+        }
+
+        LoggerUtil.info("CSS classes added to workTimeTableView, tableContainer, and selectedUserLabel");
+    }
+
+    private void refreshWorkTimeData() {
+        LoggerUtil.info("Refreshing work time data");
+        HelperUtil.refreshWorkTimeData(
+                serviceFactory.getAdminTimeService(),
+                workTimeTableView,
+                yearComboBox,
+                monthComboBox,
+                selectedUserLabel,
+                exportToExcelButton
+        );
     }
 }

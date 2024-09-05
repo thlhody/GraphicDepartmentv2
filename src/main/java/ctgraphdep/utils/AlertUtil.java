@@ -1,4 +1,4 @@
-package cottontex.graphdep.utils;
+package ctgraphdep.utils;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;

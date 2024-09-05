@@ -1,7 +1,9 @@
-package cottontex.graphdep.views;
+package ctgraphdep.views;
 
-import cottontex.graphdep.utils.LoggerUtil;
-import cottontex.graphdep.utils.WindowUtil;
+import ctgraphdep.controllers.BaseController;
+import ctgraphdep.services.ServiceFactory;
+import ctgraphdep.utils.LoggerUtil;
+import ctgraphdep.utils.WindowUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,10 +23,17 @@ public abstract class BasePage extends Application {
         try {
             URL fxmlUrl = getClass().getResource(getFxmlPath());
             if (fxmlUrl == null) {
-                throw new IOException("FXML file not found: " + getFxmlPath());
+                LoggerUtil.error("FXML file not found: " + getFxmlPath());
             }
             FXMLLoader loader = new FXMLLoader(fxmlUrl);
             Parent root = loader.load();
+
+            // Get the controller and initialize it with ServiceFactory
+            Object controller = loader.getController();
+            if (controller instanceof BaseController) {
+                ((BaseController) controller).initializeServices(ServiceFactory.getInstance());
+            }
+
             Scene scene = new Scene(root);
 
             WindowUtil.initializeMainStage(primaryStage);

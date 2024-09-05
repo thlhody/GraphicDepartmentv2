@@ -1,31 +1,28 @@
-package cottontex.graphdep.services;
+package ctgraphdep.services;
 
-import cottontex.graphdep.constants.AppPathsIMG;
-import cottontex.graphdep.utils.LoggerUtil;
+import ctgraphdep.constants.AppPaths;
+import ctgraphdep.utils.LoggerUtil;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.util.Objects;
 
 public class LogoService {
 
     public void setMainImage(ImageView imageView) {
-        setImage(imageView, AppPathsIMG.CREATIVE_TIME_TASK_TRACKER);
+        setImage(imageView, AppPaths.CREATIVE_TIME_TASK_TRACKER);
+        imageView.setFitWidth(400);
+        imageView.setFitHeight(400);
+        imageView.setPreserveRatio(true);
     }
 
     public void setHeaderLogo(ImageView imageView) {
-        setImage(imageView, AppPathsIMG.COTTONTEX_LOGO);
-    }
-
-    public void setDialogBoxImage(ImageView imageView) {
-        setImage(imageView, AppPathsIMG.DIALOG_BOX_IMAGE);
-    }
-
-    public void setRefreshIcon(ImageView imageView) {
-        setImage(imageView, AppPathsIMG.REFRESH_ICON);
+        setImage(imageView, AppPaths.COTTONTEX_LOGO);
     }
 
     private void setImage(ImageView imageView, String imagePath) {
         try {
-            Image image = new Image(getClass().getResourceAsStream(imagePath));
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
             if (image.isError()) {
                 throw new IllegalArgumentException("Image failed to load: " + imagePath);
             }

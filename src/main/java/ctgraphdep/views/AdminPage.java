@@ -1,10 +1,12 @@
-package cottontex.graphdep.views;
+package ctgraphdep.views;
+
+import ctgraphdep.constants.AppPaths;
 
 public class AdminPage extends BasePage {
 
     @Override
     protected String getFxmlPath() {
-        return "AdminPageLayout.fxml";
+        return AppPaths.ADMIN_PAGE_LAYOUT;
     }
 
     @Override

@@ -9,7 +9,7 @@
             xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ctgraphdep.controllers.AdminTimeController"
-            stylesheets="@../../css/admin-styles.css, @../../css/header-styles.css">
+            stylesheets="@../css/admin-styles.css, @../css/header-styles.css">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20" />
     </padding>
@@ -19,22 +19,25 @@
                 <ImageView fx:id="logoImage" styleClass="logo-image"/>
                 <Label text="Monthly Time View" styleClass="dashboard-title"/>
                 <Region HBox.hgrow="ALWAYS" />
-                <Button onAction="#onBackButton" text="Back to Admin Page" styleClass="nav-button"/>
+                <Button fx:id="backButton" onAction="#onBackButton" text="Back to Admin Page" styleClass="nav-button"/>
             </HBox>
             <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
                 <HBox spacing="10" alignment="CENTER">
                     <ComboBox fx:id="yearComboBox" promptText="Select Year"/>
                     <ComboBox fx:id="monthComboBox" promptText="Select Month"/>
                     <Button onAction="#onWorkTimeButton" text="View Monthly Worked Hours" styleClass="action-button"/>
-                    <Button fx:id="exportToExcelButton" onAction="#onExportToExcelButtonClick" text="Export to Excel" />
+                    <Button fx:id="exportToExcelButton" onAction="#onExportToExcelButton" text="Export to Excel" />
                 </HBox>
                 <HBox spacing="10" alignment="CENTER">
                     <DatePicker fx:id="holidayDatePicker"/>
-                    <Button onAction="#onAddNationalHolidayClick" text="Add National Holiday" />
+                    <Button onAction="#onAddNationalHoliday" text="Add National Holiday" />
                 </HBox>
+                <StackPane VBox.vgrow="NEVER" alignment="CENTER">
+                    <Label fx:id="selectedUserLabel" styleClass="selected-user-info" wrapText="true" maxWidth="600"/>
+                </StackPane>
                 <VBox fx:id="tableContainer" VBox.vgrow="ALWAYS">
                     <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" fitToHeight="true">
-                        <TableView fx:id="scheduleTable" VBox.vgrow="ALWAYS"/>
+                        <TableView fx:id="workTimeTableView" VBox.vgrow="ALWAYS"/>
                     </ScrollPane>
                 </VBox>
             </VBox>

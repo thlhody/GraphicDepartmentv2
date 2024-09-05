@@ -111,3 +111,20 @@
     -fx-font-weight: bold;
     -fx-text-fill: #007bff;
 }
+
+.selected-user-info {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 15px;
+    -fx-background-color: white;
+    -fx-border-color: #007bff;
+    -fx-border-radius: 5px;
+    -fx-text-fill: #007bff;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.selected-user-info .highlight {
+    -fx-font-size: 16px;
+    -fx-underline: true;
+}

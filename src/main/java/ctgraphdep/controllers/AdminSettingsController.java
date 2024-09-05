@@ -1,40 +1,160 @@
-package cottontex.graphdep.controllers;
+package ctgraphdep.controllers;
 
-
-import cottontex.graphdep.services.AdminSettingsService;
+import ctgraphdep.constants.AppPaths;
+import ctgraphdep.models.Users;
+import ctgraphdep.services.ServiceFactory;
+import ctgraphdep.services.UserManagementService;
+import ctgraphdep.utils.AlertUtil;
+import ctgraphdep.utils.LoggerUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.Optional;
+
 public class AdminSettingsController extends BaseController {
 
-    private AdminSettingsService adminSettingsService;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private TextField employeeIdField;
+    @FXML
+    private ComboBox<String> roleComboBox;
+    @FXML
+    private ComboBox<String> userComboBox;
+    @FXML
+    private Button addUpdateUserButton;
+    @FXML
+    private Button editUserButton;
 
-    @FXML private TextField nameField;
-    @FXML private TextField usernameField;
-    @FXML private PasswordField passwordField;
-    @FXML private TextField employeeIdField;
-    @FXML private ComboBox<String> roleComboBox;
-    @FXML private ComboBox<String> userComboBox;
-
+    private boolean isEditMode = false;
+    private String currentUsername;
+    private UserManagementService userManagementService;
 
     @FXML
-    protected void onAddUserButton() {
-        // this creates a user in the users.json file
-        // and displays a message with the user created using the AlertUtil
-        // when clicked it needs to check if the employeeId/username - exists before saving to json file users
-
+    @Override
+    public void initializeServices(ServiceFactory serviceFactory) {
+        super.initializeServices(serviceFactory);
+        this.serviceFactory = serviceFactory;
+        this.userManagementService = serviceFactory.getUserManagementService();
+        LoggerUtil.info("AdminSettingsController services initialized: " + serviceFactory.isInitialized());
+        setCurrentFXMLPath(AppPaths.ADMIN_SETTING_LAYOUT);
+        setupLogoImage();
+        populateUserComboBox();
+        populateRoleComboBox();
+        setupUserComboBoxListener();
     }
 
     @FXML
-    protected void onResetPasswordButtonClick() {
-        // it needs a users combobox that takes all the users from the users model and lets it select and reset the password to a generic pasword "cottontex123" updates the json users file.
-
+    protected void onAddUpdateUserButton() {
+        if (isEditMode) {
+            updateUser();
+        } else {
+            addNewUser();
+        }
     }
 
     @FXML
-    protected void onDeleteUserButtonClick() {
-        // it uses the same users combobox that takes all the users from the users model and lets it delete the specific(selected) user from the json file.
+    protected void onResetPasswordButton() {
+        String selectedUsername = userComboBox.getValue();
+        if (selectedUsername != null) {
+            userManagementService.resetPassword(selectedUsername);
+        } else {
+            AlertUtil.showAlert("Error", "Please select a user.");
+        }
+    }
 
+    @FXML
+    protected void onEditUserButton() {
+        String selectedUsername = userComboBox.getValue();
+        if (selectedUsername != null) {
+            Optional<Users> userOptional = userManagementService.getUserByUsername(selectedUsername);
+            if (userOptional.isPresent()) {
+                Users user = userOptional.get();
+                nameField.setText(user.getName());
+                usernameField.setText(user.getUsername());
+                employeeIdField.setText(user.getEmployeeId().toString());
+                roleComboBox.setValue(user.getRole());
+                passwordField.clear(); // Clear password field for security
+                isEditMode = true;
+                currentUsername = selectedUsername;
+                addUpdateUserButton.setText("Update User");
+            } else {
+                AlertUtil.showAlert("Error", "Failed to load user data.");
+            }
+        } else {
+            AlertUtil.showAlert("Error", "Please select a user to edit.");
+        }
+    }
+
+    @FXML
+    protected void onDeleteUserButton() {
+        String selectedUsername = userComboBox.getValue();
+        if (selectedUsername != null) {
+            boolean success = userManagementService.deleteUser(selectedUsername);
+            if (success) {
+                populateUserComboBox();
+                clearFields();
+            }
+        } else {
+            AlertUtil.showAlert("Error", "Please select a user.");
+        }
+    }
+
+    @FXML
+    public void onBackButton() {
+        serviceFactory.getNavigationService().toAdminPage();
+    }
+
+    private void setupUserComboBoxListener() {
+        userComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            editUserButton.setDisable(newValue == null);
+        });
+    }
+
+    private void addNewUser() {
+        boolean userAdded = userManagementService.addNewUser(
+                nameField.getText(),
+                usernameField.getText(),
+                passwordField.getText(),
+                employeeIdField.getText(),
+                roleComboBox.getValue()
+        );
+
+        if (userAdded) {
+            populateUserComboBox();
+            clearFields();
+        }
+    }
+
+
+    private void updateUser() {
+        boolean success = userManagementService.updateUser(
+                currentUsername,
+                nameField.getText(),
+                usernameField.getText(),
+                employeeIdField.getText(),
+                roleComboBox.getValue()
+        );
+
+        if (success) {
+            populateUserComboBox();
+            clearFields();
+        }
+    }
+
+    private void populateUserComboBox() {
+        userComboBox.getItems().clear();
+        userComboBox.getItems().addAll(userManagementService.getAllUsernames());
+    }
+
+    private void populateRoleComboBox() {
+        roleComboBox.getItems().clear();
+        roleComboBox.getItems().addAll("USER", "ADMIN", "USER_TEAM_LEADER");
+        roleComboBox.setValue("USER");
     }
 
     private void clearFields() {
@@ -43,5 +163,8 @@ public class AdminSettingsController extends BaseController {
         passwordField.clear();
         employeeIdField.clear();
         roleComboBox.setValue("USER");
+        isEditMode = false;
+        currentUsername = null;
+        addUpdateUserButton.setText("Add User");
     }
 }

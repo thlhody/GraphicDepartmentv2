@@ -5,30 +5,43 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="cottontex.graphdep.controllers.LauncherController"
-           stylesheets="@../css/launcher-styles.css, @../css/header-styles.css">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ctgraphdep.controllers.LauncherController"
+            stylesheets="@../css/launcher-styles.css, @../css/header-styles.css"
+            styleClass="root">
+
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
+        <Insets topRightBottomLeft="20"/>
     </padding>
-    <center>
-        <VBox spacing="20" styleClass="main-content">
-            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
-                <ImageView fx:id="logoImage" styleClass="logo-image"/>
-                <Label styleClass="dashboard-title" text="Creative Time And Task Tracker" />
-                <Region HBox.hgrow="ALWAYS" />
-                <ProgressIndicator fx:id="syncProgressIndicator" visible="false" />
-                <Label fx:id="onlineStatusLabel" styleClass="online-status-label" />
-                <Button fx:id="aboutButton" text="About" onAction="#onAboutButton" styleClass="nav-button"/>
-            </HBox>
-            <VBox alignment="CENTER" spacing="20.0">
-                <ImageView fx:id="mainImage" />
-                <VBox spacing="10" alignment="CENTER" maxWidth="200">
-                    <TextField fx:id="usernameField" promptText="Username" />
-                    <PasswordField fx:id="passwordField" promptText="Password" />
-                    <Button fx:id="loginButton" text="Login" onAction="#onLoginButton" prefWidth="100" styleClass="login-button" />
+
+    <top>
+        <HBox styleClass="header" alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets topRightBottomLeft="10"/>
+            </padding>
+            <ImageView fx:id="logoImage" styleClass="logo-image" fitWidth="80" fitHeight="80" preserveRatio="true"/>
+            <Label styleClass="dashboard-title" text="Creative Time And Task Tracker"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="welcomeLabel" styleClass="welcome-label"/>
+            <Label fx:id="onlineStatusLabel" styleClass="online-status-label" text="Online"/>
+            <Button fx:id="aboutButton" text="About" onAction="#onAboutButton" styleClass="nav-button"/>
+        </HBox>
+    </top>
+
+     <center>
+            <HBox alignment="CENTER" styleClass="main-content">
+                <VBox alignment="CENTER" spacing="20" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER">
+                        <ImageView fx:id="mainImage" styleClass="main-image"/>
+                    </HBox>
+                    <VBox spacing="10" alignment="CENTER" maxWidth="250">
+                        <TextField fx:id="usernameField" promptText="Username"/>
+                        <PasswordField fx:id="passwordField" promptText="Password"/>
+                        <Button fx:id="loginButton" text="Login" onAction="#onLoginButton" styleClass="login-button" maxWidth="Infinity"/>
+                    </VBox>
                 </VBox>
-            </VBox>
-        </VBox>
-    </center>
+                <Region prefWidth="100" HBox.hgrow="NEVER" /> <!-- This will push the content slightly to the left -->
+            </HBox>
+        </center>
 </BorderPane>

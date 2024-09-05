@@ -1,29 +1,34 @@
-package cottontex.graphdep.models;
+package ctgraphdep.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "password")
 public class Users {
+
+
+    @JsonProperty("userId")
     private Integer userId;
+
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("employeeId")
     private Integer employeeId;
+
+    @JsonProperty("username")
     private String username;
+
+    @JsonProperty("password")
     private String password;
+
+    @JsonProperty("role")
     private String role;
 
-    @Override
-    public String toString() {
-        return "Users{" + "userId=" + userId +
-                ", name='" + name + '\'' +
-                ", employeeId=" + employeeId +
-                ", username='" + username + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
+    @JsonProperty("personalFolderPath")
+    private String personalFolderPath;
 }

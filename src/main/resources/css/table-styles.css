@@ -1,37 +1,79 @@
-.table-view {
-    -fx-table-cell-border-color: black;
+.custom-table {
+    -fx-table-cell-border-color: transparent;
 }
 
-.table-view .column-header-background {
+.custom-table .column-header {
     -fx-background-color: #f0f0f0;
-}
-
-.table-view .column-header, .table-view .filler {
-    -fx-background-color: transparent;
-    -fx-size: 35;
-    -fx-border-width: 0 0 1 0;
-    -fx-border-color: black;
-}
-
-.table-view .column-header .label {
-    -fx-text-fill: #2c3e50;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 0 1 1 0;
     -fx-font-weight: bold;
 }
 
-.table-row-cell {
+.custom-table .column-header .label {
+    -fx-text-fill: #2c3e50; /* Ensure header text is visible */
+}
+
+.custom-table .table-row-cell {
     -fx-background-color: #ffffff;
+    -fx-border-color: #f0f0f0;
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: black;
 }
 
-.table-row-cell:odd {
-    -fx-background-color: #f8f9fa;
+.custom-table .table-row-cell:odd {
+    -fx-background-color: #f8f8f8;
 }
 
-.table-row-cell:selected {
-    -fx-background-color: #3498db;
+.custom-table .table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 5;
+    -fx-text-fill: #333333; /* Ensure cell text is visible */
 }
 
-.table-row-cell:selected .text {
-    -fx-fill: white;
+.custom-table .column-0 {
+    -fx-background-color: linear-gradient(to right, #e6f2ff, #ffffff);
+}
+
+.custom-table .column-1 {
+    -fx-background-color: linear-gradient(to right, #f0f7ff, #ffffff);
+}
+
+.custom-table .column-2 {
+    -fx-background-color: linear-gradient(to right, #f9fcff, #ffffff);
+}
+
+.custom-table .column-3 {
+    -fx-background-color: linear-gradient(to right, #ffffff, #f9fcff);
+}
+
+.custom-table .table-row-cell:selected {
+    -fx-background-color: #3498db !important;
+}
+
+.custom-table .table-row-cell:selected .table-cell {
+    -fx-text-fill: white !important;
+}
+
+.custom-table .table-row-cell:selected:odd {
+    -fx-background-color: #2980b9 !important;
+}
+
+.custom-table .table-row-cell:selected:odd .table-cell {
+    -fx-text-fill: white !important;
+}
+
+.custom-table .table-row-cell:selected .text {
+    -fx-fill: white !important;
+}
+
+.custom-table .table-row-cell:selected .table-cell {
+    -fx-background-color: inherit !important;
+}
+
+/* Add a hover effect for better user interaction */
+.custom-table .table-row-cell:hover {
+    -fx-background-color: #e6f2ff;
+}
+
+.custom-table .table-row-cell:hover .table-cell {
+    -fx-text-fill: #2c3e50;
 }

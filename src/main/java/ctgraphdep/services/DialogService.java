@@ -1,6 +1,6 @@
-package cottontex.graphdep.services;
+package ctgraphdep.services;
 
-import cottontex.graphdep.utils.LoggerUtil;
+import ctgraphdep.utils.LoggerUtil;
 import javafx.scene.image.Image;
 
 import java.io.InputStream;

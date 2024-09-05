@@ -8,8 +8,8 @@
 <BorderPane prefHeight="600.0" prefWidth="800.0"
             xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ctgraphdep.graphdep.controllers.admin.EAdminController"
-            stylesheets="@../../css/admin-styles.css, @../../css/header-styles.css">
+            fx:controller="ctgraphdep.controllers.AdminController"
+            stylesheets="@../css/admin-styles.css, @../css/header-styles.css">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20" />
     </padding>
@@ -20,7 +20,7 @@
                 <Label text="Admin Dashboard" styleClass="dashboard-title"/>
                 <Region HBox.hgrow="ALWAYS" />
                 <Label fx:id="welcomeLabel" styleClass="welcome-label" />
-                <Button fx:id="userStatusButton" text="Users" onAction="#onUserStatusButton" styleClass="nav-button"/>
+                <Button fx:id="statusButton" text="Users" onAction="#onStatusButton" styleClass="nav-button"/>
                 <Button fx:id="workIntervalButton" text="Work Interval" onAction="#onWorkIntervalButton" styleClass="nav-button"/>
                 <Button fx:id="settingsButton" text="Settings" onAction="#onSettingsButton" styleClass="nav-button"/>
                 <Button fx:id="logoutButton" text="Logout" onAction="#onLogoutButton" styleClass="nav-button"/>

@@ -9,42 +9,50 @@
             xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ctgraphdep.controllers.UserTimeController"
-            stylesheets="@../../css/user-styles.css, @../../css/header-styles.css">
-    <top>
-        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
-            <ImageView fx:id="logoImage" styleClass="logo-image"/>
-            <Label text="My Work Hours and Time Off" styleClass="dashboard-title"/>
-            <Region HBox.hgrow="ALWAYS" />
-            <Button text="Back" onAction="#onBackButton" styleClass="nav-button"/>
-        </HBox>
-    </top>
-
+            stylesheets="@../css/user-styles.css, @../css/header-styles.css, @../css/table-styles.css">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
     <center>
-        <VBox alignment="CENTER" spacing="20" styleClass="main-content">
-            <TableView fx:id="workHoursTable" VBox.vgrow="ALWAYS">
-                <columns>
-                    <TableColumn fx:id="dateColumn" text="Date" prefWidth="100"/>
-                    <TableColumn fx:id="startTimeColumn" text="Start" prefWidth="80"/>
-                    <TableColumn fx:id="breaksColumn" text="Breaks" prefWidth="60"/>
-                    <TableColumn fx:id="breaksTimeColumn" text="Break Time" prefWidth="80"/>
-                    <TableColumn fx:id="endTimeColumn" text="End" prefWidth="80"/>
-                    <TableColumn fx:id="totalWorkedTimeColumn" text="Total Time" prefWidth="100"/>
-                </columns>
-            </TableView>
-
-            <VBox spacing="10" styleClass="time-off-section">
-                <Label text="Request Time Off" styleClass="section-title"/>
-                <HBox spacing="10">
-                    <DatePicker fx:id="startDatePicker" promptText="Start Date"/>
-                    <DatePicker fx:id="endDatePicker" promptText="End Date"/>
-                    <ComboBox fx:id="typeComboBox" promptText="Time Off Type"/>
-                    <Button text="Submit Request" onAction="#onSubmitButtonClick" />
+        <VBox spacing="20" styleClass="main-content" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
+                <ImageView fx:id="logoImage" styleClass="logo-image"/>
+                <Label text="My Work Hours and Time Off" styleClass="dashboard-title"/>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="Back" onAction="#onBackButton" styleClass="nav-button"/>
+            </HBox>
+            <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
+                <HBox spacing="10" alignment="CENTER">
+                    <ComboBox fx:id="yearComboBox" promptText="Select Year"/>
+                    <ComboBox fx:id="monthComboBox" promptText="Select Month"/>
+                    <Button onAction="#onWorkTimeButton" text="View Monthly Worked Hours" styleClass="action-button"/>
                 </HBox>
+                <VBox fx:id="tableContainer" VBox.vgrow="ALWAYS">
+                    <TableView fx:id="workHoursTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="workDateColumn" text="Date" prefWidth="100"/>
+                            <TableColumn fx:id="firstStartTimeColumn" text="Start Time" prefWidth="120"/>
+                            <TableColumn fx:id="breaksColumn" text="Breaks" prefWidth="60"/>
+                            <TableColumn fx:id="breaksTimeColumn" text="Break Time" prefWidth="80"/>
+                            <TableColumn fx:id="endTimeColumn" text="End Time" prefWidth="120"/>
+                            <TableColumn fx:id="totalWorkedTimeColumn" text="Total Time" prefWidth="100"/>
+                            <TableColumn fx:id="timeOffTypeColumn" text="Time Off" prefWidth="80"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </VBox>
+                <VBox spacing="10" styleClass="time-off-section">
+                    <Label text="Request Time Off" styleClass="section-title"/>
+                    <HBox spacing="10">
+                        <DatePicker fx:id="startDatePicker" promptText="Start Date"/>
+                        <DatePicker fx:id="endDatePicker" promptText="End Date"/>
+                        <ComboBox fx:id="typeComboBox" promptText="Time Off Type"/>
+                        <Button text="Submit Request" onAction="#onSubmitButtonClick" styleClass="action-button" />
+                    </HBox>
+                </VBox>
             </VBox>
         </VBox>
     </center>
-
-    <padding>
-        <Insets bottom="20" left="20" right="20" top="20" />
-    </padding>
 </BorderPane>

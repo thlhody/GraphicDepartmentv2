@@ -1,38 +1,70 @@
-package cottontex.graphdep.controllers;
+package ctgraphdep.controllers;
 
+import ctgraphdep.services.ServiceFactory;
+import ctgraphdep.utils.LoggerUtil;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
-
 public class BaseController {
+
+    protected ServiceFactory serviceFactory;
+    protected String currentFXMLPath;
 
     @FXML
     protected ImageView logoImage;
     @FXML
     protected ImageView mainImage;
+
     @FXML
-    protected Button logoutButton;
-    @FXML
-    protected Button backButton;
+    public void initializeServices(ServiceFactory serviceFactory) {
+        this.serviceFactory = serviceFactory;
+        if (!serviceFactory.isInitialized()) {
+            LoggerUtil.error("ServiceFactory is not initialized in BaseController");
+        }
+    }
 
     @FXML
     protected void onLogoutButton() {
-        // implement logout button logic
-        // this should work on admin and user controller
-        // this is in the basecontroller should work like a logout button and close, clear and move to the LauncherController
+        if (serviceFactory != null) {
+            serviceFactory.getNavigationService().logout();
+        } else {
+            LoggerUtil.error("ServiceFactory is null in BaseController");
+        }
     }
 
     @FXML
     protected void onBackButton() {
-        // Implement back button logic
-        // this should work on all controllers
+        if (serviceFactory != null && currentFXMLPath != null) {
+            serviceFactory.getNavigationService().goBack(currentFXMLPath);
+        } else {
+            LoggerUtil.error("ServiceFactory is null or currentFXMLPath is not set in BaseController");
+        }
     }
 
-    @FXML
-    public void initialize() {
-
+    protected void setCurrentFXMLPath(String path) {
+        this.currentFXMLPath = path;
+        // This method should be called in the initialize method of each specific controller
     }
 
-    //add any other methods that can be used in the rest of the controller so that we can avoid duplicated code
+    protected void setupLogoImage() {
+        if (logoImage != null && serviceFactory != null) {
+            logoImage.setFitWidth(60);
+            logoImage.setFitHeight(60);
+            logoImage.setPreserveRatio(true);
+            serviceFactory.getLogoService().setHeaderLogo(logoImage);
+            LoggerUtil.info("Logo image set successfully in " + getClass().getSimpleName());
+        } else {
+            LoggerUtil.warn("logoImage is null or serviceFactory is not initialized in " + getClass().getSimpleName());
+        }
+    }
+
+    protected void setupMainImage() {
+        if (mainImage != null && serviceFactory != null) {
+            serviceFactory.getLogoService().setMainImage(mainImage);
+            LoggerUtil.info("Main image set successfully in " + getClass().getSimpleName());
+        } else {
+            LoggerUtil.warn("mainImage is null or serviceFactory is not initialized in " + getClass().getSimpleName());
+        }
+    }
+
 }

@@ -10,10 +10,14 @@
     -fx-padding: 20px;
     -fx-background-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-alignment: center;
 }
 
 .main-image {
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+    -fx-max-width: 400px;
+    -fx-max-height: 400px;
+    -fx-alignment: center;
 }
 
 /* Form control styles */

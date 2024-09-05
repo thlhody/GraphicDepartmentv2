@@ -4,6 +4,7 @@
     -fx-padding: 10px 20px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
     -fx-alignment: center-left;
+    -fx-min-height: 80px; /* Add this line */
 }
 
 .logo-image {

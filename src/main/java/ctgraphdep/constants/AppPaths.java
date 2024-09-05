@@ -1,6 +1,6 @@
 package ctgraphdep.constants;
 
-public class AppPathsFXML {
+public class AppPaths {
 
     //launcher
     public static final String LAUNCHER = "/views/LauncherLayout.fxml";
@@ -19,4 +19,13 @@ public class AppPathsFXML {
     //info admin/user
     public static final String USER_STATUS_DIALOG = "/views/StatusDialog.fxml";;
 
+    //images
+    public static final String REFRESH_ICON = "/icons/refreshB.png";
+    public static final String COTTONTEX_LOGO = "/images/ct.png";
+    public static final String CREATIVE_TIME_TASK_TRACKER = "/images/ct3front.png";
+    public static final String DIALOG_BOX_IMAGE = "/images/ct3text.png";
+
+    //css
+    public static final String TABLE_STYLES_A = "/css/table-styles.css";
+    public static final String ABOUT_DIALOG_CSS = "/css/about-dialog.css";
 }
