@@ -11,8 +11,8 @@ public class LogoService {
 
     public void setMainImage(ImageView imageView) {
         setImage(imageView, AppPaths.CREATIVE_TIME_TASK_TRACKER);
-        imageView.setFitWidth(400);
-        imageView.setFitHeight(400);
+        imageView.setFitWidth(200);
+        imageView.setFitHeight(200);
         imageView.setPreserveRatio(true);
     }
 

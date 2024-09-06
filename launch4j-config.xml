@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+    <dontWrapJar>false</dontWrapJar>
+    <headerType>gui</headerType>
+    <jar>D:\WorkT\Projects Java\GraphDepC\target\graphdep-1.0-SNAPSHOT.jar</jar>
+    <outfile>D:\WorkT\Projects Java\GraphDepC\CreativeTimeAndTaskTracker.exe</outfile>
+    <errTitle>Creative Time and Task Tracker Error</errTitle>
+    <cmdLine></cmdLine>
+    <chdir>.</chdir>
+    <priority>normal</priority>
+    <downloadUrl>https://adoptium.net/</downloadUrl>
+    <supportUrl></supportUrl>
+    <stayAlive>false</stayAlive>
+    <restartOnCrash>false</restartOnCrash>
+    <manifest></manifest>
+    <icon></icon>
+    <classPath>
+        <mainClass>ctgraphdep.Main</mainClass>
+    </classPath>
+    <jre>
+        <path>%JAVA_HOME%</path>
+        <bundledJre64Bit>false</bundledJre64Bit>
+        <bundledJreAsFallback>false</bundledJreAsFallback>
+        <minVersion>17</minVersion>
+        <maxVersion></maxVersion>
+        <jdkPreference>preferJre</jdkPreference>
+        <runtimeBits>64/32</runtimeBits>
+        <opt>--module-path "%EXEDIR%" --add-modules javafx.controls,javafx.fxml</opt>
+    </jre>
+</launch4jConfig>

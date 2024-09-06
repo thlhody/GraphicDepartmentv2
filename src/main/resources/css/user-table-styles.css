@@ -10,7 +10,7 @@
 
 .table-view .column-header, .table-view .filler {
     -fx-background-color: transparent;
-    -fx-size: 45;
+    -fx-size: 22; /* Reduced from 45 */
     -fx-border-width: 0 1 1 0;
     -fx-border-color: #3a7fcf;
 }
@@ -18,14 +18,15 @@
 .table-view .column-header .label {
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-padding: 10 0 10 0;
+    -fx-padding: 5 0 5 0; /* Reduced from 10 0 10 0 */
+    -fx-font-size: 9px; /* Added to reduce font size */
 }
 
 .table-row-cell {
     -fx-background-color: #ffffff;
     -fx-border-width: 0 0 1 0;
     -fx-border-color: #e0e0e0;
-    -fx-padding: 5 0 5 0;
+    -fx-padding: 2 0 2 0; /* Reduced from 5 0 5 0 */
 }
 
 .table-row-cell:odd {
@@ -42,7 +43,8 @@
 
 .table-view .table-cell {
     -fx-alignment: CENTER-LEFT;
-    -fx-padding: 5 10 5 10;
+    -fx-padding: 2 5 2 5; /* Reduced from 5 10 5 10 */
+    -fx-font-size: 9px; /* Added to reduce font size */
 }
 
 /* Styles for specific columns if needed */
@@ -62,6 +64,7 @@
 /* Scrollbar styles */
 .table-view .scroll-bar:vertical {
     -fx-background-color: #f0f0f0;
+    -fx-pref-width: 6; /* Reduced scrollbar width */
 }
 
 .table-view .scroll-bar:vertical .thumb {

@@ -1,5 +1,6 @@
 package ctgraphdep.utils;
 
+import ctgraphdep.constants.AppPaths;
 import ctgraphdep.constants.JsonPaths;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -24,7 +25,7 @@ public class SaveFilesUtil {
     }
 
     public static String createUserFolder(String basePath) {
-        String fullPath = Paths.get(basePath, JsonPaths.CT3_FOLDER).toString();
+        String fullPath = Paths.get(basePath, AppPaths.CT3_FOLDER).toString();
         Path path = Paths.get(fullPath);
         try {
             Files.createDirectories(path);

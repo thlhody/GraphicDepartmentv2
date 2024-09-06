@@ -5,6 +5,7 @@ import ctgraphdep.models.Users;
 import ctgraphdep.models.WorkSessionStateUser;
 import ctgraphdep.services.*;
 import ctgraphdep.utils.LoggerUtil;
+import ctgraphdep.utils.UserSessionFileHandler;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -127,7 +128,9 @@ public class UserController extends BaseController {
         LocalDateTime now = LocalDateTime.now();
         String sessionState = currentSession.getSessionState();
 
-        currentDateTimeLabel.setText(formatDateTime(now) + " - " + sessionState);
+        String displayText = formatDateTime(now) + " - " + sessionState;
+        currentDateTimeLabel.setText(displayText);
+        LoggerUtil.debug("Updated currentDateTimeLabel: " + displayText);
 
         if ("STARTED".equals(sessionState) || "Temporary Stop".equals(sessionState) || "ENDED".equals(sessionState)) {
             LocalDateTime startTime = currentSession.getFirstStartTime();
@@ -165,13 +168,6 @@ public class UserController extends BaseController {
         return String.format("%02d:%02d", hours, minutes);
     }
 
-    private void loadExistingSession() {
-        WorkSessionStateUser currentSession = serviceFactory.getWorkSessionService().getCurrentSession();
-        if (currentSession != null && "STARTED".equals(currentSession.getSessionState())) {
-            updateTimeDisplay();
-        }
-    }
-
     private void updateButtonStates() {
         WorkSessionStateUser currentSession = serviceFactory.getWorkSessionService().getCurrentSession();
         if (currentSession == null) {
@@ -201,4 +197,70 @@ public class UserController extends BaseController {
             LoggerUtil.warn("Cannot update status: current user is null");
         }
     }
+
+    public void loadExistingSession() {
+        if (serviceFactory.getWorkSessionService().getCurrentUser() == null) {
+            LoggerUtil.warn("Cannot load session: current user is null");
+            return;
+        }
+
+        WorkSessionStateUser savedSession = UserSessionFileHandler.readUserSession(serviceFactory.getWorkSessionService().getCurrentUser());
+        if (savedSession == null) {
+            LoggerUtil.info("No saved session found for user: " + serviceFactory.getWorkSessionService().getCurrentUser().getName());
+            return;
+        }
+
+        if (!isValidSessionState(savedSession.getSessionState())) {
+            LoggerUtil.warn("Invalid session state found for user: " + serviceFactory.getWorkSessionService().getCurrentUser().getName() + ", State: " + savedSession.getSessionState());
+            return;
+        }
+
+        updateSessionTimes(savedSession);
+
+        saveCurrentSession();
+        LoggerUtil.info("Loaded existing session for user: " + serviceFactory.getWorkSessionService().getCurrentUser().getName() + ", State: " + savedSession.getSessionState());
+    }
+
+    private boolean isValidSessionState(String state) {
+        return "STARTED".equals(state) || "Temporary Stop".equals(state);
+    }
+
+    private void updateSessionTimes(WorkSessionStateUser session) {
+        LocalDateTime now = LocalDateTime.now();
+        if ("STARTED".equals(session.getSessionState())) {
+            updateStartedSession(session, now);
+        } else if ("Temporary Stop".equals(session.getSessionState())) {
+            updatePausedSession(session, now);
+        }
+    }
+
+    private void updateStartedSession(WorkSessionStateUser session, LocalDateTime now) {
+        LocalDateTime lastStartTime = session.getCurrentStartTime();
+        if (lastStartTime == null) {
+            LoggerUtil.warn("CurrentStartTime is null for STARTED session. Using FirstStartTime.");
+            lastStartTime = session.getFirstStartTime();
+        }
+        long elapsedSeconds = ChronoUnit.SECONDS.between(lastStartTime, now);
+        session.addWorkedTime(elapsedSeconds);
+        session.setCurrentStartTime(now);
+        LoggerUtil.info("Updated STARTED session. Added " + elapsedSeconds + " seconds to worked time.");
+    }
+
+    private void updatePausedSession(WorkSessionStateUser session, LocalDateTime now) {
+        LocalDateTime lastPauseTime = session.getLastPauseTime();
+        if (lastPauseTime == null) {
+            LoggerUtil.warn("LastPauseTime is null for Temporary Stop session. Using current time.");
+            lastPauseTime = now;
+        }
+        long elapsedBreakSeconds = ChronoUnit.SECONDS.between(lastPauseTime, now);
+        session.addBreakTime(elapsedBreakSeconds);
+        session.setLastPauseTime(now);
+        LoggerUtil.info("Updated Temporary Stop session. Added " + elapsedBreakSeconds + " seconds to break time.");
+    }
+
+    private void saveCurrentSession() {
+        UserSessionFileHandler.saveUserSession(serviceFactory.getWorkSessionService().getCurrentUser(), serviceFactory.getWorkSessionService().getCurrentSession());
+        LoggerUtil.info("Session saved for user: " + serviceFactory.getWorkSessionService().getCurrentUser().getName());
+    }
+
 }

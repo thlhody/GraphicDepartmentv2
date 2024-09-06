@@ -1,98 +1,107 @@
 /* Root style for the entire application */
 .root {
     -fx-font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
-    -fx-background-color: #f4f4f4;
+    -fx-background-color: #f8f9fa;
+    -fx-text-fill: #333333;
+}
+
+/* Header styles */
+.header {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.dashboard-title {
+    -fx-font-size: 12px; /* Reduced from 24px */
+    -fx-font-weight: bold;
+    -fx-text-fill: #007bff;
 }
 
 /* Main content area */
 .main-content {
     -fx-background-color: white;
-    -fx-padding: 20px;
-    -fx-background-radius: 5px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);
-    -fx-alignment: center;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+    -fx-padding: 20px; /* Reduced from 40px */
 }
 
-.main-image {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
-    -fx-max-width: 400px;
-    -fx-max-height: 400px;
-    -fx-alignment: center;
+/* Login form styles */
+.login-form {
+    -fx-min-width: 150px; /* Reduced from 300px */
+    -fx-max-width: 150px; /* Reduced from 300px */
+}
+
+.welcome-text {
+    -fx-font-size: 14px; /* Reduced from 28px */
+    -fx-font-weight: bold;
+    -fx-text-fill: #007bff;
 }
 
 /* Form control styles */
 .text-field, .password-field {
-    -fx-background-color: white;
+    -fx-background-color: #f8f9fa;
     -fx-border-color: #ced4da;
-    -fx-border-radius: 4px;
-    -fx-padding: 8px;
-    -fx-pref-width: 200px;
+    -fx-border-radius: 5px;
+    -fx-padding: 6px; /* Reduced from 12px */
+    -fx-font-size: 7px; /* Reduced from 14px */
 }
 
 .text-field:focused, .password-field:focused {
     -fx-border-color: #007bff;
-    -fx-border-width: 2px;
+    -fx-background-color: white;
 }
 
 /* Button styles */
 .button {
     -fx-font-weight: bold;
-    -fx-padding: 8px 16px;
-    -fx-background-radius: 4px;
-    -fx-background-color: #007bff;
+    -fx-font-size: 1em; /* Relative font size */
+    -fx-padding: 0.5em 1em; /* Relative padding */
+    -fx-background-radius: 5px;
     -fx-text-fill: white;
-}
-
-.button:hover, .button:focused {
-    -fx-background-color: #0056b3;
-}
-
-.button:pressed {
-    -fx-background-color: #004085;
-}
-
-.button:focused {
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 10, 0, 0, 0);
-}
-
-/* Login button specific styles */
-.login-button {
-    -fx-font-weight: bold;
-    -fx-padding: 8px 16px;
-    -fx-background-radius: 4px;
-    -fx-background-color: #007bff;
-    -fx-text-fill: white;
-}
-
-.login-button:hover, .login-button:focused {
-    -fx-background-color: #0056b3;
-}
-
-.login-button:pressed {
-    -fx-background-color: #004085;
-}
-
-.login-button:focused {
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 10, 0, 0, 0);
-}
-
-/* Navigation button styles */
-.nav-button {
-    -fx-background-color: transparent;
-    -fx-text-fill: #007bff;
-    -fx-font-weight: bold;
-    -fx-padding: 8px 16px;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 1);
+    -fx-transition: all 0.2s ease-in-out;
 }
 
-.nav-button:hover, .nav-button:focused {
-    -fx-background-color: #f8f9fa;
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 2);
 }
 
-.nav-button:pressed {
-    -fx-background-color: #e2e6ea;
+.primary-button {
+    -fx-background-color: #007bff;
 }
 
-.nav-button:focused {
-    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.5), 10, 0, 0, 0);
+.primary-button:hover {
+    -fx-background-color: #0056b3;
+}
+
+.nav-button {
+    -fx-background-color: #6c757d;
+}
+
+.nav-button:hover {
+    -fx-background-color: #5a6268;
+}
+
+/* Image styles */
+.logo-image {
+    -fx-fit-height: 20px; /* Reduced from 40px */
+    -fx-fit-width: 20px; /* Reduced from 40px */
+}
+
+.main-image {
+    -fx-fit-height: 100px; /* Reduced from 400px */
+    -fx-fit-width: 100px; /* Reduced from 400px */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Online status label */
+.online-status-label {
+    -fx-text-fill: #28a745;
+    -fx-font-weight: bold;
+}
+
+.offline-status-label {
+    -fx-text-fill: #dc3545;
+    -fx-font-weight: bold;
 }

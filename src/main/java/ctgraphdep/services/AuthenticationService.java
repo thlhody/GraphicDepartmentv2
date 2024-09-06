@@ -27,6 +27,8 @@ public class AuthenticationService {
     public boolean login(String username, String password) {
         LoggerUtil.buttonInfo("Login", username);
 
+        userService.reloadUsers();
+
         Optional<Users> authenticatedUser = userService.authenticateUser(username, password);
         if (authenticatedUser.isPresent()) {
             currentUser = authenticatedUser.get();

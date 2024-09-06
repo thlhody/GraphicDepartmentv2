@@ -1,5 +1,10 @@
 .custom-table {
     -fx-table-cell-border-color: transparent;
+    -fx-background-color: white;
+}
+
+.custom-table .column-header-background {
+    -fx-background-color: #f0f0f0;
 }
 
 .custom-table .column-header {
@@ -10,13 +15,16 @@
 }
 
 .custom-table .column-header .label {
-    -fx-text-fill: #2c3e50; /* Ensure header text is visible */
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 7px; /* Reduced from 14px */
+    -fx-alignment: center;
 }
 
 .custom-table .table-row-cell {
     -fx-background-color: #ffffff;
     -fx-border-color: #f0f0f0;
     -fx-border-width: 0 0 1 0;
+    -fx-cell-size: 17.5px; /* Reduced from 35px */
 }
 
 .custom-table .table-row-cell:odd {
@@ -25,8 +33,8 @@
 
 .custom-table .table-cell {
     -fx-alignment: CENTER;
-    -fx-padding: 5;
-    -fx-text-fill: #333333; /* Ensure cell text is visible */
+    -fx-padding: 2.5; /* Reduced from 5 */
+    -fx-text-fill: #333333;
 }
 
 .custom-table .column-0 {
@@ -51,6 +59,7 @@
 
 .custom-table .table-row-cell:selected .table-cell {
     -fx-text-fill: white !important;
+    -fx-background-color: inherit !important;
 }
 
 .custom-table .table-row-cell:selected:odd {
@@ -65,15 +74,49 @@
     -fx-fill: white !important;
 }
 
-.custom-table .table-row-cell:selected .table-cell {
-    -fx-background-color: inherit !important;
-}
-
-/* Add a hover effect for better user interaction */
 .custom-table .table-row-cell:hover {
     -fx-background-color: #e6f2ff;
 }
 
 .custom-table .table-row-cell:hover .table-cell {
     -fx-text-fill: #2c3e50;
+}
+
+/* Scrollbar styles */
+.custom-table .scroll-bar:vertical,
+.custom-table .scroll-bar:horizontal {
+    -fx-background-color: #f0f0f0;
+    -fx-pref-width: 20;
+    -fx-pref-height: 20;
+}
+
+.custom-table .scroll-bar:vertical .thumb,
+.custom-table .scroll-bar:horizontal .thumb {
+    -fx-background-color: #c0c0c0;
+    -fx-background-radius: 12;
+}
+
+.custom-table .scroll-bar:vertical .thumb:hover,
+.custom-table .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #a0a0a0;
+}
+
+.custom-table .scroll-bar:vertical .increment-button,
+.custom-table .scroll-bar:vertical .decrement-button,
+.custom-table .scroll-bar:horizontal .increment-button,
+.custom-table .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.custom-table .scroll-bar:vertical .increment-arrow,
+.custom-table .scroll-bar:vertical .decrement-arrow,
+.custom-table .scroll-bar:horizontal .increment-arrow,
+.custom-table .scroll-bar:horizontal .decrement-arrow {
+    -fx-background-color: #808080;
+}
+
+/* Style for day columns to prevent text wrapping */
+.custom-table .table-column > .label {
+    -fx-padding: 0px;
+    -fx-text-overrun: clip;
 }

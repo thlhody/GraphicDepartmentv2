@@ -20,6 +20,7 @@ public class ServiceFactory {
     private DialogService dialogService;
     private AdminTimeService adminTimeService;
     private UserManagementService userManagementService;
+    private FileAccessibilityService fileAccessibilityService;
 
     private ServiceFactory() {
         // Private constructor to prevent direct instantiation
@@ -49,9 +50,9 @@ public class ServiceFactory {
         userManagementService = new UserManagementService(userService, primaryStage);
 
         logoService = new LogoService();
-        dialogService = new DialogService();
+        dialogService = new DialogService(this);
         statusDialogService = new StatusDialogService();
-
+        fileAccessibilityService = new FileAccessibilityService();
     }
 
     public LogoService getLogoService() {
@@ -59,6 +60,13 @@ public class ServiceFactory {
             LoggerUtil.error("ServiceFactory has not been initialized");
         }
         return logoService;
+    }
+
+    public FileAccessibilityService getFileAccessibilityService() {
+        if (fileAccessibilityService == null) {
+            LoggerUtil.error("FileAccessibilityService is null. Make sure initialize() was called.");
+        }
+        return fileAccessibilityService;
     }
 
     public UserManagementService getUserManagementService() {

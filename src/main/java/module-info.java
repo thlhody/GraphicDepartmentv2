@@ -12,6 +12,7 @@ module ctgraphdep.graphdep {
     requires com.fasterxml.jackson.datatype.jsr310;
     requires com.zaxxer.sparsebitset;
     requires java.sql;
+    requires java.desktop;
 
     opens ctgraphdep to javafx.fxml;
     exports ctgraphdep;

@@ -9,6 +9,7 @@ import ctgraphdep.utils.LoggerUtil;
 import ctgraphdep.utils.SaveFilesUtil;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +57,7 @@ public class UserManagementService {
     }
 
     private void updateUserStatus(String name, String username) {
-        List<UserStatus> userStatuses = JsonUtils.readUserStatusFromJson(JsonPaths.USER_STATUS_JSON);
+        List<UserStatus> userStatuses = JsonUtils.readUserStatusFromJson(JsonPaths.getUserStatusJson());
         Optional<Users> newUser = userService.getUserByUsername(username);
 
         if (newUser.isPresent()) {
@@ -67,7 +68,7 @@ public class UserManagementService {
                     LocalDateTime.now()
             );
             userStatuses.add(newStatus);
-            boolean success = JsonUtils.writeUserStatusToJson(userStatuses, JsonPaths.USER_STATUS_JSON);
+            boolean success = JsonUtils.writeUserStatusToJson(userStatuses, JsonPaths.getUserStatusJson());
             if (!success) {
                 LoggerUtil.error("Failed to update user status for new user: " + username);
             }
@@ -115,6 +116,45 @@ public class UserManagementService {
             LoggerUtil.error("Exception occurred while resetting password: " + e.getMessage(), e);
             AlertUtil.showAlert("Error", "An unexpected error occurred while resetting the password.");
         }
+    }
+
+    public void updateDataPath(String newDataPath) {
+        if (newDataPath != null && !newDataPath.isEmpty()) {
+            try {
+                String oldDataPath = JsonPaths.getDataPath();
+                JsonPaths.setDataPath(newDataPath);
+                String actualNewPath = JsonPaths.getDataPath();
+
+                if (!actualNewPath.equals(newDataPath)) {
+                    AlertUtil.showAlert("Info", "Data path updated, but was adjusted to: " + actualNewPath);
+                } else {
+                    AlertUtil.showAlert("Success", "Data path updated successfully.");
+                }
+
+                LoggerUtil.info("Updated DATA_PATH from " + oldDataPath + " to: " + actualNewPath);
+
+                // Check if users.json exists in the new path
+                File usersFile = new File(actualNewPath, "users.json");
+                if (!usersFile.exists()) {
+                    AlertUtil.showAlert("Warning", "users.json not found in the new path. The system will fall back to the admin path for user data if necessary.");
+                    LoggerUtil.warn("users.json not found in new DATA_PATH: " + actualNewPath);
+                }
+            } catch (Exception e) {
+                AlertUtil.showAlert("Error", "Failed to update data path: " + e.getMessage());
+                LoggerUtil.error("Failed to update DATA_PATH", e);
+            }
+        } else {
+            AlertUtil.showAlert("Error", "Please enter a valid data path.");
+            LoggerUtil.warn("Attempted to set invalid DATA_PATH");
+        }
+    }
+
+    public List<String> getRoles() {
+        return List.of("USER", "ADMIN", "USER_TEAM_LEADER");
+    }
+
+    public String getDefaultRole() {
+        return "USER";
     }
 
     public boolean deleteUser(String username) {

@@ -4,23 +4,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
 
-<VBox xmlns="http://javafx.com/javafx/17"
+<VBox prefWidth="Infinity" prefHeight="Infinity"
+      xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="ctgraphdep.controllers.StatusDialogController"
       stylesheets="@../css/status-dialog.css"
-      prefWidth="300" prefHeight="600"
       styleClass="main-container">
     <HBox styleClass="header">
         <Label text="User Status" styleClass="dialog-header"/>
         <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="okButton" text="OK" onAction="#closeDialog" styleClass="ok-button"/>
         <Button fx:id="refreshButton" styleClass="refresh-button">
             <graphic>
-                <ImageView fx:id="refreshIcon" fitHeight="16" fitWidth="16" />
+                <ImageView fx:id="refreshIcon" fitHeight="16" fitWidth="16" preserveRatio="true" smooth="true"/>
             </graphic>
         </Button>
     </HBox>
-    <VBox fx:id="userStatusBox" VBox.vgrow="ALWAYS" styleClass="user-status-container" />
-    <VBox styleClass="button-container">
-        <Button text="OK" onAction="#closeDialog" styleClass="close-button"/>
-    </VBox>
+    <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+        <VBox fx:id="userStatusBox" VBox.vgrow="ALWAYS" styleClass="user-status-container" />
+    </ScrollPane>
 </VBox>

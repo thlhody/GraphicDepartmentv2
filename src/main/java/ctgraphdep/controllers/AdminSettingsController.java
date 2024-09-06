@@ -1,6 +1,7 @@
 package ctgraphdep.controllers;
 
 import ctgraphdep.constants.AppPaths;
+import ctgraphdep.constants.JsonPaths;
 import ctgraphdep.models.Users;
 import ctgraphdep.services.ServiceFactory;
 import ctgraphdep.services.UserManagementService;
@@ -29,6 +30,10 @@ public class AdminSettingsController extends BaseController {
     private Button addUpdateUserButton;
     @FXML
     private Button editUserButton;
+    @FXML
+    private TextField basePathField;
+    @FXML
+    private Button updateBasePathButton;
 
     private boolean isEditMode = false;
     private String currentUsername;
@@ -46,6 +51,7 @@ public class AdminSettingsController extends BaseController {
         populateUserComboBox();
         populateRoleComboBox();
         setupUserComboBoxListener();
+        basePathField.setText(JsonPaths.getDataPath());
     }
 
     @FXML
@@ -91,6 +97,20 @@ public class AdminSettingsController extends BaseController {
     }
 
     @FXML
+    protected void onClearFieldsButton() {
+        clearFields();
+        isEditMode = false;
+        addUpdateUserButton.setText("Add User");
+    }
+
+    @FXML
+    protected void onUpdateBasePathButton() {
+        String newDataPath = basePathField.getText();
+        userManagementService.updateDataPath(newDataPath);
+        basePathField.setText(JsonPaths.getDataPath());  // Reset to current path
+    }
+
+    @FXML
     protected void onDeleteUserButton() {
         String selectedUsername = userComboBox.getValue();
         if (selectedUsername != null) {
@@ -130,7 +150,6 @@ public class AdminSettingsController extends BaseController {
         }
     }
 
-
     private void updateUser() {
         boolean success = userManagementService.updateUser(
                 currentUsername,
@@ -153,8 +172,8 @@ public class AdminSettingsController extends BaseController {
 
     private void populateRoleComboBox() {
         roleComboBox.getItems().clear();
-        roleComboBox.getItems().addAll("USER", "ADMIN", "USER_TEAM_LEADER");
-        roleComboBox.setValue("USER");
+        roleComboBox.getItems().addAll(userManagementService.getRoles());
+        roleComboBox.setValue(userManagementService.getDefaultRole());
     }
 
     private void clearFields() {
@@ -162,7 +181,7 @@ public class AdminSettingsController extends BaseController {
         usernameField.clear();
         passwordField.clear();
         employeeIdField.clear();
-        roleComboBox.setValue("USER");
+        roleComboBox.setValue(userManagementService.getDefaultRole());
         isEditMode = false;
         currentUsername = null;
         addUpdateUserButton.setText("Add User");

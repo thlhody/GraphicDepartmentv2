@@ -3,10 +3,12 @@ package ctgraphdep.controllers;
 import ctgraphdep.services.*;
 import ctgraphdep.utils.LoggerUtil;
 import ctgraphdep.constants.AppPaths;
+import ctgraphdep.utils.WindowUtil;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class LauncherController extends BaseController {
 
@@ -21,20 +23,27 @@ public class LauncherController extends BaseController {
     @FXML
     private Label onlineStatusLabel;
     @FXML
-    private ProgressIndicator syncProgressIndicator;
-    @FXML
     private ImageView logoImage;
     @FXML
     private ImageView mainImage;
+
+    private FileAccessibilityService fileAccessibilityService;
 
     @Override
     public void initializeServices(ServiceFactory serviceFactory) {
         super.initializeServices(serviceFactory);
         if (serviceFactory.isInitialized()) {
             setCurrentFXMLPath(AppPaths.LAUNCHER);
-            adjustImagePosition();
+            this.fileAccessibilityService = serviceFactory.getFileAccessibilityService();
             setupLogoImage();
             setupMainImage();
+            updateOnlineStatus();
+            Platform.runLater(() -> {
+                Stage stage = (Stage) loginButton.getScene().getWindow();
+                WindowUtil.initializeMainStage(stage);
+                WindowUtil.adjustStageSize(stage);
+                WindowUtil.centerStage(stage);
+            });
         } else {
             LoggerUtil.error("ServiceFactory is not initialized in LauncherController");
         }
@@ -42,10 +51,8 @@ public class LauncherController extends BaseController {
 
     @FXML
     protected void onLoginButton() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
 
-        if (serviceFactory.getAuthenticationService().login(username, password)) {
+        if (serviceFactory.getAuthenticationService().login(usernameField.getText(), passwordField.getText())) {
             usernameField.clear();
             passwordField.clear();
         }
@@ -56,10 +63,7 @@ public class LauncherController extends BaseController {
         AboutDialogController.openAboutDialog(serviceFactory);
     }
 
-    private void adjustImagePosition() {
-        Platform.runLater(() -> {
-            double offset = 12; // Adjust this value to move the image more or less to the left
-            mainImage.setTranslateX(-offset);
-        });
+    private void updateOnlineStatus() {
+        fileAccessibilityService.updateOnlineStatus(onlineStatusLabel);
     }
 }

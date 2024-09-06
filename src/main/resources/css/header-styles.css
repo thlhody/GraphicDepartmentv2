@@ -1,20 +1,27 @@
 /* Header styles */
 .header {
     -fx-background-color: white;
-    -fx-padding: 10px 20px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-padding: 0;
+    -fx-alignment: center;
+    -fx-min-height: 40px; /* Reduced from 80px */
+    -fx-pref-width: infinity;
+}
+
+.header-content {
     -fx-alignment: center-left;
-    -fx-min-height: 80px; /* Add this line */
+    -fx-spacing: 7.5; /* Reduced from 15 */
+    -fx-padding: 10 15 10 15; /* Reduced from 20 30 20 30 */
 }
 
 .logo-image {
-    -fx-fit-width: 60px;
-    -fx-fit-height: 60px;
+    -fx-spacing: 7.5; /* Reduced from 15 */
+    -fx-padding: 10 15 10 15; /* Reduced from 20 30 20 30 */
     -fx-preserve-ratio: true;
 }
 
 .dashboard-title {
-    -fx-font-size: 18px;
+    -fx-font-size: 0.6em; /* Reduced from 1.2em */
     -fx-font-weight: bold;
     -fx-text-fill: #007bff;
 }
@@ -23,7 +30,7 @@
     -fx-background-color: transparent;
     -fx-text-fill: #007bff;
     -fx-font-weight: bold;
-    -fx-padding: 8px 16px;
+    -fx-padding: 4px 8px; /* Reduced from 8px 16px */
     -fx-cursor: hand;
 }
 
@@ -36,13 +43,13 @@
 }
 
 .welcome-label {
-    -fx-font-size: 16px;
+    -fx-font-size: 8px; /* Reduced from 16px */
     -fx-text-fill: #007bff;
 }
 
 .online-status-label {
     -fx-font-weight: bold;
-    -fx-padding: 5px 10px;
+    -fx-padding: 2.5px 5px; /* Reduced from 5px 10px */
     -fx-background-color: #f0f0f0;
     -fx-background-radius: 5px;
 }

@@ -11,19 +11,17 @@
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="ctgraphdep.controllers.AboutDialogController"
       styleClass="main-container"
-      alignment="CENTER" spacing="15">
+      alignment="CENTER" spacing="20">
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets top="30" right="40" bottom="30" left="40"/>
     </padding>
-    <HBox styleClass="header" alignment="CENTER">
-        <ImageView fx:id="dialogImage" fitWidth="100" fitHeight="100" preserveRatio="true" styleClass="image-view"/>
-    </HBox>
-    <VBox alignment="CENTER" spacing="10">
-        <Label fx:id="titleLabel" styleClass="dialog-header"/>
+    <ImageView fx:id="dialogImage" fitWidth="100" fitHeight="100" preserveRatio="true" styleClass="logo-image"/>
+    <VBox alignment="CENTER" spacing="10" maxWidth="300">
+        <Label fx:id="titleLabel" styleClass="dialog-header" wrapText="true" textAlignment="CENTER"/>
         <Label fx:id="versionLabel" styleClass="version-label"/>
         <Label fx:id="copyrightLabel" styleClass="copyright-label"/>
     </VBox>
     <HBox styleClass="button-container" alignment="CENTER">
-        <Button text="OK" onAction="#closeDialog" styleClass="close-button"/>
+        <Button text="Close" onAction="#closeDialog" styleClass="close-button"/>
     </HBox>
 </VBox>

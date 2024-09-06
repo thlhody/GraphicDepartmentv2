@@ -25,7 +25,6 @@ public class TableUtil {
             DayOfWeek.SUNDAY, "D"
     );
 
-    // Admin table column methods
     public static void setupAdminWorkTimeTable(TableView<MonthlyWorkSummary> tableView, int year, int month) {
         tableView.getColumns().clear();
         tableView.getStyleClass().add("custom-table");
@@ -38,13 +37,16 @@ public class TableUtil {
         addDaysWorkedColumn(tableView, year, month);
         addTimeOffSummaryColumn(tableView, year, month);
 
+        // Ensure the table uses our custom resize policy
+        tableView.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
+
         LoggerUtil.info("Number of items in TableView after setup: " + tableView.getItems().size());
     }
 
     private static void addNameColumn(TableView<MonthlyWorkSummary> tableView) {
         TableColumn<MonthlyWorkSummary, String> nameColumn = new TableColumn<>("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        nameColumn.setPrefWidth(150);
+        setFixedColumnWidth(nameColumn, 150);
         nameColumn.getStyleClass().add("column-0");
         tableView.getColumns().add(nameColumn);
     }
@@ -52,7 +54,7 @@ public class TableUtil {
     private static void addEmployeeIdColumn(TableView<MonthlyWorkSummary> tableView) {
         TableColumn<MonthlyWorkSummary, Integer> employeeIdColumn = new TableColumn<>("Employee ID");
         employeeIdColumn.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
-        employeeIdColumn.setPrefWidth(100);
+        setFixedColumnWidth(employeeIdColumn, 100);
         employeeIdColumn.getStyleClass().add("column-1");
         tableView.getColumns().add(employeeIdColumn);
     }
@@ -80,7 +82,7 @@ public class TableUtil {
                 return javafx.beans.binding.Bindings.createStringBinding(() -> "");
             }
         });
-        dayColumn.setPrefWidth(50);
+        setFixedColumnWidth(dayColumn, 50);
         dayColumn.getStyleClass().add("column-" + (day % 2 + 2));
         tableView.getColumns().add(dayColumn);
     }
@@ -92,7 +94,7 @@ public class TableUtil {
                         formatTotalHours(cellData.getValue())
                 )
         );
-        totalHoursColumn.setPrefWidth(100);
+        setFixedColumnWidth(totalHoursColumn, 80);
         totalHoursColumn.getStyleClass().add("column-" + ((YearMonth.of(year, month).lengthOfMonth() + 2) % 2 + 2));
         tableView.getColumns().add(totalHoursColumn);
     }
@@ -104,7 +106,7 @@ public class TableUtil {
                         formatOvertime(cellData.getValue())
                 )
         );
-        overtimeColumn.setPrefWidth(100);
+        setFixedColumnWidth(overtimeColumn, 80);
         overtimeColumn.getStyleClass().add("column-" + ((YearMonth.of(year, month).lengthOfMonth() + 3) % 2 + 2));
         tableView.getColumns().add(overtimeColumn);
     }
@@ -112,7 +114,7 @@ public class TableUtil {
     private static void addDaysWorkedColumn(TableView<MonthlyWorkSummary> tableView, int year, int month) {
         TableColumn<MonthlyWorkSummary, Integer> daysWorkedColumn = new TableColumn<>("Days Worked");
         daysWorkedColumn.setCellValueFactory(new PropertyValueFactory<>("daysWorked"));
-        daysWorkedColumn.setPrefWidth(100);
+        setFixedColumnWidth(daysWorkedColumn, 80);
         daysWorkedColumn.getStyleClass().add("column-" + ((YearMonth.of(year, month).lengthOfMonth() + 3) % 2 + 2));
         tableView.getColumns().add(daysWorkedColumn);
     }
@@ -120,9 +122,16 @@ public class TableUtil {
     private static void addTimeOffSummaryColumn(TableView<MonthlyWorkSummary> tableView, int year, int month) {
         TableColumn<MonthlyWorkSummary, String> timeOffSummaryColumn = new TableColumn<>("Time Off Summary");
         timeOffSummaryColumn.setCellValueFactory(new PropertyValueFactory<>("timeOffSummary"));
-        timeOffSummaryColumn.setPrefWidth(150);
+        setFixedColumnWidth(timeOffSummaryColumn, 150);
         timeOffSummaryColumn.getStyleClass().add("column-" + ((YearMonth.of(year, month).lengthOfMonth() + 4) % 2 + 2));
         tableView.getColumns().add(timeOffSummaryColumn);
+    }
+
+    private static void setFixedColumnWidth(TableColumn<?, ?> column, double width) {
+        column.setPrefWidth(width);
+        column.setMinWidth(width);
+        column.setMaxWidth(width);
+        column.setResizable(false);
     }
 
     private static String formatHoursWithMinutes(double hours) {

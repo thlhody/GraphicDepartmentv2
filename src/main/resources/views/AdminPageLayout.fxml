@@ -5,29 +5,57 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0"
-            xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ctgraphdep.controllers.AdminController"
-            stylesheets="@../css/admin-styles.css, @../css/header-styles.css">
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
-    </padding>
-    <center>
-        <VBox spacing="20" styleClass="main-content">
-            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
-                <ImageView fx:id="logoImage" styleClass="logo-image"/>
-                <Label text="Admin Dashboard" styleClass="dashboard-title"/>
-                <Region HBox.hgrow="ALWAYS" />
-                <Label fx:id="welcomeLabel" styleClass="welcome-label" />
-                <Button fx:id="statusButton" text="Users" onAction="#onStatusButton" styleClass="nav-button"/>
-                <Button fx:id="workIntervalButton" text="Work Interval" onAction="#onWorkIntervalButton" styleClass="nav-button"/>
-                <Button fx:id="settingsButton" text="Settings" onAction="#onSettingsButton" styleClass="nav-button"/>
-                <Button fx:id="logoutButton" text="Logout" onAction="#onLogoutButton" styleClass="nav-button"/>
-            </HBox>
-            <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
-                <Label text="Welcome to the Admin Dashboard" styleClass="section-title"/>
-            </VBox>
-        </VBox>
-    </center>
-</BorderPane>
+<StackPane xmlns="http://javafx.com/javafx/17.0.2-ea"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="ctgraphdep.controllers.AdminController"
+           stylesheets="@../css/admin-styles.css, @../css/header-styles.css">
+    <BorderPane>
+        <top>
+            <StackPane styleClass="header">
+                <HBox styleClass="header-content" maxWidth="900"> <!-- Adjust maxWidth as needed -->
+                    <padding>
+                        <Insets top="20" right="30" bottom="20" left="30" />
+                    </padding>
+                    <ImageView fx:id="logoImage" styleClass="logo-image"/>
+                    <Label text="Admin Dashboard" styleClass="dashboard-title"/>
+                    <Region HBox.hgrow="ALWAYS" />
+                    <HBox styleClass="right-aligned-content">
+                        <Label fx:id="welcomeLabel" styleClass="welcome-label" />
+                        <Button fx:id="logoutButton" text="Logout" onAction="#onLogoutButton" styleClass="nav-button"/>
+                    </HBox>
+                </HBox>
+            </StackPane>
+        </top>
+        <center>
+            <ScrollPane fitToWidth="true" styleClass="main-content">
+                <VBox spacing="30">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30" />
+                    </padding>
+
+                    <!-- Welcome Section -->
+                    <VBox spacing="15" styleClass="settings-section">
+                        <Label styleClass="section-title" text="Welcome to the Admin Dashboard" />
+                        <Label text="Use the quick actions below to manage users, view work intervals, or adjust settings." wrapText="true" />
+                    </VBox>
+
+                    <!-- Quick Actions Section -->
+                    <VBox spacing="15" styleClass="settings-section">
+                        <Label styleClass="section-title" text="Quick Actions" />
+                        <HBox spacing="15">
+                            <Button text="Manage Users" onAction="#onStatusButton" styleClass="action-button" />
+                            <Button text="View Work Intervals" onAction="#onWorkIntervalButton" styleClass="action-button" />
+                            <Button text="Adjust Settings" onAction="#onSettingsButton" styleClass="action-button" />
+                        </HBox>
+                    </VBox>
+
+                    <!-- System Status Section (placeholder) -->
+                    <VBox spacing="15" styleClass="settings-section">
+                        <Label styleClass="section-title" text="System Status" />
+                        <Label text="All systems operational" styleClass="status-label" />
+                    </VBox>
+                </VBox>
+            </ScrollPane>
+        </center>
+    </BorderPane>
+</StackPane>

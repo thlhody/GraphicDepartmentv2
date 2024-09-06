@@ -111,11 +111,11 @@ public class WorkSessionService {
                 currentSession.getTotalWorkedSeconds()
         );
 
-        List<WorkTimeTable> workTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.WORK_INTERVAL_JSON);
+        List<WorkTimeTable> workTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.getWorkIntervalJson());
         workTimes.removeIf(wt -> wt.getUserId().equals(currentUser.getUserId()) && wt.getWorkDate().equals(currentSession.getFirstStartTime().toLocalDate()));
         workTimes.add(workTimeEntry);
 
-        boolean success = JsonUtils.writeWorkTimesToJson(workTimes, JsonPaths.WORK_INTERVAL_JSON);
+        boolean success = JsonUtils.writeWorkTimesToJson(workTimes, JsonPaths.getWorkIntervalJson());
         if (success) {
             LoggerUtil.info("Work interval updated successfully for user: " + currentUser.getName());
         } else {
@@ -168,7 +168,7 @@ public class WorkSessionService {
             return false;
         }
 
-        List<WorkTimeTable> workTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.WORK_INTERVAL_JSON);
+        List<WorkTimeTable> workTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.getWorkIntervalJson());
 
         LocalDate date = startDate;
         while (!date.isAfter(endDate)) {
@@ -198,7 +198,7 @@ public class WorkSessionService {
             date = date.plusDays(1);
         }
 
-        boolean success = JsonUtils.writeWorkTimesToJson(workTimes, JsonPaths.WORK_INTERVAL_JSON);
+        boolean success = JsonUtils.writeWorkTimesToJson(workTimes, JsonPaths.getWorkIntervalJson());
 
         if (success) {
             LoggerUtil.info("Time off saved successfully for user: " + currentUser.getName() + " from " + startDate + " to " + endDate);
@@ -244,7 +244,7 @@ public class WorkSessionService {
 
     public List<WorkTimeTable> getWorkTimeData(int year, int month) {
 
-        List<WorkTimeTable> allWorkTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.WORK_INTERVAL_JSON);
+        List<WorkTimeTable> allWorkTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.getWorkIntervalJson());
         LoggerUtil.info("Total work times read from JSON: " + allWorkTimes.size());
 
         List<WorkTimeTable> filteredWorkTimes = allWorkTimes.stream()

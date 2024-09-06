@@ -8,40 +8,31 @@
 <BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ctgraphdep.controllers.LauncherController"
-            stylesheets="@../css/launcher-styles.css, @../css/header-styles.css"
-            styleClass="root">
-
-    <padding>
-        <Insets topRightBottomLeft="20"/>
-    </padding>
-
+            stylesheets="@../css/launcher-styles.css, @../css/header-styles.css">
     <top>
-        <HBox styleClass="header" alignment="CENTER_LEFT" spacing="10">
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
             <padding>
-                <Insets topRightBottomLeft="10"/>
+                <Insets top="20" right="30" bottom="20" left="30" />
             </padding>
-            <ImageView fx:id="logoImage" styleClass="logo-image" fitWidth="80" fitHeight="80" preserveRatio="true"/>
-            <Label styleClass="dashboard-title" text="Creative Time And Task Tracker"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <Label fx:id="welcomeLabel" styleClass="welcome-label"/>
+            <ImageView fx:id="logoImage" styleClass="logo-image"/>
+            <Label text="Creative Time And Task Tracker" styleClass="dashboard-title"/>
+            <Region HBox.hgrow="ALWAYS" />
             <Label fx:id="onlineStatusLabel" styleClass="online-status-label" text="Online"/>
             <Button fx:id="aboutButton" text="About" onAction="#onAboutButton" styleClass="nav-button"/>
         </HBox>
     </top>
 
-     <center>
-            <HBox alignment="CENTER" styleClass="main-content">
-                <VBox alignment="CENTER" spacing="20" HBox.hgrow="ALWAYS">
-                    <HBox alignment="CENTER">
-                        <ImageView fx:id="mainImage" styleClass="main-image"/>
-                    </HBox>
-                    <VBox spacing="10" alignment="CENTER" maxWidth="250">
-                        <TextField fx:id="usernameField" promptText="Username"/>
-                        <PasswordField fx:id="passwordField" promptText="Password"/>
-                        <Button fx:id="loginButton" text="Login" onAction="#onLoginButton" styleClass="login-button" maxWidth="Infinity"/>
-                    </VBox>
+    <center>
+        <StackPane styleClass="main-content">
+            <HBox alignment="CENTER" spacing="50">
+                <VBox alignment="CENTER" spacing="20" styleClass="login-form">
+                    <Label text="Welcome Back" styleClass="welcome-text"/>
+                    <TextField fx:id="usernameField" promptText="Username"/>
+                    <PasswordField fx:id="passwordField" promptText="Password"/>
+                    <Button fx:id="loginButton" text="Login" onAction="#onLoginButton" styleClass="primary-button" maxWidth="Infinity"/>
                 </VBox>
-                <Region prefWidth="100" HBox.hgrow="NEVER" /> <!-- This will push the content slightly to the left -->
+                <ImageView fx:id="mainImage" styleClass="main-image"/>
             </HBox>
-        </center>
+        </StackPane>
+    </center>
 </BorderPane>

@@ -251,4 +251,28 @@ public class JsonUtils {
             return false;
         }
     }
+
+    public static PathConfig readPathConfigFromJson(String filePath) {
+        try {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                LoggerUtil.info("Path config file does not exist: " + filePath);
+                return null;
+            }
+            return objectMapper.readValue(file, PathConfig.class);
+        } catch (IOException e) {
+            LoggerUtil.error("ReadPathConfigFromJson error: " + e.getMessage(), e);
+            return null;
+        }
+    }
+
+    public static boolean writePathConfigToJson(PathConfig pathConfig, String filePath) {
+        try {
+            objectMapper.writeValue(new File(filePath), pathConfig);
+            return true;
+        } catch (IOException e) {
+            LoggerUtil.error("WritePathConfigToJson error: " + e.getMessage(), e);
+            return false;
+        }
+    }
 }

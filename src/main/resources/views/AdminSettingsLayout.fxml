@@ -5,42 +5,67 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0"
+<BorderPane prefHeight="Infinity" prefWidth="Infinity"
             xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ctgraphdep.controllers.AdminSettingsController"
             stylesheets="@../css/admin-styles.css, @../css/header-styles.css">
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
-    </padding>
-    <center>
-        <VBox spacing="20" styleClass="main-content">
-            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header">
+    <top>
+        <HBox styleClass="header">
+            <HBox styleClass="header-content" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets top="20" right="30" bottom="20" left="30" />
+                </padding>
                 <ImageView fx:id="logoImage" styleClass="logo-image"/>
                 <Label text="Admin Settings" styleClass="dashboard-title"/>
                 <Region HBox.hgrow="ALWAYS" />
-                <Button fx:id="backButton" onAction="#onBackButton" text="Back to Admin Page" styleClass="nav-button"/>
+                <HBox styleClass="right-aligned-content">
+                    <Button fx:id="backButton" onAction="#onBackButton" text="Back to Admin Page" styleClass="nav-button"/>
+                </HBox>
             </HBox>
-            <VBox alignment="CENTER" spacing="20">
-                <VBox spacing="10.0" styleClass="settings-section">
-                    <Label styleClass="section-title" text="User Management" />
-                    <HBox spacing="10" alignment="CENTER_LEFT">
-                        <ComboBox fx:id="userComboBox" promptText="Select User" prefWidth="200" />
-                        <Button fx:id="editUserButton" text="Edit User" onAction="#onEditUserButton" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="resetPasswordButton" text="Reset Password" onAction="#onResetPasswordButton" />
-                        <Button fx:id="deleteUserButton" text="Delete User" onAction="#onDeleteUserButton" />
-                    </HBox>
-                    <HBox spacing="10">
-                        <TextField fx:id="nameField" promptText="Name" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="usernameField" promptText="Username" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="employeeIdField" promptText="Employee ID" HBox.hgrow="ALWAYS" />
-                        <ComboBox fx:id="roleComboBox" promptText="Select Role" HBox.hgrow="ALWAYS" />
-                        <PasswordField fx:id="passwordField" promptText="Password" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="addUpdateUserButton" onAction="#onAddUpdateUserButton" text="Add User" />
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="main-content">
+            <VBox spacing="30">
+                <padding>
+                    <Insets top="30" right="30" bottom="30" left="30" />
+                </padding>
+
+                <!-- Base Path Settings Section -->
+                <VBox spacing="15" styleClass="settings-section">
+                    <Label styleClass="section-title" text="Base Path Settings" />
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <TextField fx:id="basePathField" promptText="Base Path" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="updateBasePathButton" text="Update Base Path" onAction="#onUpdateBasePathButton" styleClass="primary-button" />
                     </HBox>
                 </VBox>
+
+                <!-- User Management Section -->
+                <VBox spacing="15" styleClass="settings-section">
+                    <Label styleClass="section-title" text="User Management" />
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <ComboBox fx:id="userComboBox" promptText="Select User" prefWidth="200" />
+                        <Button fx:id="editUserButton" text="Edit User" onAction="#onEditUserButton" styleClass="action-button" />
+                        <Button fx:id="clearFieldsButton" text="Clear Fields" onAction="#onClearFieldsButton" styleClass="secondary-button" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="resetPasswordButton" text="Reset Password" onAction="#onResetPasswordButton" styleClass="action-button" />
+                        <Button fx:id="deleteUserButton" text="Delete User" onAction="#onDeleteUserButton" styleClass="danger-button" />
+                    </HBox>
+                    <GridPane hgap="15" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <TextField fx:id="nameField" promptText="Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="usernameField" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        <TextField fx:id="employeeIdField" promptText="Employee ID" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="roleComboBox" promptText="Select Role" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="passwordField" promptText="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Button fx:id="addUpdateUserButton" onAction="#onAddUpdateUserButton" text="Add User" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="primary-button" />
+                    </GridPane>
+                </VBox>
             </VBox>
-        </VBox>
+        </ScrollPane>
     </center>
 </BorderPane>

@@ -35,8 +35,6 @@ public class UserTimeController extends BaseController {
     private ComboBox<Integer> yearComboBox;
     @FXML
     private ComboBox<Month> monthComboBox;
-    @FXML
-    private VBox tableContainer;
 
     @FXML
     @Override
@@ -98,9 +96,6 @@ public class UserTimeController extends BaseController {
 
         TableUtil.setupUserWorkTimeTable(workHoursTable, year, month.getValue());
 
-        // Make the table take up all available space
-        VBox.setVgrow(workHoursTable, javafx.scene.layout.Priority.ALWAYS);
-        VBox.setVgrow(tableContainer, javafx.scene.layout.Priority.ALWAYS);
     }
 
     private void setupTimeOffControls() {

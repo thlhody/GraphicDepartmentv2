@@ -27,6 +27,7 @@ public class UserService {
     }
 
     public Optional<Users> authenticateUser(String username, String password) {
+        loadUsers();
         Optional<Users> authenticatedUser = users.stream()
                 .filter(user -> user.getUsername().equals(username) && user.getPassword().equals(password))
                 .findFirst();
@@ -71,9 +72,13 @@ public class UserService {
 
     //user related actions
 
+    public void reloadUsers() {
+        loadUsers();
+    }
+
     private void loadUsers() {
         try {
-            users = JsonUtils.readListFromJson(JsonPaths.JSON_USERS, Users.class);
+            users = JsonUtils.readListFromJson(JsonPaths.getJsonUsers(), Users.class);
             LoggerUtil.info("Users loaded successfully. Total users: " + users.size());
         } catch (Exception e) {
             LoggerUtil.error("Error loading users from JSON file", e);
@@ -118,7 +123,7 @@ public class UserService {
 
     private boolean saveUsers() {
         try {
-            JsonUtils.writeListToJson(JsonPaths.JSON_USERS, users);
+            JsonUtils.writeListToJson(JsonPaths.getJsonUsers(), users);
             return true;
         } catch (Exception e) {
             LoggerUtil.error("Error saving users to JSON file", e);
