@@ -275,3 +275,197 @@
 2024-09-07 17:10:42.223 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 19: 0.0 hours on day 9
 2024-09-07 17:10:42.223 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Generated 18 monthly summaries (excluding admin)
 2024-09-07 17:10:42.223 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Refreshed work time data for 2024-9: 18 entries (excluding admin)
+2024-09-07 17:31:39.588 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Executable directory: D:\WorkT\Projects Java\GraphDepC\target
+2024-09-07 17:31:39.589 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Set ADMIN_PATH to: D:\WorkT\Projects Java\GraphDepC\target\default\
+2024-09-07 17:31:39.590 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Attempting to load path config from: D:\WorkT\Projects Java\GraphDepC\target\path_config.json
+2024-09-07 17:31:39.590 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - No config file found. Using admin path as initial data path.
+2024-09-07 17:31:39.590 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Final DATA_PATH: D:\WorkT\Projects Java\GraphDepC\target\default\
+2024-09-07 17:31:39.590 [JavaFX Application Thread] WARN  ctgraphdep.constants.JsonPaths - users.json not found in data path. Using admin path as fallback.
+2024-09-07 17:31:39.680 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 0
+2024-09-07 17:31:39.817 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:31:39.817 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Logo image set successfully in LauncherController
+2024-09-07 17:31:39.817 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Updating online status
+2024-09-07 17:31:39.817 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking users.json accessibility in new data path
+2024-09-07 17:31:39.818 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking file: D:\WorkT\Projects Java\GraphDepC\target\default\users.json
+2024-09-07 17:31:39.818 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File exists: false
+2024-09-07 17:31:39.818 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File is readable: false
+2024-09-07 17:31:39.818 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Users JSON file accessibility in new path: Not accessible
+2024-09-07 17:31:40.557 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct3front.png
+2024-09-07 17:31:40.557 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Main image set successfully in LauncherController
+2024-09-07 17:31:40.761 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Status set to Offline (using default path)
+2024-09-07 17:31:58.017 [JavaFX Application Thread] INFO  UserActions - Login - Attempt login
+2024-09-07 17:31:58.017 [JavaFX Application Thread] WARN  ctgraphdep.constants.JsonPaths - users.json not found in data path. Using admin path as fallback.
+2024-09-07 17:31:58.017 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 0
+2024-09-07 17:31:58.017 [JavaFX Application Thread] WARN  ctgraphdep.constants.JsonPaths - users.json not found in data path. Using admin path as fallback.
+2024-09-07 17:31:58.018 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 0
+2024-09-07 17:31:58.018 [JavaFX Application Thread] WARN  ctgraphdep.services.UserService - Failed authentication attempt for username: simonalp
+2024-09-07 17:31:58.018 [JavaFX Application Thread] WARN  ctgraphdep.services.AuthenticationService - Failed login attempt for username: simonalp
+2024-09-07 17:32:09.009 [JavaFX Application Thread] INFO  UserActions - Login - Attempt login
+2024-09-07 17:32:09.010 [JavaFX Application Thread] WARN  ctgraphdep.constants.JsonPaths - users.json not found in data path. Using admin path as fallback.
+2024-09-07 17:32:09.012 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 0
+2024-09-07 17:32:09.014 [JavaFX Application Thread] WARN  ctgraphdep.constants.JsonPaths - users.json not found in data path. Using admin path as fallback.
+2024-09-07 17:32:09.016 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 0
+2024-09-07 17:32:09.016 [JavaFX Application Thread] WARN  ctgraphdep.services.UserService - Failed authentication attempt for username: simonalp
+2024-09-07 17:32:09.017 [JavaFX Application Thread] WARN  ctgraphdep.services.AuthenticationService - Failed login attempt for username: simonalp
+2024-09-07 17:32:14.127 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AboutDialogController - Dialog stage set for AboutDialogController
+2024-09-07 17:32:14.127 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AboutDialogController - BaseDialogController services initialized: true
+2024-09-07 17:32:14.128 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AboutDialogController - Initializing About dialog
+2024-09-07 17:32:14.128 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Loading image: /images/ct3text.png
+2024-09-07 17:32:14.334 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Dialog image set successfully with path: /images/ct3text.png
+2024-09-07 17:32:14.334 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - titleLabel set: Creative Time And Task Tracker
+2024-09-07 17:32:14.334 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - versionLabel set: Version 2.0
+2024-09-07 17:32:14.335 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - copyrightLabel set: © 2024 thlhody
+2024-09-07 17:32:14.336 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Image rotation animation set up
+2024-09-07 17:32:14.336 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AboutDialogController - AboutDialogController initialized
+2024-09-07 17:32:14.336 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Loading CSS from: file:/D:/WorkT/Projects%20Java/GraphDepC/target/classes/css/about-dialog.css
+2024-09-07 17:32:15.495 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Dialog window closed!
+2024-09-07 17:32:19.905 [JavaFX Application Thread] INFO  UserActions - Login - Attempt login
+2024-09-07 17:32:19.907 [JavaFX Application Thread] WARN  ctgraphdep.constants.JsonPaths - users.json not found in data path. Using admin path as fallback.
+2024-09-07 17:32:19.907 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 0
+2024-09-07 17:32:19.908 [JavaFX Application Thread] WARN  ctgraphdep.constants.JsonPaths - users.json not found in data path. Using admin path as fallback.
+2024-09-07 17:32:19.909 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 0
+2024-09-07 17:32:19.910 [JavaFX Application Thread] WARN  ctgraphdep.services.UserService - Failed authentication attempt for username: admin
+2024-09-07 17:32:19.910 [JavaFX Application Thread] WARN  ctgraphdep.services.AuthenticationService - Failed login attempt for username: admin
+2024-09-07 17:32:41.246 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Executable directory: D:\WorkT\Projects Java\GraphDepC\target
+2024-09-07 17:32:41.248 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Set ADMIN_PATH to: D:\WorkT\Projects Java\GraphDepC\target\default\
+2024-09-07 17:32:41.248 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Attempting to load path config from: D:\WorkT\Projects Java\GraphDepC\target\path_config.json
+2024-09-07 17:32:41.350 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Loaded DATA_PATH from config: D:\CreativeTimeAndTaskTracker\default\
+2024-09-07 17:32:41.350 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Final DATA_PATH: D:\CreativeTimeAndTaskTracker\default\
+2024-09-07 17:32:41.358 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:32:41.494 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:32:41.494 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Logo image set successfully in LauncherController
+2024-09-07 17:32:41.495 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Updating online status
+2024-09-07 17:32:41.495 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking users.json accessibility in new data path
+2024-09-07 17:32:41.496 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking file: D:\CreativeTimeAndTaskTracker\default\users.json
+2024-09-07 17:32:41.496 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File exists: true
+2024-09-07 17:32:41.496 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File is readable: true
+2024-09-07 17:32:41.496 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Users JSON file accessibility in new path: Accessible
+2024-09-07 17:32:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct3front.png
+2024-09-07 17:32:42.221 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Main image set successfully in LauncherController
+2024-09-07 17:32:42.421 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Status set to Online (using new path)
+2024-09-07 17:32:47.797 [JavaFX Application Thread] INFO  UserActions - Login - Attempt login
+2024-09-07 17:32:47.799 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:32:47.800 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:32:47.801 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - User authenticated successfully: admin
+2024-09-07 17:32:47.801 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Admin
+2024-09-07 17:32:47.802 [JavaFX Application Thread] INFO  ctgraphdep.utils.UserSessionFileHandler - No existing session found for user: admin
+2024-09-07 17:32:47.802 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - No active session found for user: Admin
+2024-09-07 17:32:47.802 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Admin
+2024-09-07 17:32:47.802 [JavaFX Application Thread] INFO  UserActions - Login - Successful login
+2024-09-07 17:32:47.802 [JavaFX Application Thread] INFO  ControllerSwitches - Switching from AuthenticationService to AdminController
+2024-09-07 17:32:47.811 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:32:47.812 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - Logo image set successfully in AdminController
+2024-09-07 17:32:47.812 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - AdminController initializing services
+2024-09-07 17:32:47.833 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Page
+2024-09-07 17:32:49.357 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - Dialog stage set for StatusDialogController
+2024-09-07 17:32:49.358 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - BaseDialogController services initialized: true
+2024-09-07 17:32:49.358 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - Initializing Status dialog
+2024-09-07 17:32:49.362 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Refresh button set up successfully
+2024-09-07 17:32:49.362 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Loading image: /icons/refreshB.png
+2024-09-07 17:32:49.406 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Refresh icon set successfully
+2024-09-07 17:32:49.407 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - Refreshing status content
+2024-09-07 17:32:49.413 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Users status read successfully. Number of users: 18
+2024-09-07 17:32:49.413 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Number of users: 18
+2024-09-07 17:32:49.414 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Hodineanti Tudor (Offline) :: 07/09/2024 - 15:02
+2024-09-07 17:32:49.416 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Simona Polmolea (offline) :: 04/09/2024 - 22:14
+2024-09-07 17:32:49.416 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Laura Polmolea (offline) :: 04/09/2024 - 18:26
+2024-09-07 17:32:49.417 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Silviu Murgu (offline) :: 04/09/2024 - 18:01
+2024-09-07 17:32:49.417 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Eugen Murgu (offline) :: 04/09/2024 - 21:02
+2024-09-07 17:32:49.418 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Alina Tepeneu (offline) :: 04/09/2024 - 21:02
+2024-09-07 17:32:49.418 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Oana Alba (offline) :: 04/09/2024 - 21:03
+2024-09-07 17:32:49.418 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Geo Zgurai (offline) :: 04/09/2024 - 21:03
+2024-09-07 17:32:49.419 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Stefan Dumitru (offline) :: 04/09/2024 - 21:04
+2024-09-07 17:32:49.419 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Ion Domil (offline) :: 04/09/2024 - 21:04
+2024-09-07 17:32:49.419 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Vlad Olari (offline) :: 04/09/2024 - 21:04
+2024-09-07 17:32:49.420 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Mariana Badau (offline) :: 04/09/2024 - 21:21
+2024-09-07 17:32:49.420 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Adina Barbu (offline) :: 04/09/2024 - 21:22
+2024-09-07 17:32:49.420 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Laurentiu Margalin (offline) :: 04/09/2024 - 21:22
+2024-09-07 17:32:49.421 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Marian Negrea (offline) :: 04/09/2024 - 21:23
+2024-09-07 17:32:49.421 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Leo Cicos (offline) :: 04/09/2024 - 21:23
+2024-09-07 17:32:49.422 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Adrian Mihai (offline) :: 04/09/2024 - 21:25
+2024-09-07 17:32:49.422 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Marian Ivanoiu (offline) :: 04/09/2024 - 21:26
+2024-09-07 17:32:49.422 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - User status list updated. Number of rows: 18
+2024-09-07 17:32:49.423 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - StatusDialogController initialized
+2024-09-07 17:32:49.423 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Loading CSS from: file:/D:/WorkT/Projects%20Java/GraphDepC/target/classes/css/about-dialog.css
+2024-09-07 17:32:51.264 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:32:51.264 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminSettingsController - Logo image set successfully in AdminSettingsController
+2024-09-07 17:32:51.264 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminSettingsController - AdminSettingsController services initialized: true
+2024-09-07 17:32:51.335 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Settings
+2024-09-07 17:32:53.240 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:32:53.240 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - Logo image set successfully in AdminController
+2024-09-07 17:32:53.241 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - AdminController initializing services
+2024-09-07 17:32:53.247 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Page
+2024-09-07 17:32:57.950 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - User logged out
+2024-09-07 17:32:57.956 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:32:57.956 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Logo image set successfully in LauncherController
+2024-09-07 17:32:57.956 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Updating online status
+2024-09-07 17:32:57.956 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking users.json accessibility in new data path
+2024-09-07 17:32:57.956 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking file: D:\CreativeTimeAndTaskTracker\default\users.json
+2024-09-07 17:32:57.956 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File exists: true
+2024-09-07 17:32:57.956 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File is readable: true
+2024-09-07 17:32:57.956 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Users JSON file accessibility in new path: Accessible
+2024-09-07 17:32:58.687 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct3front.png
+2024-09-07 17:32:58.687 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Main image set successfully in LauncherController
+2024-09-07 17:32:58.699 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Login
+2024-09-07 17:32:58.700 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Status set to Online (using new path)
+2024-09-07 17:33:04.977 [JavaFX Application Thread] INFO  UserActions - Login - Attempt login
+2024-09-07 17:33:04.981 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:33:04.984 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:33:04.984 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - User authenticated successfully: simonalp
+2024-09-07 17:33:04.984 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Simona Polmolea
+2024-09-07 17:33:05.001 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - No active session found for user: Simona Polmolea
+2024-09-07 17:33:05.001 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Simona Polmolea
+2024-09-07 17:33:05.001 [JavaFX Application Thread] INFO  UserActions - Login - Successful login
+2024-09-07 17:33:05.002 [JavaFX Application Thread] INFO  ControllerSwitches - Switching from AuthenticationService to UserController
+2024-09-07 17:33:05.010 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:33:05.010 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserController - Logo image set successfully in UserController
+2024-09-07 17:33:05.011 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:33:05.011 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserController - Logo image set successfully in UserController
+2024-09-07 17:33:05.012 [JavaFX Application Thread] WARN  ctgraphdep.controllers.UserController - Invalid session state found for user: Simona Polmolea, State: ENDED
+2024-09-07 17:33:05.028 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: User Page
+2024-09-07 17:33:07.698 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:33:07.698 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserSettingsController - Logo image set successfully in UserSettingsController
+2024-09-07 17:33:07.699 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserSettingsController - UserSettingsController services initialized: true
+2024-09-07 17:33:07.699 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:33:07.700 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserSettingsController - Logo image set successfully in UserSettingsController
+2024-09-07 17:33:07.719 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: User Settings
+2024-09-07 17:33:20.834 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Password changed successfully for user: simonalp
+2024-09-07 17:35:35.893 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Executable directory: D:\WorkT\Projects Java\GraphDepC\target
+2024-09-07 17:35:35.894 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Set ADMIN_PATH to: D:\WorkT\Projects Java\GraphDepC\target\default\
+2024-09-07 17:35:35.894 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Attempting to load path config from: D:\WorkT\Projects Java\GraphDepC\target\path_config.json
+2024-09-07 17:35:35.993 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Loaded DATA_PATH from config: D:\CreativeTimeAndTaskTracker\default\
+2024-09-07 17:35:35.993 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Final DATA_PATH: D:\CreativeTimeAndTaskTracker\default\
+2024-09-07 17:35:36.012 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:35:36.142 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:35:36.142 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Logo image set successfully in LauncherController
+2024-09-07 17:35:36.142 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Updating online status
+2024-09-07 17:35:36.142 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking users.json accessibility in new data path
+2024-09-07 17:35:36.143 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking file: D:\CreativeTimeAndTaskTracker\default\users.json
+2024-09-07 17:35:36.143 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File exists: true
+2024-09-07 17:35:36.143 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File is readable: true
+2024-09-07 17:35:36.143 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Users JSON file accessibility in new path: Accessible
+2024-09-07 17:35:36.875 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct3front.png
+2024-09-07 17:35:36.876 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Main image set successfully in LauncherController
+2024-09-07 17:35:37.087 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Status set to Online (using new path)
+2024-09-07 17:35:44.264 [JavaFX Application Thread] INFO  UserActions - Login - Attempt login
+2024-09-07 17:35:44.266 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:35:44.267 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:35:44.268 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - User authenticated successfully: simonalp
+2024-09-07 17:35:44.268 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Simona Polmolea
+2024-09-07 17:35:44.277 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - No active session found for user: Simona Polmolea
+2024-09-07 17:35:44.277 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Simona Polmolea
+2024-09-07 17:35:44.277 [JavaFX Application Thread] INFO  UserActions - Login - Successful login
+2024-09-07 17:35:44.277 [JavaFX Application Thread] INFO  ControllerSwitches - Switching from AuthenticationService to UserController
+2024-09-07 17:35:44.295 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:35:44.295 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserController - Logo image set successfully in UserController
+2024-09-07 17:35:44.296 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:35:44.297 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserController - Logo image set successfully in UserController
+2024-09-07 17:35:44.297 [JavaFX Application Thread] WARN  ctgraphdep.controllers.UserController - Invalid session state found for user: Simona Polmolea, State: ENDED
+2024-09-07 17:35:44.348 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: User Page
+2024-09-07 17:35:46.163 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:35:46.163 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserSettingsController - Logo image set successfully in UserSettingsController
+2024-09-07 17:35:46.164 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserSettingsController - UserSettingsController services initialized: true
+2024-09-07 17:35:46.165 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:35:46.165 [JavaFX Application Thread] INFO  ctgraphdep.controllers.UserSettingsController - Logo image set successfully in UserSettingsController
+2024-09-07 17:35:46.192 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: User Settings
+2024-09-07 17:35:58.103 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Password changed successfully for user: simonalp

@@ -66,6 +66,7 @@
                     </GridPane>
                     <Button fx:id="changePasswordButton" text="Change Password" onAction="#onChangePassword" styleClass="primary-button"/>
                 </VBox>
+                <Label fx:id="statusLabel" styleClass="status-label"/>
             </VBox>
         </ScrollPane>
     </center>
