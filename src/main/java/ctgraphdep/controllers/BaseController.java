@@ -18,8 +18,9 @@ public class BaseController {
     @FXML
     public void initializeServices(ServiceFactory serviceFactory) {
         this.serviceFactory = serviceFactory;
+        setupLogoImage();
         if (!serviceFactory.isInitialized()) {
-            LoggerUtil.error("ServiceFactory is not initialized in BaseController");
+            LoggerUtil.error(getClass(),"ServiceFactory is not initialized in BaseController");
         }
     }
 
@@ -28,7 +29,7 @@ public class BaseController {
         if (serviceFactory != null) {
             serviceFactory.getNavigationService().logout();
         } else {
-            LoggerUtil.error("ServiceFactory is null in BaseController");
+            LoggerUtil.error(getClass(),"ServiceFactory is null in BaseController");
         }
     }
 
@@ -37,34 +38,23 @@ public class BaseController {
         if (serviceFactory != null && currentFXMLPath != null) {
             serviceFactory.getNavigationService().goBack(currentFXMLPath);
         } else {
-            LoggerUtil.error("ServiceFactory is null or currentFXMLPath is not set in BaseController");
+            LoggerUtil.error(getClass(),"ServiceFactory is null or currentFXMLPath is not set in BaseController");
         }
     }
 
     protected void setCurrentFXMLPath(String path) {
         this.currentFXMLPath = path;
-        // This method should be called in the initialize method of each specific controller
     }
 
     protected void setupLogoImage() {
         if (logoImage != null && serviceFactory != null) {
-            logoImage.setFitWidth(60);
-            logoImage.setFitHeight(60);
+            logoImage.setFitWidth(150);
+            logoImage.setFitHeight(70);
             logoImage.setPreserveRatio(true);
             serviceFactory.getLogoService().setHeaderLogo(logoImage);
-            LoggerUtil.info("Logo image set successfully in " + getClass().getSimpleName());
+            LoggerUtil.info(getClass(),"Logo image set successfully in " + getClass().getSimpleName());
         } else {
-            LoggerUtil.warn("logoImage is null or serviceFactory is not initialized in " + getClass().getSimpleName());
+            LoggerUtil.warn(getClass(),"logoImage is null or serviceFactory is not initialized in " + getClass().getSimpleName());
         }
     }
-
-    protected void setupMainImage() {
-        if (mainImage != null && serviceFactory != null) {
-            serviceFactory.getLogoService().setMainImage(mainImage);
-            LoggerUtil.info("Main image set successfully in " + getClass().getSimpleName());
-        } else {
-            LoggerUtil.warn("mainImage is null or serviceFactory is not initialized in " + getClass().getSimpleName());
-        }
-    }
-
 }

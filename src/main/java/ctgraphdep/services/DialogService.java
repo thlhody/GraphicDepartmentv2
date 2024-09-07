@@ -29,23 +29,23 @@ public class DialogService {
 
     public Image loadImage(String imagePath) {
         try {
-            LoggerUtil.info("Loading image: " + imagePath);
+            LoggerUtil.info(getClass(),"Loading image: " + imagePath);
             InputStream imageStream = getClass().getResourceAsStream(imagePath);
             if (imageStream != null) {
                 return new Image(imageStream);
             } else {
-                LoggerUtil.error("Failed to load image: " + imagePath);
+                LoggerUtil.error(getClass(),"Failed to load image: " + imagePath);
                 return null;
             }
         } catch (Exception e) {
-            LoggerUtil.error("Error loading image: " + e.getMessage(), e);
+            LoggerUtil.error(getClass(),"Error loading image: " + e.getMessage(), e);
             return null;
         }
     }
 
     public void setDialogImage(ImageView dialogImage, String imagePath) {
         if (dialogImage == null) {
-            LoggerUtil.error("dialogImage is null. Check FXML file and controller initialization.");
+            LoggerUtil.error(getClass(),"dialogImage is null. Check FXML file and controller initialization.");
             return;
         }
 
@@ -55,9 +55,9 @@ public class DialogService {
             dialogImage.setFitWidth(100);
             dialogImage.setFitHeight(100);
             dialogImage.setPreserveRatio(true);
-            LoggerUtil.info("Dialog image set successfully with path: " + imagePath);
+            LoggerUtil.info(getClass(),"Dialog image set successfully with path: " + imagePath);
         } else {
-            LoggerUtil.error("Failed to load image: " + imagePath);
+            LoggerUtil.error(getClass(),"Failed to load image: " + imagePath);
         }
     }
 
@@ -68,9 +68,9 @@ public class DialogService {
             rotateTransition.setCycleCount(RotateTransition.INDEFINITE);
             rotateTransition.setAutoReverse(false);
             rotateTransition.play();
-            LoggerUtil.info("Image rotation animation set up");
+            LoggerUtil.info(getClass(),"Image rotation animation set up");
         } else {
-            LoggerUtil.error("dialogImage is null, cannot set up animation");
+            LoggerUtil.error(getClass(),"dialogImage is null, cannot set up animation");
         }
     }
 
@@ -90,7 +90,7 @@ public class DialogService {
         return AppPaths.USER_STATUS_DIALOG;
     }
 
-    public Stage openDialog(String fxmlPath, String title, BaseDialogController controller) {
+    public void openDialog(String fxmlPath, String title, BaseDialogController controller) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
@@ -101,29 +101,24 @@ public class DialogService {
             stage.setTitle(title);
             Scene scene = new Scene(root);
             stage.setScene(scene);
-
             dialogController.setDialogStage(stage);
             dialogController.initializeServices(serviceFactory);
-
             applyCss(scene, dialogController);
-
             stage.showAndWait();
 
-            return stage;
         } catch (IOException e) {
-            LoggerUtil.error("Error opening dialog: " + e.getMessage(), e);
-            return null;
+            LoggerUtil.error(getClass(),"Error opening dialog: " + e.getMessage(), e);
         }
     }
 
     public void applyCss(Scene scene, BaseDialogController controller) {
         URL cssResource = controller.getClass().getResource(getAboutDialogCssPath());
         if (cssResource == null) {
-            LoggerUtil.error("CSS file not found: " + getAboutDialogCssPath());
+            LoggerUtil.error(getClass(),"CSS file not found: " + getAboutDialogCssPath());
             return;
         }
         String cssExternalForm = cssResource.toExternalForm();
-        LoggerUtil.info("Loading CSS from: " + cssExternalForm);
+        LoggerUtil.info(getClass(),"Loading CSS from: " + cssExternalForm);
         scene.getStylesheets().add(cssExternalForm);
     }
 
@@ -131,9 +126,9 @@ public class DialogService {
         if (refreshButton != null) {
             refreshButton.setOnAction(e -> refreshAction.run());
             refreshButton.setTooltip(new Tooltip("Refresh"));
-            LoggerUtil.info("Refresh button set up successfully");
+            LoggerUtil.info(getClass(),"Refresh button set up successfully");
         } else {
-            LoggerUtil.info("Refresh button not present in this dialog");
+            LoggerUtil.info(getClass(),"Refresh button not present in this dialog");
         }
     }
 
@@ -142,21 +137,21 @@ public class DialogService {
             Image refreshImage = loadImage(imagePath);
             if (refreshImage != null) {
                 refreshIcon.setImage(refreshImage);
-                LoggerUtil.info("Refresh icon set successfully");
+                LoggerUtil.info(getClass(),"Refresh icon set successfully");
             } else {
-                LoggerUtil.error("Failed to load refresh icon image");
+                LoggerUtil.error(getClass(),"Failed to load refresh icon image");
             }
         } else {
-            LoggerUtil.error("Refresh icon ImageView is null in setRefreshButtonImage method");
+            LoggerUtil.error(getClass(),"Refresh icon ImageView is null in setRefreshButtonImage method");
         }
     }
 
     public void closeDialog(Stage dialogStage) {
         if (dialogStage != null) {
             dialogStage.close();
-            LoggerUtil.info("Dialog window closed!");
+            LoggerUtil.info(getClass(),"Dialog window closed!");
         } else {
-            LoggerUtil.error("Attempted to close dialog, but dialogStage is null");
+            LoggerUtil.error(getClass(),"Attempted to close dialog, but dialogStage is null");
         }
     }
 
@@ -169,9 +164,9 @@ public class DialogService {
     private void setLabelText(Label label, String text) {
         if (label != null) {
             label.setText(text);
-            LoggerUtil.info(label.getId() + " set: " + text);
+            LoggerUtil.info(getClass(),label.getId() + " set: " + text);
         } else {
-            LoggerUtil.error(label.getId() + " is null");
+            LoggerUtil.error(getClass(),"Label is null");
         }
     }
 }

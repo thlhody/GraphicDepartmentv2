@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ExportExcelUtil {
 
-    public static boolean exportMonthlyWorkSummaryToExcel(List<MonthlyWorkSummary> data, int year, int month, Stage stage) {
+    public static boolean exportMonthlyWorkSummaryToExcel(List<MonthlyWorkSummary> data, Integer year, Integer month, Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Excel File");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xlsx"));
@@ -50,8 +50,8 @@ public class ExportExcelUtil {
             createHeaderCell(headerRow, 0, "Name", headerStyle);
             createHeaderCell(headerRow, 1, "Employee ID", headerStyle);
 
-            YearMonth yearMonth = YearMonth.of(year, month);
-            int daysInMonth = yearMonth.lengthOfMonth();
+
+            Integer daysInMonth = YearMonth.of(year, month).lengthOfMonth();
 
             for (int day = 1; day <= daysInMonth; day++) {
                 createHeaderCell(headerRow, day + 1, String.valueOf(day), headerStyle);
@@ -71,7 +71,7 @@ public class ExportExcelUtil {
             dataStyle.setAlignment(HorizontalAlignment.CENTER);
             dataStyle.setVerticalAlignment(VerticalAlignment.CENTER);
 
-            int rowNum = 1;
+            Integer rowNum = 1;
             for (MonthlyWorkSummary summary : data) {
                 Row row = sheet.createRow(rowNum++);
                 createCell(row, 0, summary.getName(), dataStyle);
@@ -79,7 +79,7 @@ public class ExportExcelUtil {
 
                 double monthlyTotalHours = 0;
                 double monthlyOvertimeHours = 0;
-                int actualWorkDays = 0;
+                Integer actualWorkDays = 0;
                 for (int day = 1; day <= daysInMonth; day++) {
                     Double hours = summary.getDay(day);
                     String timeOffType = summary.getTimeOffType(day);
@@ -99,8 +99,8 @@ public class ExportExcelUtil {
                     }
                 }
 
-                int displayTotalHours = (int) Math.floor(monthlyTotalHours);
-                int displayOvertimeHours = (int) Math.floor(monthlyOvertimeHours);
+                Integer displayTotalHours = (int) Math.floor(monthlyTotalHours);
+                Integer displayOvertimeHours = (int) Math.floor(monthlyOvertimeHours);
 
                 createCell(row, daysInMonth + 2, displayTotalHours, dataStyle);
                 createCell(row, daysInMonth + 3, displayOvertimeHours, dataStyle);
@@ -120,7 +120,7 @@ public class ExportExcelUtil {
 
             return true;
         } catch (IOException e) {
-            LoggerUtil.error("ExportUtil excel error: " + e.getMessage());
+            LoggerUtil.error(ExportExcelUtil.class,"ExportUtil excel error: " + e.getMessage());
             return false;
         }
     }

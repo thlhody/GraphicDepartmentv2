@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class NavigationService {
 
-    private Stage primaryStage;
+    private final Stage primaryStage;
 
     public NavigationService(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -45,19 +45,17 @@ public class NavigationService {
 
     // navigation
     public void goBack(String currentPath){
-        if (currentPath.equals(AppPaths.ADMIN_SETTING_LAYOUT) ||
-                currentPath.equals(AppPaths.ADMIN_WORK_INTERVAL_LAYOUT)) {
+        if (currentPath.equals(AppPaths.ADMIN_SETTING_LAYOUT) || currentPath.equals(AppPaths.ADMIN_WORK_INTERVAL_LAYOUT)) {
             navigateTo(AppPaths.ADMIN_PAGE_LAYOUT, "Admin Page");
-        } else if (currentPath.equals(AppPaths.USER_SETTINGS_LAYOUT) ||
-                currentPath.equals(AppPaths.USER_WORK_INTERVAL_LAYOUT)) {
+        } else if (currentPath.equals(AppPaths.USER_SETTINGS_LAYOUT) || currentPath.equals(AppPaths.USER_WORK_INTERVAL_LAYOUT)) {
             navigateTo(AppPaths.USER_PAGE_LAYOUT, "User Page");
         } else {
-            LoggerUtil.info("Cannot go back from this page");
+            LoggerUtil.info(getClass(),"Cannot go back from this page");
         }
     }
 
     public void logout(){
-        LoggerUtil.info("User logged out");
+        LoggerUtil.info(getClass(),"User logged out");
         navigateTo(AppPaths.LAUNCHER, "Login");
     }
 
@@ -72,12 +70,13 @@ public class NavigationService {
             if (controller instanceof BaseController) {
                 ((BaseController) controller).initializeServices(ServiceFactory.getInstance());
             }
-
+            scene.getRoot().applyCss();
+            scene.getRoot().layout();
             primaryStage.setScene(scene);
             primaryStage.setTitle(title);
-            LoggerUtil.info("Navigated to: " + title);
+            LoggerUtil.info(getClass(),"Navigated to: " + title);
         } catch (IOException e) {
-            LoggerUtil.error("Error navigating to: " + fxmlPath, e);
+            LoggerUtil.error(getClass(),"Error navigating to: " + fxmlPath, e);
         }
     }
 }

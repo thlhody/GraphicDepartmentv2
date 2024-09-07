@@ -1,74 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<StackPane xmlns="http://javafx.com/javafx/17.0.2-ea"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="ctgraphdep.controllers.UserController"
-           stylesheets="@../css/user-styles.css, @../css/header-styles.css">
-    <BorderPane>
-        <top>
-            <StackPane styleClass="header">
-                <HBox styleClass="header-content" maxWidth="1200"> <!-- Adjust maxWidth as needed -->
-                    <padding>
-                        <Insets top="20" right="30" bottom="20" left="30" />
-                    </padding>
-                    <ImageView fx:id="logoImage" styleClass="logo-image"/>
-                    <Label text="User Dashboard" styleClass="dashboard-title"/>
-                    <Region HBox.hgrow="ALWAYS" />
-                    <HBox styleClass="right-aligned-content">
-                        <Button fx:id="statusButton" onAction="#onStatusButton" text="Users" styleClass="nav-button"/>
-                        <Button fx:id="userWorkIntervalButton" onAction="#onUserWorkIntervalButton" text="View My Work Hours" styleClass="nav-button"/>
-                        <Button fx:id="userSettingsButton" onAction="#onUserSettingsButton" text="Settings" styleClass="nav-button" />
-                        <Button fx:id="logoutButton" onAction="#onLogoutButton" text="Logout" styleClass="nav-button" />
-                    </HBox>
+<BorderPane prefWidth="1280" prefHeight="720"
+            stylesheets="@../css/page-style.css, @../css/header-style.css"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ctgraphdep.controllers.UserController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <top>
+        <HBox alignment="CENTER" spacing="20" styleClass="header">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                <ImageView fx:id="logoImage" fitWidth="150" fitHeight="70" preserveRatio="true"/>
+                <Label text="User Dashboard" styleClass="header-text"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Label fx:id="welcomeLabel" styleClass="welcome-label"/>
+                <Button fx:id="logoutButton" text="Logout" onAction="#onLogoutButton" styleClass="header-button"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="content-scroll-pane">
+            <VBox alignment="TOP_CENTER" spacing="20" styleClass="content">
+                <!-- Navigation Buttons Section -->
+                <HBox alignment="CENTER" spacing="20">
+                    <Button fx:id="statusButton" onAction="#onStatusButton" text="Users" styleClass="dashboard-button"/>
+                    <Button fx:id="userWorkIntervalButton" onAction="#onUserWorkIntervalButton" text="View My Work Hours" styleClass="dashboard-button"/>
+                    <Button fx:id="userSettingsButton" onAction="#onUserSettingsButton" text="Settings" styleClass="dashboard-button"/>
                 </HBox>
-            </StackPane>
-        </top>
-        <center>
-            <ScrollPane fitToWidth="true" styleClass="main-content">
-                <VBox spacing="30">
-                    <padding>
-                        <Insets top="30" right="30" bottom="30" left="30" />
-                    </padding>
 
-                    <Label fx:id="welcomeLabel" styleClass="welcome-label" />
-
-                    <!-- Time Display Section -->
-                    <VBox spacing="15" styleClass="settings-section">
-                        <Label styleClass="section-title" text="Current Work Status" />
-                        <StackPane>
-                            <VBox styleClass="time-display-box" alignment="CENTER" spacing="10" maxWidth="600">
-                                <padding>
-                                    <Insets top="20" right="20" bottom="20" left="20" />
-                                </padding>
-                                <Label fx:id="currentDateTimeLabel" styleClass="current-date-time"/>
-                                <HBox alignment="CENTER" spacing="20">
-                                    <Label fx:id="workStartedLabel" styleClass="info-label"/>
-                                    <Label fx:id="totalWorkLabel" styleClass="info-label"/>
-                                </HBox>
-                                <HBox alignment="CENTER" spacing="20">
-                                    <Label fx:id="breakCountLabel" styleClass="info-label"/>
-                                    <Label fx:id="totalBreakTimeLabel" styleClass="info-label"/>
-                                </HBox>
-                            </VBox>
-                        </StackPane>
-                    </VBox>
-
-                    <!-- Action Buttons Section -->
-                    <VBox spacing="15" styleClass="settings-section">
-                        <Label styleClass="section-title" text="Work Actions" />
-                        <HBox alignment="CENTER" spacing="15">
-                            <Button fx:id="startButton" onAction="#onStartButton" text="Start" styleClass="start-button" />
-                            <Button fx:id="pauseButton" onAction="#onPauseButton" text="Temporary Stop" styleClass="pause-button" />
-                            <Button fx:id="endButton" onAction="#onEndButton" text="End" styleClass="end-button" />
+                <!-- Time Display Section -->
+                <VBox spacing="10" styleClass="info-section">
+                    <Label text="Current Work Status" styleClass="section-title"/>
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label fx:id="currentDateTimeLabel" styleClass="info-label"/>
+                        <HBox alignment="CENTER" spacing="20">
+                            <Label fx:id="workStartedLabel" styleClass="info-label"/>
+                            <Label fx:id="totalWorkLabel" styleClass="info-label"/>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="20">
+                            <Label fx:id="breakCountLabel" styleClass="info-label"/>
+                            <Label fx:id="totalBreakTimeLabel" styleClass="info-label"/>
                         </HBox>
                     </VBox>
                 </VBox>
-            </ScrollPane>
-        </center>
-    </BorderPane>
-</StackPane>
+
+                <!-- Action Buttons Section -->
+                <VBox spacing="10" styleClass="action-section">
+                    <Label text="Work Actions" styleClass="section-title"/>
+                    <HBox alignment="CENTER" spacing="20">
+                        <Button fx:id="startButton" onAction="#onStartButton" text="Start" styleClass="action-button"/>
+                        <Button fx:id="pauseButton" onAction="#onPauseButton" text="Temporary Stop" styleClass="action-button"/>
+                        <Button fx:id="endButton" onAction="#onEndButton" text="End" styleClass="action-button"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

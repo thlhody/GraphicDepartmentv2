@@ -7,6 +7,7 @@ import ctgraphdep.models.WorkTimeTable;
 import ctgraphdep.utils.JsonUtils;
 import ctgraphdep.utils.LoggerUtil;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,48 +21,41 @@ public class AdminTimeService {
         this.userService = userService;
     }
 
-    public List<MonthlyWorkSummary> getMonthlyWorkSummary(int year, int month) {
-        List<WorkTimeTable> workTimes = getWorkTimeData(year, month);
-        List<Users> nonAdminUsers = getNonAdminUsers();
+    public List<MonthlyWorkSummary> getMonthlyWorkSummary(Integer year, Integer month) {
         Map<Integer, MonthlyWorkSummary> summaryMap = new HashMap<>();
+        LoggerUtil.info(getClass(),"Generating monthly summary for " + getNonAdminUsers().size() + " non-admin users");
 
-        LoggerUtil.info("Generating monthly summary for " + nonAdminUsers.size() + " non-admin users");
-
-        for (Users user : nonAdminUsers) {
+        for (Users user : getNonAdminUsers()) {
             MonthlyWorkSummary summary = new MonthlyWorkSummary(user.getName(), user.getEmployeeId());
             summaryMap.put(user.getUserId(), summary);
         }
 
-        LoggerUtil.info("Processing " + workTimes.size() + " work time entries");
-
-        for (WorkTimeTable workTime : workTimes) {
+        for (WorkTimeTable workTime : getWorkTimeData(year, month)) {
             MonthlyWorkSummary summary = summaryMap.get(workTime.getUserId());
             if (summary != null) {
                 processWorkTimeEntry(workTime, summary);
             } else {
-                LoggerUtil.warn("No summary found for user ID: " + workTime.getUserId() + ". This may be an admin or an unrecognized user.");
+                LoggerUtil.warn(getClass(),"No summary found for user ID: " + workTime.getUserId() + ". This may be an admin or an unrecognized user.");
             }
         }
 
         List<MonthlyWorkSummary> result = new ArrayList<>(summaryMap.values());
-        LoggerUtil.info("Generated " + result.size() + " monthly summaries (excluding admin)");
+        LoggerUtil.info(getClass(),"Generated " + result.size() + " monthly summaries (excluding admin)");
         return result;
     }
 
     private List<Users> getNonAdminUsers() {
-        List<Users> nonAdminUsers = userService.getAllUsers().stream()
-                .filter(user -> !isAdminUser(user))
-                .collect(Collectors.toList());
-        LoggerUtil.info("Retrieved " + nonAdminUsers.size() + " non-admin users");
+        List<Users> nonAdminUsers = userService.getAllUsers().stream().filter(user -> !isAdminUser(user)).collect(Collectors.toList());
+        LoggerUtil.info(getClass(),"Retrieved " + nonAdminUsers.size() + " non-admin users");
         return nonAdminUsers;
     }
 
     private void processWorkTimeEntry(WorkTimeTable workTime, MonthlyWorkSummary summary) {
-        int day = workTime.getWorkDate().getDayOfMonth();
-        double hoursWorked = workTime.getTotalWorkedSeconds() / 3600.0;
+        Integer day = workTime.getWorkDate().getDayOfMonth();
+        Double hoursWorked = workTime.getTotalWorkedSeconds() / 3600.0;
         String timeOffType = workTime.getTimeOffType();
 
-        LoggerUtil.info("Processing work time for User " + workTime.getUserId() + ": " + hoursWorked + " hours on day " + day);
+        LoggerUtil.info(getClass(),"Processing work time for User " + workTime.getUserId() + ": " + hoursWorked + " hours on day " + day);
 
         if (hoursWorked > 0) {
             summary.addDailyHours(day, hoursWorked);
@@ -70,23 +64,18 @@ public class AdminTimeService {
         }
     }
 
-    public List<WorkTimeTable> getWorkTimeData(int year, int month) {
+    public List<WorkTimeTable> getWorkTimeData(Integer year, Integer month) {
         List<WorkTimeTable> allWorkTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.getWorkIntervalJson());
-        LoggerUtil.info("Total work times read from JSON: " + allWorkTimes.size());
-
-        List<Integer> nonAdminUserIds = getNonAdminUsers().stream()
-                .map(Users::getUserId)
-                .collect(Collectors.toList());
+        List<Integer> nonAdminUserIds = getNonAdminUsers().stream().map(Users::getUserId).toList();
 
         List<WorkTimeTable> filteredWorkTimes = allWorkTimes.stream()
                 .filter(wt -> nonAdminUserIds.contains(wt.getUserId()))
-                .filter(wt -> {
-                    LocalDate workDate = wt.getWorkDate();
+                .filter(wt -> {LocalDate workDate = wt.getWorkDate();
                     return workDate != null && workDate.getYear() == year && workDate.getMonthValue() == month;
                 })
                 .collect(Collectors.toList());
 
-        LoggerUtil.info("Filtered work times (excluding admin): " + filteredWorkTimes.size());
+        LoggerUtil.info(getClass(),"Filtered work times (excluding admin): " + filteredWorkTimes.size());
         return filteredWorkTimes;
     }
 
@@ -94,18 +83,26 @@ public class AdminTimeService {
         return !NON_ADMIN_ROLES.contains(user.getRole());
     }
 
-    public List<MonthlyWorkSummary> refreshWorkTimeData(int year, int month) {
+    public List<MonthlyWorkSummary> refreshWorkTimeData(Integer year, Integer month) {
         List<MonthlyWorkSummary> summaries = getMonthlyWorkSummary(year, month);
-        LoggerUtil.info("Refreshed work time data for " + year + "-" + month + ": " + summaries.size() + " entries (excluding admin)");
+        LoggerUtil.info(getClass(),"Refreshed work time data for " + year + "-" + month + ": " + summaries.size() + " entries (excluding admin)");
         return summaries;
     }
 
+    public boolean isWeekend(LocalDate date) {
+        DayOfWeek day = date.getDayOfWeek();
+        return day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY;
+    }
 
     public boolean addNationalHoliday(LocalDate date) {
-        List<WorkTimeTable> allWorkTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.getWorkIntervalJson());
-        List<Users> allUsers = userService.getAllUsers();
+        if (isWeekend(date)) {
+            LoggerUtil.warn(getClass(), "Attempted to add a national holiday on a weekend: " + date);
+            return false;
+        }
 
-        for (Users user : allUsers) {
+        List<WorkTimeTable> allWorkTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.getWorkIntervalJson());
+
+        for (Users user : userService.getAllUsers()) {
             WorkTimeTable holiday = new WorkTimeTable(
                     user.getUserId(),
                     null,  // firstStartTime
@@ -127,11 +124,10 @@ public class AdminTimeService {
 
         boolean success = JsonUtils.writeWorkTimesToJson(allWorkTimes, JsonPaths.getWorkIntervalJson());
         if (success) {
-            LoggerUtil.info("National holiday added successfully for date: " + date);
+            LoggerUtil.info(getClass(),"National holiday added successfully for date: " + date);
         } else {
-            LoggerUtil.error("Failed to add national holiday for date: " + date);
+            LoggerUtil.error(getClass(),"Failed to add national holiday for date: " + date);
         }
         return success;
     }
-
 }

@@ -1,8 +1,10 @@
 package ctgraphdep.controllers;
 
 import ctgraphdep.constants.AppPaths;
+import ctgraphdep.models.WorkTimeSummary;
 import ctgraphdep.models.WorkTimeTable;
 import ctgraphdep.services.ServiceFactory;
+import ctgraphdep.services.UserWorkTimeService;
 import ctgraphdep.utils.AlertUtil;
 import ctgraphdep.utils.HelperUtil;
 import ctgraphdep.utils.LoggerUtil;
@@ -35,11 +37,20 @@ public class UserTimeController extends BaseController {
     private ComboBox<Integer> yearComboBox;
     @FXML
     private ComboBox<Month> monthComboBox;
+    @FXML
+    private Label totalHoursWorkedLabel;
+    @FXML
+    private Label overtimeHoursLabel;
+    @FXML
+    private Label timeOffTakenLabel;
+
+    private UserWorkTimeService userWorkTimeService;
 
     @FXML
     @Override
     public void initializeServices(ServiceFactory serviceFactory) {
         super.initializeServices(serviceFactory);
+        this.userWorkTimeService = new UserWorkTimeService(serviceFactory.getWorkSessionService());
         setupLogoImage();
         setupYearMonthComboBoxes();
         setupTimeOffControls();
@@ -74,10 +85,8 @@ public class UserTimeController extends BaseController {
             return;
         }
 
-        String timeOffCode = timeOffType.split(" - ")[0];
-
         try {
-            boolean success = serviceFactory.getWorkSessionService().saveTimeOff(startDate, endDate, timeOffCode);
+            boolean success = serviceFactory.getWorkSessionService().saveTimeOff(startDate, endDate, timeOffType.split(" - ")[0]);
             if (success) {
                 AlertUtil.showAlert("Success", "Time off request submitted successfully.");
                 loadWorkHoursData();
@@ -85,17 +94,15 @@ public class UserTimeController extends BaseController {
                 AlertUtil.showAlert("Error", "Failed to submit time off request.");
             }
         } catch (Exception e) {
-            LoggerUtil.error("Error submitting time off request", e);
+            LoggerUtil.error(getClass(),"Error submitting time off request", e);
             AlertUtil.showAlert("Error", "An error occurred while submitting the time off request. Please try again later.");
         }
     }
 
     private void setupTable() {
-        int year = yearComboBox.getValue() != null ? yearComboBox.getValue() : YearMonth.now().getYear();
+        Integer year = yearComboBox.getValue() != null ? yearComboBox.getValue() : YearMonth.now().getYear();
         Month month = monthComboBox.getValue() != null ? monthComboBox.getValue() : YearMonth.now().getMonth();
-
         TableUtil.setupUserWorkTimeTable(workHoursTable, year, month.getValue());
-
     }
 
     private void setupTimeOffControls() {
@@ -117,34 +124,37 @@ public class UserTimeController extends BaseController {
 
     private void loadWorkHoursData() {
         try {
-            int year = yearComboBox.getValue();
+            Integer year = yearComboBox.getValue();
             Month month = monthComboBox.getValue();
-            Integer currentUserId = serviceFactory.getWorkSessionService().getCurrentUser().getUserId();
 
-            List<WorkTimeTable> allWorkHours = serviceFactory.getWorkSessionService().getWorkTimeData(year, month.getValue());
-
-            // Filter the work hours for the current user
-            List<WorkTimeTable> userWorkHours = allWorkHours.stream()
-                    .filter(workTime -> workTime.getUserId().equals(currentUserId))
-                    .collect(Collectors.toList());
+            List<WorkTimeTable> userWorkHours = userWorkTimeService.loadUserWorkHours(year, month, serviceFactory.getWorkSessionService().getCurrentUser().getUserId());
 
             workHoursTable.getItems().clear();
             workHoursTable.getItems().addAll(userWorkHours);
-            LoggerUtil.info("Loaded " + userWorkHours.size() + " work hour entries for user " + currentUserId);
+
+            // Update summary labels
+            updateSummaryLabels(userWorkHours, year, month);
 
         } catch (Exception e) {
-            LoggerUtil.error("Error loading work hours data", e);
+            LoggerUtil.error(getClass(),"Error loading work hours data", e);
             AlertUtil.showAlert("Error", "Failed to load work hours data. Please try again later.");
         }
     }
 
+    private void updateSummaryLabels(List<WorkTimeTable> workHours, Integer year, Month month) {
+        WorkTimeSummary summary = userWorkTimeService.calculateWorkTimeSummary(workHours, year, month);
+        totalHoursWorkedLabel.setText(summary.getTotalHoursWorked());
+        overtimeHoursLabel.setText(summary.getOvertimeHours());
+        timeOffTakenLabel.setText(summary.getTimeOffDays());
+    }
+
     private void applyCSS() {
         String tableStylesPath = Objects.requireNonNull(getClass().getResource(AppPaths.TABLE_STYLES_A)).toExternalForm();
-        LoggerUtil.info("Loading table styles from: " + tableStylesPath);
+        LoggerUtil.info(getClass(),"Loading table styles from: " + tableStylesPath);
         workHoursTable.getStylesheets().add(tableStylesPath);
 
         workHoursTable.getStyleClass().add("custom-table");
 
-        LoggerUtil.info("CSS classes added to workHoursTable");
+        LoggerUtil.info(getClass(),"CSS classes added to workHoursTable");
     }
 }

@@ -21,6 +21,7 @@ public class ServiceFactory {
     private AdminTimeService adminTimeService;
     private UserManagementService userManagementService;
     private FileAccessibilityService fileAccessibilityService;
+    private UserWorkTimeService userWorkTimeService;
 
     private ServiceFactory() {
         // Private constructor to prevent direct instantiation
@@ -41,7 +42,7 @@ public class ServiceFactory {
         workSessionService = new WorkSessionService();
         userService = new UserService();
 
-        // se dependencies after creation
+        // dependencies after creation
         this.workSessionService.setUserService(this.userService);
         this.userService.setWorkSessionService(this.workSessionService);
 
@@ -57,21 +58,21 @@ public class ServiceFactory {
 
     public LogoService getLogoService() {
         if (logoService == null) {
-            LoggerUtil.error("ServiceFactory has not been initialized");
+            LoggerUtil.error(getClass(),"ServiceFactory has not been initialized");
         }
         return logoService;
     }
 
     public FileAccessibilityService getFileAccessibilityService() {
         if (fileAccessibilityService == null) {
-            LoggerUtil.error("FileAccessibilityService is null. Make sure initialize() was called.");
+            LoggerUtil.error(getClass(),"FileAccessibilityService is null. Make sure initialize() was called.");
         }
         return fileAccessibilityService;
     }
 
     public UserManagementService getUserManagementService() {
         if (userManagementService == null) {
-            LoggerUtil.error("ServiceFactory has not been initialized");
+            LoggerUtil.error(getClass(),"ServiceFactory has not been initialized");
         }
         return userManagementService;
     }

@@ -3,24 +3,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
 
-<VBox prefWidth="Infinity" prefHeight="Infinity"
-      xmlns="http://javafx.com/javafx/17"
+<VBox prefWidth="400" prefHeight="600"
+      xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="ctgraphdep.controllers.StatusDialogController"
       stylesheets="@../css/status-dialog.css"
       styleClass="main-container">
     <HBox styleClass="header">
+        <padding>
+            <Insets top="10" right="15" bottom="10" left="15"/>
+        </padding>
         <Label text="User Status" styleClass="dialog-header"/>
         <Region HBox.hgrow="ALWAYS" />
-        <Button fx:id="okButton" text="OK" onAction="#closeDialog" styleClass="ok-button"/>
         <Button fx:id="refreshButton" styleClass="refresh-button">
             <graphic>
-                <ImageView fx:id="refreshIcon" fitHeight="16" fitWidth="16" preserveRatio="true" smooth="true"/>
+                <ImageView fx:id="refreshIcon" fitHeight="20" fitWidth="20" preserveRatio="true" smooth="true"/>
             </graphic>
         </Button>
+        <Button fx:id="okButton" text="Close" onAction="#closeDialog" styleClass="ok-button"/>
     </HBox>
-    <ScrollPane fitToWidth="true" styleClass="scroll-pane">
-        <VBox fx:id="userStatusBox" VBox.vgrow="ALWAYS" styleClass="user-status-container" />
+    <ScrollPane fitToWidth="true" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
+        <VBox fx:id="userStatusBox" styleClass="user-status-container">
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+        </VBox>
     </ScrollPane>
 </VBox>

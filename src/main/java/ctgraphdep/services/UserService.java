@@ -22,35 +22,31 @@ public class UserService {
     }
 
     public boolean isUserExist(String username, String employeeId) {
-        return users.stream()
-                .anyMatch(u -> u.getUsername().equals(username) || u.getEmployeeId().toString().equals(employeeId));
+        return users.stream().anyMatch(u -> u.getUsername().equals(username) || u.getEmployeeId().toString().equals(employeeId));
     }
 
     public Optional<Users> authenticateUser(String username, String password) {
         loadUsers();
         Optional<Users> authenticatedUser = users.stream()
-                .filter(user -> user.getUsername().equals(username) && user.getPassword().equals(password))
-                .findFirst();
+                .filter(user -> user.getUsername().equals(username) && user.getPassword().equals(password)).findFirst();
 
         if (authenticatedUser.isPresent()) {
-            LoggerUtil.info("User authenticated successfully: " + username);
+            LoggerUtil.info(getClass(),"User authenticated successfully: " + username);
             if (workSessionService != null) {
                 workSessionService.setCurrentUser(authenticatedUser.get());
                 workSessionService.loadExistingSession();
             } else {
-                LoggerUtil.error("WorkSessionService is null in UserService");
+                LoggerUtil.error(getClass(),"WorkSessionService is null in UserService");
             }
         } else {
-            LoggerUtil.warn("Failed authentication attempt for username: " + username);
+            LoggerUtil.warn(getClass(),"Failed authentication attempt for username: " + username);
         }
 
         return authenticatedUser;
     }
 
     public Optional<Users> getUserByUsername(String username) {
-        return users.stream()
-                .filter(u -> u.getUsername().equals(username))
-                .findFirst();
+        return users.stream().filter(u -> u.getUsername().equals(username)).findFirst();
     }
 
     public List<Users> getAllUsers() {
@@ -58,16 +54,11 @@ public class UserService {
     }
 
     public List<String> getAllUsernames() {
-        return users.stream()
-                .map(Users::getUsername)
-                .collect(Collectors.toList());
+        return users.stream().map(Users::getUsername).collect(Collectors.toList());
     }
 
     private Integer getNextUserId() {
-        return users.stream()
-                .mapToInt(Users::getUserId)
-                .max()
-                .orElse(0) + 1;
+        return users.stream().mapToInt(Users::getUserId).max().orElse(0) + 1;
     }
 
     //user related actions
@@ -79,9 +70,9 @@ public class UserService {
     private void loadUsers() {
         try {
             users = JsonUtils.readListFromJson(JsonPaths.getJsonUsers(), Users.class);
-            LoggerUtil.info("Users loaded successfully. Total users: " + users.size());
+            LoggerUtil.info(getClass(),"Users loaded successfully. Total users: " + users.size());
         } catch (Exception e) {
-            LoggerUtil.error("Error loading users from JSON file", e);
+            LoggerUtil.error(getClass(),"Error loading users from JSON file", e);
             users = new ArrayList<>();
         }
     }
@@ -89,12 +80,12 @@ public class UserService {
     public boolean changePassword(String currentPassword, String newPassword) {
         Users currentUser = workSessionService.getCurrentUser();
         if (currentUser == null) {
-            LoggerUtil.error("No user currently logged in");
+            LoggerUtil.error(getClass(),"No user currently logged in");
             return false;
         }
 
         if (!currentUser.getPassword().equals(currentPassword)) {
-            LoggerUtil.warn("Failed to change password: incorrect current password");
+            LoggerUtil.warn(getClass(),"Failed to change password: incorrect current password");
             return false;
         }
 
@@ -110,13 +101,13 @@ public class UserService {
             userToUpdate.get().setPassword(newPassword);
             boolean success = saveUsers();
             if (success) {
-                LoggerUtil.info("Password changed successfully for user: " + currentUser.getUsername());
+                LoggerUtil.info(getClass(),"Password changed successfully for user: " + currentUser.getUsername());
             } else {
-                LoggerUtil.error("Failed to save new password for user: " + currentUser.getUsername());
+                LoggerUtil.error(getClass(),"Failed to save new password for user: " + currentUser.getUsername());
             }
             return success;
         } else {
-            LoggerUtil.error("User not found in the users list: " + currentUser.getUsername());
+            LoggerUtil.error(getClass(),"User not found in the users list: " + currentUser.getUsername());
             return false;
         }
     }
@@ -126,55 +117,51 @@ public class UserService {
             JsonUtils.writeListToJson(JsonPaths.getJsonUsers(), users);
             return true;
         } catch (Exception e) {
-            LoggerUtil.error("Error saving users to JSON file", e);
+            LoggerUtil.error(getClass(),"Error saving users to JSON file", e);
             return false;
         }
     }
 
     public boolean resetPassword(String username, String newPassword) {
-        Optional<Users> userOptional = users.stream()
-                .filter(u -> u.getUsername().equals(username))
-                .findFirst();
+        Optional<Users> userOptional = users.stream().filter(u -> u.getUsername().equals(username)).findFirst();
 
         if (userOptional.isPresent()) {
             Users user = userOptional.get();
             user.setPassword(newPassword);
             boolean success = saveUsers();
             if (success) {
-                LoggerUtil.info("Password reset successfully for user: " + username);
+                LoggerUtil.info(getClass(),"Password reset successfully for user: " + username);
             } else {
-                LoggerUtil.error("Failed to save new password for user: " + username);
+                LoggerUtil.error(getClass(),"Failed to save new password for user: " + username);
             }
             return success;
         } else {
-            LoggerUtil.warn("User not found for password reset: " + username);
+            LoggerUtil.warn(getClass(),"User not found for password reset: " + username);
             return false;
         }
     }
 
     public boolean deleteUser(String username) {
-        int initialSize = users.size();
-        users = users.stream()
-                .filter(user -> !user.getUsername().equals(username))
-                .collect(Collectors.toList());
+        Integer initialSize = users.size();
+        users = users.stream().filter(user -> !user.getUsername().equals(username)).collect(Collectors.toList());
 
         if (users.size() < initialSize) {
             boolean success = saveUsers();
             if (success) {
-                LoggerUtil.info("User deleted successfully: " + username);
+                LoggerUtil.info(getClass(),"User deleted successfully: " + username);
             } else {
-                LoggerUtil.error("Failed to delete user: " + username);
+                LoggerUtil.error(getClass(),"Failed to delete user: " + username);
             }
             return success;
         } else {
-            LoggerUtil.warn("User not found for deletion: " + username);
+            LoggerUtil.warn(getClass(),"User not found for deletion: " + username);
             return false;
         }
     }
 
     public boolean addUser(String name, String username, String password, String employeeId, String role, String fullPath) {
         if (isUserExist(username, employeeId)) {
-            LoggerUtil.warn("Failed to add user: username or employee ID already exists");
+            LoggerUtil.warn(getClass(),"Failed to add user: username or employee ID already exists");
             return false;
         }
 
@@ -191,17 +178,15 @@ public class UserService {
         users.add(newUser);
         boolean success = saveUsers();
         if (success) {
-            LoggerUtil.info("User added successfully: " + username);
+            LoggerUtil.info(getClass(),"User added successfully: " + username);
         } else {
-            LoggerUtil.error("Failed to save new user: " + username);
+            LoggerUtil.error(getClass(),"Failed to save new user: " + username);
         }
         return success;
     }
 
     public boolean updateUser(String oldUsername, String name, String newUsername, String employeeId, String role, String newPath) {
-        Optional<Users> userOptional = users.stream()
-                .filter(u -> u.getUsername().equals(oldUsername))
-                .findFirst();
+        Optional<Users> userOptional = users.stream().filter(u -> u.getUsername().equals(oldUsername)).findFirst();
 
         if (userOptional.isPresent()) {
             Users user = userOptional.get();
@@ -213,13 +198,13 @@ public class UserService {
 
             boolean success = saveUsers();
             if (success) {
-                LoggerUtil.info("User updated successfully: " + oldUsername);
+                LoggerUtil.info(getClass(),"User updated successfully: " + oldUsername);
             } else {
-                LoggerUtil.error("Failed to update user: " + oldUsername);
+                LoggerUtil.error(getClass(),"Failed to update user: " + oldUsername);
             }
             return success;
         } else {
-            LoggerUtil.warn("User not found for update: " + oldUsername);
+            LoggerUtil.warn(getClass(),"User not found for update: " + oldUsername);
             return false;
         }
     }

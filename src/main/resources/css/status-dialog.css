@@ -1,55 +1,44 @@
 /* Base styles */
 .root {
     -fx-font-family: 'Segoe UI', Arial, sans-serif;
-    -fx-background-color: #f8f9fa;
+    -fx-background-color: transparent;
 }
 
 .main-container {
     -fx-background-color: white;
-    -fx-padding: 0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
-    -fx-background-radius: 10px;
-    -fx-max-width: 400px;
-    -fx-max-height: 600px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
 }
 
 /* Header styles */
 .header {
-    -fx-background-color: #007bff;
-    -fx-padding: 5px 7.5px; /* Reduced from 10px 15px */
+    -fx-background-color: #0066cc;
     -fx-alignment: center-left;
-    -fx-spacing: 5px;
+    -fx-spacing: 10px;
 }
 
 .dialog-header {
-    -fx-font-size: 9px; /* Reduced from 18px */
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
 
-/* OK button styles */
+/* Button styles */
+.ok-button, .refresh-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 10px;
+    -fx-cursor: hand;
+}
+
 .ok-button {
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-padding: 2.5px 5px; /* Reduced from 5px 10px */
-    -fx-cursor: hand;
     -fx-border-color: white;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 3px;
 }
 
-.ok-button:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Refresh button styles */
-.refresh-button {
-    -fx-background-color: transparent;
-    -fx-padding: 2.5px; /* Reduced from 5px */
-    -fx-cursor: hand;
-}
-
-.refresh-button:hover {
+.ok-button:hover, .refresh-button:hover {
     -fx-background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -60,24 +49,23 @@
 /* User status container styles */
 .user-status-container {
     -fx-background-color: white;
-    -fx-padding: 5px; /* Reduced from 10px */
-    -fx-spacing: 5px; /* Reduced from 10px */
+    -fx-spacing: 10px;
 }
 
 /* User status row styles */
 .user-status-row {
     -fx-background-color: #f8f9fa;
-    -fx-padding: 5px; /* Reduced from 10px */
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
 }
 
 .user-status-row:hover {
-    -fx-background-color: #e9ecef;
+    -fx-background-color: #e6f2ff;
 }
 
 .user-status-text {
-    -fx-font-size: 7px; /* Reduced from 14px */
+    -fx-font-size: 14px;
     -fx-text-fill: #333333;
 }
 
@@ -88,4 +76,45 @@
 
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
+}
+
+.scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane > .scroll-bar:vertical > .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.scroll-pane > .scroll-bar:vertical > .thumb {
+    -fx-background-color: #0066cc;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4px;
+}
+
+/* Status indicator styles */
+.status-indicator {
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-max-width: 10px;
+    -fx-max-height: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+.status-indicator-online {
+    -fx-background-color: #28a745;
+}
+
+.status-indicator-offline {
+    -fx-background-color: #dc3545;
+}
+
+.status-indicator-away {
+    -fx-background-color: #ffc107;
 }

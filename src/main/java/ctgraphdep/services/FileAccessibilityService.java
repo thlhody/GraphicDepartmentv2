@@ -10,12 +10,12 @@ import java.io.File;
 public class FileAccessibilityService {
 
     public boolean isUsersJsonAccessible() {
-        LoggerUtil.info("Checking users.json accessibility in new data path");
+        LoggerUtil.info(getClass(),"Checking users.json accessibility in new data path");
 
         String dataPathUsers = new File(JsonPaths.getDataPath(), "users.json").getAbsolutePath();
         boolean accessibleInDataPath = isFileAccessible(dataPathUsers);
 
-        LoggerUtil.info("Users JSON file accessibility in new path: " + (accessibleInDataPath ? "Accessible" : "Not accessible"));
+        LoggerUtil.info(getClass(),"Users JSON file accessibility in new path: " + (accessibleInDataPath ? "Accessible" : "Not accessible"));
 
         return accessibleInDataPath;
     }
@@ -25,21 +25,21 @@ public class FileAccessibilityService {
         boolean exists = file.exists();
         boolean canRead = file.canRead();
 
-        LoggerUtil.info("Checking file: " + filePath);
-        LoggerUtil.info("File exists: " + exists);
-        LoggerUtil.info("File is readable: " + canRead);
+        LoggerUtil.info(getClass(),"Checking file: " + filePath);
+        LoggerUtil.info(getClass(),"File exists: " + exists);
+        LoggerUtil.info(getClass(),"File is readable: " + canRead);
 
         return exists && canRead;
     }
 
     public void updateOnlineStatus(Label onlineStatusLabel) {
-        LoggerUtil.info("Updating online status");
+        LoggerUtil.info(getClass(),"Updating online status");
 
         boolean isAccessible = isUsersJsonAccessible();
 
         Platform.runLater(() -> {
             if (onlineStatusLabel == null) {
-                LoggerUtil.error("onlineStatusLabel is null");
+                LoggerUtil.error(getClass(),"onlineStatusLabel is null");
                 return;
             }
 
@@ -55,13 +55,13 @@ public class FileAccessibilityService {
         label.setText("Online");
         label.getStyleClass().remove("offline-status-label");
         label.getStyleClass().add("online-status-label");
-        LoggerUtil.info("Status set to Online (using new path)");
+        LoggerUtil.info(getClass(),"Status set to Online (using new path)");
     }
 
     private void setOfflineStatus(Label label) {
         label.setText("Offline");
         label.getStyleClass().remove("online-status-label");
         label.getStyleClass().add("offline-status-label");
-        LoggerUtil.info("Status set to Offline (using default path)");
+        LoggerUtil.info(getClass(),"Status set to Offline (using default path)");
     }
 }

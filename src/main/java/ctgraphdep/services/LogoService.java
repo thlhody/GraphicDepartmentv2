@@ -11,8 +11,8 @@ public class LogoService {
 
     public void setMainImage(ImageView imageView) {
         setImage(imageView, AppPaths.CREATIVE_TIME_TASK_TRACKER);
-        imageView.setFitWidth(200);
-        imageView.setFitHeight(200);
+        imageView.setFitWidth(300);
+        imageView.setFitHeight(300);
         imageView.setPreserveRatio(true);
     }
 
@@ -24,12 +24,12 @@ public class LogoService {
         try {
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
             if (image.isError()) {
-                throw new IllegalArgumentException("Image failed to load: " + imagePath);
+                LoggerUtil.error(getClass(),"Image failed to load: " + imagePath);
             }
             imageView.setImage(image);
-            LoggerUtil.info("Image set successfully: " + imagePath);
+            LoggerUtil.info(getClass(),"Image set successfully: " + imagePath);
         } catch (Exception e) {
-            LoggerUtil.error("Failed to load image: " + imagePath, e);
+            LoggerUtil.error(getClass(),"Failed to load image: " + imagePath, e);
             // Set a default image or leave the ImageView empty
             imageView.setImage(null);
         }

@@ -32,6 +32,7 @@ public class Launcher extends BasePage {
     }
 
     public static void main(String[] args) {
+        System.setProperty("sun.java2d.uiScale", "1.25");
         launch(args);
     }
 }

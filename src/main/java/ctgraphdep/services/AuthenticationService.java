@@ -25,7 +25,7 @@ public class AuthenticationService {
     }
 
     public boolean login(String username, String password) {
-        LoggerUtil.buttonInfo("Login", username);
+        LoggerUtil.logUserAction("Login", username,"Attempt login");
 
         userService.reloadUsers();
 
@@ -33,11 +33,11 @@ public class AuthenticationService {
         if (authenticatedUser.isPresent()) {
             currentUser = authenticatedUser.get();
             workSessionService.setCurrentUser(currentUser); // Set the current user in WorkSessionService
-            LoggerUtil.actionInfo("Login", "Successful login", username);
+            LoggerUtil.logUserAction("Login", username,"Successful login" );
             navigateBasedOnRole(currentUser);
             return true;
         } else {
-            LoggerUtil.warn("Failed login attempt for username: " + username);
+            LoggerUtil.warn(getClass(),"Failed login attempt for username: " + username);
             AlertUtil.showAlert("Login Failed", "Invalid username or password.");
             return false;
         }
@@ -46,19 +46,19 @@ public class AuthenticationService {
     private void navigateBasedOnRole(Users user) {
         switch (user.getRole()) {
             case "ADMIN":
-                LoggerUtil.switchController(AuthenticationService.class, AdminController.class, user.getUsername());
+                LoggerUtil.logControllerSwitch(AuthenticationService.class, AdminController.class, user.getUsername());
                 navigationService.toAdminPage();
                 break;
             case "USER":
-                LoggerUtil.switchController(AuthenticationService.class, UserController.class, user.getUsername());
+                LoggerUtil.logControllerSwitch(AuthenticationService.class, UserController.class, user.getUsername());
                 navigationService.toUserPage();
                 break;
             case "USER TEAM LEADER":
-                LoggerUtil.switchController(AuthenticationService.class, UserTeamLeaderController.class, user.getUsername());
+                LoggerUtil.logControllerSwitch(AuthenticationService.class, UserTeamLeaderController.class, user.getUsername());
                 navigationService.toUserPage();
                 break;
             default:
-                LoggerUtil.error("Unknown role for user: " + user.getUsername());
+                LoggerUtil.error(getClass(),"Unknown role for user: " + user.getUsername());
                 AlertUtil.showAlert("Login Error", "Unknown user role");
         }
     }

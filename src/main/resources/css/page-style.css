@@ -1,0 +1,380 @@
+.root {
+    -fx-background-color: #f0f0f0;
+}
+
+.content {
+    -fx-background-color: white;
+    -fx-padding: 20px;
+    -fx-background-radius: 10px;
+}
+
+.welcome-text {
+    -fx-font-size: 24px;
+    -fx-text-fill: #0066cc;
+    -fx-font-weight: bold;
+}
+
+.input-field {
+    -fx-pref-width: 250px;
+    -fx-font-size: 14px;
+}
+
+.login-button {
+    -fx-background-color: #0066cc;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-pref-width: 150px;
+}
+
+.login-button:hover {
+    -fx-background-color: #0052a3;
+}
+
+/* New styles for Admin Dashboard */
+.title-text {
+    -fx-font-size: 28px;
+    -fx-text-fill: #0066cc;
+    -fx-font-weight: bold;
+}
+
+.subtitle-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}
+
+.dashboard-button {
+    -fx-background-color: #0066cc;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 40px;
+}
+
+.dashboard-button:hover {
+    -fx-background-color: #0052a3;
+}
+
+.status-box {
+    -fx-background-color: #e6f2ff;
+    -fx-padding: 15px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #0066cc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.status-title {
+    -fx-font-size: 20px;
+    -fx-text-fill: #0066cc;
+    -fx-font-weight: bold;
+}
+
+.status-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: #009900;
+}
+
+.welcome-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #0066cc;
+}
+
+/* New styles for Admin Settings page */
+.content-scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.content-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.settings-section {
+    -fx-background-color: #f8f8f8;
+    -fx-padding: 15px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0066cc;
+}
+
+.action-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.action-button:hover {
+    -fx-background-color: #45a049;
+}
+
+.primary-button {
+    -fx-background-color: #0066cc;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-pref-width: 150px;
+}
+
+.primary-button:hover {
+    -fx-background-color: #0052a3;
+}
+
+/* New styles for Admin Time View page */
+.info-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f8f8f8;
+}
+
+.table-row-cell:even {
+    -fx-background-color: white;
+}
+
+.date-picker {
+    -fx-pref-width: 150px;
+}
+
+/* New styles for User Dashboard page */
+.info-section {
+    -fx-background-color: #f0f8ff;
+    -fx-padding: 20px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #0066cc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.action-section {
+    -fx-background-color: #f0fff0;
+    -fx-padding: 20px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #4CAF50;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.info-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-padding: 5px 10px;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+#currentDateTimeLabel {
+    -fx-font-size: 18px;
+    -fx-text-fill: #0066cc;
+}
+
+/* Updated styles for User Settings page */
+.settings-section {
+    -fx-background-color: #f8f8f8;
+    -fx-padding: 20px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0066cc;
+    -fx-padding: 0 0 10px 0;
+}
+
+.primary-button {
+    -fx-background-color: #0066cc;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-pref-width: 150px;
+    -fx-padding: 8px 16px;
+}
+
+.primary-button:hover {
+    -fx-background-color: #0052a3;
+}
+
+.status-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-background-color: #e6f2ff;
+    -fx-background-radius: 5px;
+    -fx-border-color: #0066cc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+/* Styles for form fields */
+.text-field, .password-field {
+    -fx-pref-width: 250px;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}
+
+/* Styles for labels in the GridPane */
+.grid-pane Label {
+    -fx-font-weight: bold;
+}
+
+/* New styles for non-editable fields */
+.non-editable-field {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #666666;
+    -fx-opacity: 0.9;
+}
+
+.non-editable-field:focused {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #666666;
+}
+
+/* Updated styles for User Time View page */
+.table-section {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+    -fx-pref-width: 750px; /* Slightly increased to accommodate all columns */
+    -fx-max-width: 750px;  /* Set a maximum width to prevent stretching */
+}
+
+.info-section {
+    -fx-background-color: #f8f8f8;
+    -fx-padding: 10px;
+    -fx-min-width: 300px; /* Set a minimum width for the info section */
+}
+
+/* Table styles */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-fixed-cell-size: 30; /* Set a fixed height for table rows */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f0f8ff;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 35;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-alignment: CENTER;
+}
+
+.table-view .table-cell {
+    -fx-alignment: CENTER;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f8f8f8;
+}
+
+.table-row-cell:even {
+    -fx-background-color: white;
+}
+
+/* Set specific widths for table columns */
+.table-view .column-header#workDateColumn,
+.table-view .column-header#startTimeColumn,
+.table-view .column-header#endTimeColumn {
+    -fx-pref-width: 110px;
+}
+
+.table-view .column-header#breaksColumn,
+.table-view .column-header#breakTimeColumn {
+    -fx-pref-width: 90px;
+}
+
+.table-view .column-header#totalTimeColumn {
+    -fx-pref-width: 100px;
+}
+
+.table-view .column-header#timeOffColumn {
+    -fx-pref-width: 140px;
+}
+
+/* Ensure the table takes up all available width */
+.table-view .column-header-background {
+    -fx-max-width: infinity;
+}
+
+/* Hide horizontal scrollbar */
+/*
+.table-view .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-pref-height: 0;
+}
+*/
+
+
+/* Styles for form elements */
+.combo-box, .date-picker {
+    -fx-pref-width: 150px;
+}
+
+.action-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 10px;
+}
+
+.action-button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Styles for the control and summary sections */
+.control-section, .summary-section {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+/* Styles for labels in the summary section */
+.summary-section Label {
+    -fx-font-size: 14px;
+}
+
+.summary-section .section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0066cc;
+}

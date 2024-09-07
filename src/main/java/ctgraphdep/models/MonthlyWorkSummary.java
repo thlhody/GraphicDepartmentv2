@@ -62,11 +62,7 @@ public class MonthlyWorkSummary {
     }
 
     public Map<String, Long> getDaysOffCounts() {
-        return timeOffTypes.values().stream()
-                .collect(Collectors.groupingBy(
-                        timeOffType -> timeOffType,
-                        Collectors.counting()
-                ));
+        return timeOffTypes.values().stream().collect(Collectors.groupingBy(timeOffType -> timeOffType, Collectors.counting()));
     }
 
     public String getTimeOffSummary() {

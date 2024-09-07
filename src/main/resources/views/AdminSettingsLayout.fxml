@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<BorderPane prefHeight="Infinity" prefWidth="Infinity"
-            xmlns="http://javafx.com/javafx/17.0.2-ea"
+<BorderPane prefWidth="1280" prefHeight="720"
+            stylesheets="@../css/page-style.css, @../css/header-style.css"
+            xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ctgraphdep.controllers.AdminSettingsController"
-            stylesheets="@../css/admin-styles.css, @../css/header-styles.css">
+            fx:controller="ctgraphdep.controllers.AdminSettingsController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
     <top>
-        <HBox styleClass="header">
-            <HBox styleClass="header-content" HBox.hgrow="ALWAYS">
-                <padding>
-                    <Insets top="20" right="30" bottom="20" left="30" />
-                </padding>
-                <ImageView fx:id="logoImage" styleClass="logo-image"/>
-                <Label text="Admin Settings" styleClass="dashboard-title"/>
-                <Region HBox.hgrow="ALWAYS" />
-                <HBox styleClass="right-aligned-content">
-                    <Button fx:id="backButton" onAction="#onBackButton" text="Back to Admin Page" styleClass="nav-button"/>
-                </HBox>
+        <HBox alignment="CENTER" spacing="20" styleClass="header">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                <ImageView fx:id="logoImage" fitWidth="150" fitHeight="70" preserveRatio="true"/>
+                <Label text="Admin Settings" styleClass="header-text"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+                <Button fx:id="backButton" onAction="#onBackButton" text="Back to Admin Page" styleClass="header-button"/>
             </HBox>
         </HBox>
     </top>
-    <center>
-        <ScrollPane fitToWidth="true" styleClass="main-content">
-            <VBox spacing="30">
-                <padding>
-                    <Insets top="30" right="30" bottom="30" left="30" />
-                </padding>
 
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="content-scroll-pane">
+            <VBox alignment="TOP_CENTER" spacing="20" styleClass="content">
                 <!-- Base Path Settings Section -->
-                <VBox spacing="15" styleClass="settings-section">
-                    <Label styleClass="section-title" text="Base Path Settings" />
-                    <HBox spacing="15" alignment="CENTER_LEFT">
-                        <TextField fx:id="basePathField" promptText="Base Path" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="updateBasePathButton" text="Update Base Path" onAction="#onUpdateBasePathButton" styleClass="primary-button" />
+                <VBox spacing="10" styleClass="settings-section">
+                    <Label text="Base Path Settings" styleClass="section-title"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="basePathField" promptText="Base Path" HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="updateBasePathButton" onAction="#onUpdateBasePathButton" text="Update Base Path" styleClass="action-button"/>
                     </HBox>
                 </VBox>
 
                 <!-- User Management Section -->
-                <VBox spacing="15" styleClass="settings-section">
-                    <Label styleClass="section-title" text="User Management" />
-                    <HBox spacing="15" alignment="CENTER_LEFT">
-                        <ComboBox fx:id="userComboBox" promptText="Select User" prefWidth="200" />
-                        <Button fx:id="editUserButton" text="Edit User" onAction="#onEditUserButton" styleClass="action-button" />
-                        <Button fx:id="clearFieldsButton" text="Clear Fields" onAction="#onClearFieldsButton" styleClass="secondary-button" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="resetPasswordButton" text="Reset Password" onAction="#onResetPasswordButton" styleClass="action-button" />
-                        <Button fx:id="deleteUserButton" text="Delete User" onAction="#onDeleteUserButton" styleClass="danger-button" />
+                <VBox spacing="10" styleClass="settings-section">
+                    <Label text="User Management" styleClass="section-title"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <ComboBox fx:id="userComboBox" promptText="Select User" HBox.hgrow="ALWAYS"/>
                     </HBox>
-                    <GridPane hgap="15" vgap="15">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="editUserButton" onAction="#onEditUserButton" text="Edit User" styleClass="action-button"/>
+                        <Button fx:id="resetPasswordButton" onAction="#onResetPasswordButton" text="Reset Password" styleClass="action-button"/>
+                        <Button fx:id="deleteUserButton" onAction="#onDeleteUserButton" text="Delete User" styleClass="action-button"/>
+                        <Button fx:id="clearFieldsButton" onAction="#onClearFieldsButton" text="Clear Fields" styleClass="action-button"/>
+                    </HBox>
+                    <GridPane hgap="10" vgap="10">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         </columnConstraints>
-                        <TextField fx:id="nameField" promptText="Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <TextField fx:id="usernameField" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                        <TextField fx:id="employeeIdField" promptText="Employee ID" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="roleComboBox" promptText="Select Role" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <PasswordField fx:id="passwordField" promptText="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                        <Button fx:id="addUpdateUserButton" onAction="#onAddUpdateUserButton" text="Add User" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="primary-button" />
+                        <TextField fx:id="nameField" promptText="Name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <TextField fx:id="usernameField" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <TextField fx:id="employeeIdField" promptText="Employee ID" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <PasswordField fx:id="passwordField" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <ComboBox fx:id="roleComboBox" promptText="Select Role" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                        <Button fx:id="addUpdateUserButton" onAction="#onAddUpdateUserButton" text="Add User" styleClass="primary-button" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                     </GridPane>
                 </VBox>
             </VBox>

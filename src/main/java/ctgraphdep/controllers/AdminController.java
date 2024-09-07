@@ -19,10 +19,13 @@ public class AdminController extends BaseController {
     @Override
     public void initializeServices(ServiceFactory serviceFactory) {
         super.initializeServices(serviceFactory);
-        this.serviceFactory = serviceFactory;
-        LoggerUtil.error("AdminController service intialized"+ serviceFactory.isInitialized());
-        setCurrentFXMLPath(AppPaths.ADMIN_PAGE_LAYOUT);
-        setupLogoImage();
+        LoggerUtil.info(getClass(),"AdminController initializing services");
+
+        if (serviceFactory.isInitialized()) {
+            setCurrentFXMLPath(AppPaths.ADMIN_PAGE_LAYOUT);
+        } else {
+            LoggerUtil.error(getClass(),"ServiceFactory is not initialized in AdminController");
+        }
     }
 
     @FXML

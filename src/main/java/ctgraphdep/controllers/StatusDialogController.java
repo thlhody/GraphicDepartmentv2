@@ -1,6 +1,5 @@
 package ctgraphdep.controllers;
 
-import ctgraphdep.constants.AppPaths;
 import ctgraphdep.services.ServiceFactory;
 import ctgraphdep.utils.LoggerUtil;
 import javafx.fxml.FXML;
@@ -12,24 +11,20 @@ public class StatusDialogController extends BaseDialogController {
 
     @Override
     protected void initializeDialog() {
-        LoggerUtil.info("Initializing Status dialog");
+        LoggerUtil.info(getClass(),"Initializing Status dialog");
         setupRefreshButton();
-        setRefreshButtonImage(AppPaths.REFRESH_ICON);
+        setRefreshButtonImage();
         refreshContent();
-        LoggerUtil.info("StatusDialogController initialized");
+        LoggerUtil.info(getClass(),"StatusDialogController initialized");
     }
 
     @Override
     protected void refreshContent() {
-        LoggerUtil.info("Refreshing status content");
+        LoggerUtil.info(getClass(),"Refreshing status content");
         serviceFactory.getStatusDialogService().updateUserStatusList(userStatusBox);
     }
 
     public static void openStatusDialog(ServiceFactory serviceFactory) {
-        serviceFactory.getDialogService().openDialog(
-                serviceFactory.getDialogService().getStatusDialogPath(),
-                "User Status",
-                new StatusDialogController()
-        );
+        serviceFactory.getDialogService().openDialog(serviceFactory.getDialogService().getStatusDialogPath(), "User Status", new StatusDialogController());
     }
 }

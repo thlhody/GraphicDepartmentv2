@@ -50,7 +50,7 @@ public class UserManagementService {
                 return false;
             }
         } catch (RuntimeException e) {
-            LoggerUtil.error("Error creating user folder: " + e.getMessage(), e);
+            LoggerUtil.error(getClass(),"Error creating user folder: " + e.getMessage(), e);
             AlertUtil.showAlert("Error", "Failed to create user folder.");
             return false;
         }
@@ -70,10 +70,10 @@ public class UserManagementService {
             userStatuses.add(newStatus);
             boolean success = JsonUtils.writeUserStatusToJson(userStatuses, JsonPaths.getUserStatusJson());
             if (!success) {
-                LoggerUtil.error("Failed to update user status for new user: " + username);
+                LoggerUtil.error(getClass(),"Failed to update user status for new user: " + username);
             }
         } else {
-            LoggerUtil.error("Failed to find newly created user: " + username);
+            LoggerUtil.error(getClass(),"Failed to find newly created user: " + username);
         }
     }
 
@@ -96,7 +96,7 @@ public class UserManagementService {
                 return false;
             }
         } catch (RuntimeException e) {
-            LoggerUtil.error("Error creating user folder during update: " + e.getMessage(), e);
+            LoggerUtil.error(getClass(),"Error creating user folder during update: " + e.getMessage(), e);
             AlertUtil.showAlert("Error", "Failed to create user folder during update.");
             return false;
         }
@@ -106,14 +106,14 @@ public class UserManagementService {
         try {
             boolean success = userService.resetPassword(username, "cottontex123");
             if (success) {
-                LoggerUtil.info("Password reset successful for user: " + username);
+                LoggerUtil.info(getClass(),"Password reset successful for user: " + username);
                 AlertUtil.showAlert("Success", "Password reset successfully. New password is: cottontex123 .");
             } else {
-                LoggerUtil.error("Failed to reset password for user: " + username);
+                LoggerUtil.error(getClass(),"Failed to reset password for user: " + username);
                 AlertUtil.showAlert("Error", "Failed to reset password.");
             }
         } catch (Exception e) {
-            LoggerUtil.error("Exception occurred while resetting password: " + e.getMessage(), e);
+            LoggerUtil.error(getClass(),"Exception occurred while resetting password: " + e.getMessage(), e);
             AlertUtil.showAlert("Error", "An unexpected error occurred while resetting the password.");
         }
     }
@@ -131,21 +131,21 @@ public class UserManagementService {
                     AlertUtil.showAlert("Success", "Data path updated successfully.");
                 }
 
-                LoggerUtil.info("Updated DATA_PATH from " + oldDataPath + " to: " + actualNewPath);
+                LoggerUtil.info(getClass(),"Updated DATA_PATH from " + oldDataPath + " to: " + actualNewPath);
 
                 // Check if users.json exists in the new path
                 File usersFile = new File(actualNewPath, "users.json");
                 if (!usersFile.exists()) {
                     AlertUtil.showAlert("Warning", "users.json not found in the new path. The system will fall back to the admin path for user data if necessary.");
-                    LoggerUtil.warn("users.json not found in new DATA_PATH: " + actualNewPath);
+                    LoggerUtil.warn(getClass(),"users.json not found in new DATA_PATH: " + actualNewPath);
                 }
             } catch (Exception e) {
                 AlertUtil.showAlert("Error", "Failed to update data path: " + e.getMessage());
-                LoggerUtil.error("Failed to update DATA_PATH", e);
+                LoggerUtil.error(getClass(),"Failed to update DATA_PATH", e);
             }
         } else {
             AlertUtil.showAlert("Error", "Please enter a valid data path.");
-            LoggerUtil.warn("Attempted to set invalid DATA_PATH");
+            LoggerUtil.warn(getClass(),"Attempted to set invalid DATA_PATH");
         }
     }
 

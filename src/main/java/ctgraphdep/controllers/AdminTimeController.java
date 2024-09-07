@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class AdminTimeController extends BaseController {
 
@@ -37,36 +38,59 @@ public class AdminTimeController extends BaseController {
     @Override
     public void initializeServices(ServiceFactory serviceFactory) {
         super.initializeServices(serviceFactory);
+        LoggerUtil.info(getClass(),"AdminTimeController initializing services");
+        if (serviceFactory.isInitialized()) {
+            setCurrentFXMLPath(AppPaths.ADMIN_WORK_INTERVAL_LAYOUT);
+        } else {
+            LoggerUtil.error(getClass(),"ServiceFactory is not initialized in AdminTimeController");
+        }
         setupUI();
     }
 
     @FXML
     public void onWorkTimeButton() {
-        LoggerUtil.info("Work Time button clicked");
+        LoggerUtil.info(getClass(),"Work Time button clicked");
         refreshWorkTimeData();
     }
 
     @FXML
     public void onAddNationalHoliday() {
         LocalDate selectedDate = holidayDatePicker.getValue();
-        boolean success = serviceFactory.getAdminTimeService().addNationalHoliday(selectedDate);
-        if (success) {
-            AlertUtil.showAlert("Success", "National holiday added successfully.");
-            refreshWorkTimeData();
-        } else {
-            AlertUtil.showAlert("Error", "Failed to add national holiday.");
+
+        if (selectedDate == null) {
+            AlertUtil.showAlert("Error", "Please select a date for the national holiday.");
+            return;
+        }
+
+        if (serviceFactory.getAdminTimeService().isWeekend(selectedDate)) {
+            AlertUtil.showAlert("Warning", "The selected date is a weekend. National holidays cannot be added on weekends.");
+            return;
+        }
+
+        Optional<ButtonType> result = AlertUtil.showConfirmationDialog(
+                "Confirm National Holiday",
+                "Are you sure you want to add " + selectedDate + " as a national holiday?",
+                "This action will mark this date as a holiday for all users."
+        );
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            boolean success = serviceFactory.getAdminTimeService().addNationalHoliday(selectedDate);
+            if (success) {
+                AlertUtil.showAlert("Success", "National holiday added successfully.");
+                refreshWorkTimeData();
+            } else {
+                AlertUtil.showAlert("Error", "Failed to add national holiday.");
+            }
         }
     }
 
     @FXML
     public void onExportToExcelButton() {
-        int selectedYear = yearComboBox.getValue();
-        Month selectedMonth = monthComboBox.getValue();
         Stage stage = (Stage) exportToExcelButton.getScene().getWindow();
         boolean success = ExportExcelUtil.exportMonthlyWorkSummaryToExcel(
                 workTimeTableView.getItems(),
-                selectedYear,
-                selectedMonth.getValue(),
+                yearComboBox.getValue(),
+                monthComboBox.getValue().getValue(),
                 stage
         );
         if (success) {
@@ -82,7 +106,7 @@ public class AdminTimeController extends BaseController {
     }
 
     private void setupUI() {
-        LoggerUtil.info("Setting up UI in AdminTimeController");
+        LoggerUtil.info(getClass(),"Setting up UI in AdminTimeController");
         HelperUtil.setupYearComboBox(yearComboBox);
         HelperUtil.setupMonthComboBox(monthComboBox);
         holidayDatePicker.setValue(LocalDate.now());
@@ -98,34 +122,30 @@ public class AdminTimeController extends BaseController {
     }
 
     private void setupTableColumns() {
-        int year = yearComboBox.getValue();
-        int month = monthComboBox.getValue().getValue();
-        TableUtil.setupAdminWorkTimeTable(workTimeTableView, year, month);
-
-        // Make the table use available width
+        TableUtil.setupAdminWorkTimeTable(workTimeTableView, yearComboBox.getValue(), monthComboBox.getValue().getValue());
         workTimeTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     private void applyCSS() {
         String tableStylesPath = Objects.requireNonNull(getClass().getResource(AppPaths.TABLE_STYLES_A)).toExternalForm();
-        LoggerUtil.info("Loading table styles from: " + tableStylesPath);
+        LoggerUtil.info(getClass(),"Loading table styles from: " + tableStylesPath);
         workTimeTableView.getStylesheets().add(tableStylesPath);
 
         workTimeTableView.getStyleClass().add("custom-table");
         selectedUserLabel.getStyleClass().add("selected-user-info");
 
-        LoggerUtil.info("CSS classes added to workTimeTableView and selectedUserLabel");
+        LoggerUtil.info(getClass(),"CSS classes added to workTimeTableView and selectedUserLabel");
     }
 
     private void refreshWorkTimeData() {
-        LoggerUtil.info("Refreshing work time data");
+        LoggerUtil.info(getClass(),"Refreshing work time data");
         int selectedYear = yearComboBox.getValue();
         int selectedMonth = monthComboBox.getValue().getValue();
 
         List<MonthlyWorkSummary> summaries = serviceFactory.getAdminTimeService().refreshWorkTimeData(selectedYear, selectedMonth);
 
         if (summaries.isEmpty()) {
-            LoggerUtil.info("No non-admin users found for the selected period");
+            LoggerUtil.info(getClass(),"No non-admin users found for the selected period");
             workTimeTableView.setItems(FXCollections.observableArrayList());
             exportToExcelButton.setVisible(false);
             selectedUserLabel.setText("No non-admin users found for the selected period");

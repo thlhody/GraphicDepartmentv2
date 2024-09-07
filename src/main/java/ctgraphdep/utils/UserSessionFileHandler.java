@@ -14,16 +14,14 @@ import java.time.format.DateTimeFormatter;
 
 public class UserSessionFileHandler {
 
-    private static final ObjectMapper objectMapper = new ObjectMapper()
-            .registerModule(new JavaTimeModule())
+    private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule())
             .enable(SerializationFeature.INDENT_OUTPUT);
 
     static {
         // Configure LocalDateTime serializer to exclude nanoseconds
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
         LocalDateTimeSerializer localDateTimeSerializer = new LocalDateTimeSerializer(formatter);
-        objectMapper.registerModule(new JavaTimeModule()
-                .addSerializer(LocalDateTime.class, localDateTimeSerializer));
+        objectMapper.registerModule(new JavaTimeModule().addSerializer(LocalDateTime.class, localDateTimeSerializer));
     }
 
     public static void saveUserSession(Users user, WorkSessionStateUser session) {
@@ -32,9 +30,9 @@ public class UserSessionFileHandler {
 
         try {
             objectMapper.writeValue(new File(filePath), session);
-            LoggerUtil.info("Session saved for user: " + user.getUsername());
+            LoggerUtil.info(UserSessionFileHandler.class,"Session saved for user: " + user.getUsername());
         } catch (IOException e) {
-            LoggerUtil.error("Error saving session for user: " + user.getUsername(), e);
+            LoggerUtil.error(UserSessionFileHandler.class,"Error saving session for user: " + user.getUsername(), e);
         }
     }
 
@@ -43,14 +41,14 @@ public class UserSessionFileHandler {
         File file = new File(filePath);
 
         if (!file.exists() || file.length() == 0) {
-            LoggerUtil.info("No existing session found for user: " + user.getUsername());
+            LoggerUtil.info(UserSessionFileHandler.class,"No existing session found for user: " + user.getUsername());
             return null;
         }
 
         try {
             return objectMapper.readValue(file, WorkSessionStateUser.class);
         } catch (IOException e) {
-            LoggerUtil.error("Error reading session for user: " + user.getUsername(), e);
+            LoggerUtil.error(UserSessionFileHandler.class,"Error reading session for user: " + user.getUsername(), e);
             return null;
         }
     }
@@ -60,9 +58,9 @@ public class UserSessionFileHandler {
         if (!folder.exists()) {
             boolean created = folder.mkdirs();
             if (created) {
-                LoggerUtil.info("Created personal folder for user: " + user.getUsername());
+                LoggerUtil.info(UserSessionFileHandler.class,"Created personal folder for user: " + user.getUsername());
             } else {
-                LoggerUtil.error("Failed to create personal folder for user: " + user.getUsername());
+                LoggerUtil.error(UserSessionFileHandler.class,"Failed to create personal folder for user: " + user.getUsername());
             }
         }
     }

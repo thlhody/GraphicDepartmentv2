@@ -39,15 +39,14 @@ public class AdminSettingsController extends BaseController {
     private String currentUsername;
     private UserManagementService userManagementService;
 
-    @FXML
+
     @Override
     public void initializeServices(ServiceFactory serviceFactory) {
         super.initializeServices(serviceFactory);
         this.serviceFactory = serviceFactory;
         this.userManagementService = serviceFactory.getUserManagementService();
-        LoggerUtil.info("AdminSettingsController services initialized: " + serviceFactory.isInitialized());
+        LoggerUtil.info(getClass(),"AdminSettingsController services initialized: " + serviceFactory.isInitialized());
         setCurrentFXMLPath(AppPaths.ADMIN_SETTING_LAYOUT);
-        setupLogoImage();
         populateUserComboBox();
         populateRoleComboBox();
         setupUserComboBoxListener();
@@ -84,7 +83,7 @@ public class AdminSettingsController extends BaseController {
                 usernameField.setText(user.getUsername());
                 employeeIdField.setText(user.getEmployeeId().toString());
                 roleComboBox.setValue(user.getRole());
-                passwordField.clear(); // Clear password field for security
+                passwordField.clear();
                 isEditMode = true;
                 currentUsername = selectedUsername;
                 addUpdateUserButton.setText("Update User");
@@ -105,9 +104,8 @@ public class AdminSettingsController extends BaseController {
 
     @FXML
     protected void onUpdateBasePathButton() {
-        String newDataPath = basePathField.getText();
-        userManagementService.updateDataPath(newDataPath);
-        basePathField.setText(JsonPaths.getDataPath());  // Reset to current path
+        userManagementService.updateDataPath(basePathField.getText());
+        basePathField.setText(JsonPaths.getDataPath());
     }
 
     @FXML

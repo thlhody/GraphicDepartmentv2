@@ -31,7 +31,7 @@ public class WorkSessionService {
 
     public void setCurrentUser(Users user) {
         this.currentUser = user;
-        LoggerUtil.info("Current user set: " + user.getName());
+        LoggerUtil.info(getClass(),"Current user set: " + user.getName());
     }
 
     public void startSession() {
@@ -43,9 +43,9 @@ public class WorkSessionService {
             currentSession.setCurrentStartTime(LocalDateTime.now());
             currentSession.setSessionState("STARTED");
             saveCurrentSession();
-            LoggerUtil.info("Session started for user: " + currentUser.getName());
+            LoggerUtil.info(getClass(),"Session started for user: " + currentUser.getName());
         } else {
-            LoggerUtil.warn("Attempted to start an already active session");
+            LoggerUtil.warn(getClass(),"Attempted to start an already active session");
         }
     }
 
@@ -58,9 +58,9 @@ public class WorkSessionService {
             currentSession.setSessionState("Temporary Stop");
             currentSession.incrementBreakCount();
             saveCurrentSession();
-            LoggerUtil.info("Session paused for user: " + currentUser.getName());
+            LoggerUtil.info(getClass(),"Session paused for user: " + currentUser.getName());
         } else {
-            LoggerUtil.warn("Attempted to pause an inactive session");
+            LoggerUtil.warn(getClass(),"Attempted to pause an inactive session");
         }
     }
 
@@ -72,9 +72,9 @@ public class WorkSessionService {
             currentSession.setCurrentStartTime(now);
             currentSession.setSessionState("STARTED");
             saveCurrentSession();
-            LoggerUtil.info("Session resumed for user: " + currentUser.getName());
+            LoggerUtil.info(getClass(),"Session resumed for user: " + currentUser.getName());
         } else {
-            LoggerUtil.warn("Attempted to resume a non-paused session");
+            LoggerUtil.warn(getClass(),"Attempted to resume a non-paused session");
         }
     }
 
@@ -92,9 +92,9 @@ public class WorkSessionService {
             currentSession.setSessionState("ENDED");
             saveCurrentSession();
             updateWorkIntervalJson();
-            LoggerUtil.info("Session ended for user: " + currentUser.getName());
+            LoggerUtil.info(getClass(),"Session ended for user: " + currentUser.getName());
         } else {
-            LoggerUtil.warn("Attempted to end an inactive session");
+            LoggerUtil.warn(getClass(),"Attempted to end an inactive session");
         }
     }
 
@@ -117,9 +117,9 @@ public class WorkSessionService {
 
         boolean success = JsonUtils.writeWorkTimesToJson(workTimes, JsonPaths.getWorkIntervalJson());
         if (success) {
-            LoggerUtil.info("Work interval updated successfully for user: " + currentUser.getName());
+            LoggerUtil.info(getClass(),"Work interval updated successfully for user: " + currentUser.getName());
         } else {
-            LoggerUtil.error("Failed to update work interval for user: " + currentUser.getName());
+            LoggerUtil.error(getClass(),"Failed to update work interval for user: " + currentUser.getName());
         }
     }
 
@@ -153,10 +153,10 @@ public class WorkSessionService {
 
                 this.currentSession = savedSession;
                 saveCurrentSession();
-                LoggerUtil.info("Loaded existing session for user: " + currentUser.getName() + ", State: " + savedSession.getSessionState());
+                LoggerUtil.info(getClass(),"Loaded existing session for user: " + currentUser.getName() + ", State: " + savedSession.getSessionState());
             } else {
                 this.currentSession = null;
-                LoggerUtil.info("No active session found for user: " + currentUser.getName());
+                LoggerUtil.info(getClass(),"No active session found for user: " + currentUser.getName());
             }
         }
     }
@@ -164,7 +164,7 @@ public class WorkSessionService {
     public boolean saveTimeOff(LocalDate startDate, LocalDate endDate, String timeOffType) {
 
         if (currentUser == null) {
-            LoggerUtil.error("No current user set for saving time off");
+            LoggerUtil.error(getClass(),"No current user set for saving time off");
             return false;
         }
 
@@ -187,7 +187,7 @@ public class WorkSessionService {
                     if (!"SN".equals(existingEntry.getTimeOffType())) {
                         updateExistingEntry(existingEntry, timeOffType);
                     } else {
-                        LoggerUtil.info("Skipping SN day: " + finalDate);
+                        LoggerUtil.info(getClass(),"Skipping SN day: " + finalDate);
                     }
                 } else {
                     // Create new entry
@@ -201,18 +201,16 @@ public class WorkSessionService {
         boolean success = JsonUtils.writeWorkTimesToJson(workTimes, JsonPaths.getWorkIntervalJson());
 
         if (success) {
-            LoggerUtil.info("Time off saved successfully for user: " + currentUser.getName() + " from " + startDate + " to " + endDate);
+            LoggerUtil.info(getClass(),"Time off saved successfully for user: " + currentUser.getName() + " from " + startDate + " to " + endDate);
         } else {
-            LoggerUtil.error("Failed to save time off for user: " + currentUser.getName() + " from " + startDate + " to " + endDate);
+            LoggerUtil.error(getClass(),"Failed to save time off for user: " + currentUser.getName() + " from " + startDate + " to " + endDate);
         }
         return success;
     }
 
     private boolean isWorkingDay(LocalDate date) {
         return date.getDayOfWeek() != DayOfWeek.SATURDAY && date.getDayOfWeek() != DayOfWeek.SUNDAY;
-
     }
-
 
     private void updateExistingEntry(WorkTimeTable entry, String timeOffType) {
 
@@ -225,7 +223,6 @@ public class WorkSessionService {
         entry.setTotalWorkedSeconds(0L);
 
     }
-
 
     private WorkTimeTable createNewTimeOffEntry(LocalDate date, String timeOffType) {
 
@@ -242,19 +239,19 @@ public class WorkSessionService {
         );
     }
 
-    public List<WorkTimeTable> getWorkTimeData(int year, int month) {
+    public List<WorkTimeTable> getWorkTimeData(Integer year, Integer month) {
 
         List<WorkTimeTable> allWorkTimes = JsonUtils.readWorkTimesFromJson(JsonPaths.getWorkIntervalJson());
-        LoggerUtil.info("Total work times read from JSON: " + allWorkTimes.size());
+        LoggerUtil.info(getClass(),"Total work times read from JSON: " + allWorkTimes.size());
 
         List<WorkTimeTable> filteredWorkTimes = allWorkTimes.stream()
                 .filter(wt -> {
                     boolean matches = wt.getWorkDate().getYear() == year && wt.getWorkDate().getMonthValue() == month;
-                    LoggerUtil.info("Checking entry: " + wt + ", Matches filter: " + matches);
+                    LoggerUtil.info(getClass(),"Checking entry: " + wt + ", Matches filter: " + matches);
                     return matches;
                 })
                 .collect(Collectors.toList());
-        LoggerUtil.info("Filtered work times: " + filteredWorkTimes.size());
+        LoggerUtil.info(getClass(),"Filtered work times: " + filteredWorkTimes.size());
         return filteredWorkTimes;
     }
 }

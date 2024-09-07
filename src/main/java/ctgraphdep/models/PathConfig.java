@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @Data
 public class PathConfig {
+
     @JsonProperty("dataPath")
     private String dataPath;
 

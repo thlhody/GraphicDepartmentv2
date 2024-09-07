@@ -1,67 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<BorderPane prefHeight="Infinity" prefWidth="Infinity"
-            xmlns="http://javafx.com/javafx/17.0.2-ea"
+<BorderPane prefWidth="1280" prefHeight="720"
+            stylesheets="@../css/page-style.css, @../css/header-style.css"
+            xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ctgraphdep.controllers.AdminTimeController"
-            stylesheets="@../css/admin-styles.css, @../css/header-styles.css">
+            fx:controller="ctgraphdep.controllers.AdminTimeController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
     <top>
-        <HBox styleClass="header">
-            <HBox styleClass="header-content" HBox.hgrow="ALWAYS">
-                <padding>
-                    <Insets top="20" right="30" bottom="20" left="30" />
-                </padding>
-                <ImageView fx:id="logoImage" styleClass="logo-image"/>
-                <Label text="Monthly Time View" styleClass="dashboard-title"/>
-                <Region HBox.hgrow="ALWAYS" />
-                <HBox styleClass="right-aligned-content">
-                    <Button fx:id="backButton" onAction="#onBackButton" text="Back to Admin Page" styleClass="nav-button"/>
-                </HBox>
+        <HBox alignment="CENTER" spacing="20" styleClass="header">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                <ImageView fx:id="logoImage" fitWidth="150" fitHeight="70" preserveRatio="true"/>
+                <Label text="Monthly Time View" styleClass="header-text"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+                <Button fx:id="backButton" onAction="#onBackButton" text="Back to Admin Page" styleClass="header-button"/>
             </HBox>
         </HBox>
     </top>
-    <center>
-        <ScrollPane fitToWidth="true" styleClass="main-content">
-            <VBox spacing="30">
-                <padding>
-                    <Insets top="30" right="30" bottom="30" left="30" />
-                </padding>
 
-                <!-- Time View Controls -->
-                <VBox spacing="15" styleClass="settings-section">
-                    <Label styleClass="section-title" text="Time View Controls" />
-                    <HBox spacing="15" alignment="CENTER_LEFT">
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="content-scroll-pane">
+            <VBox alignment="TOP_CENTER" spacing="20" styleClass="content">
+                <!-- Time View Controls Section -->
+                <VBox spacing="10" styleClass="settings-section">
+                    <Label text="Time View Controls" styleClass="section-title"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
                         <ComboBox fx:id="yearComboBox" promptText="Select Year"/>
                         <ComboBox fx:id="monthComboBox" promptText="Select Month"/>
-                        <Button onAction="#onWorkTimeButton" text="View Monthly Worked Hours" styleClass="primary-button"/>
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="exportToExcelButton" onAction="#onExportToExcelButton" text="Export to Excel" styleClass="action-button" />
+                        <Button onAction="#onWorkTimeButton" text="View Monthly Worked Hours" styleClass="action-button"/>
+                        <Button fx:id="exportToExcelButton" onAction="#onExportToExcelButton" text="Export to Excel" styleClass="action-button"/>
                     </HBox>
                 </VBox>
 
-                <!-- National Holiday Section -->
-                <VBox spacing="15" styleClass="settings-section">
-                    <Label styleClass="section-title" text="Add National Holiday" />
-                    <HBox spacing="15" alignment="CENTER_LEFT">
+                <!-- Add National Holiday Section -->
+                <VBox spacing="10" styleClass="settings-section">
+                    <Label text="Add National Holiday" styleClass="section-title"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
                         <DatePicker fx:id="holidayDatePicker"/>
-                        <Button onAction="#onAddNationalHoliday" text="Add National Holiday" styleClass="primary-button" />
+                        <Button onAction="#onAddNationalHoliday" text="Add National Holiday" styleClass="action-button"/>
                     </HBox>
                 </VBox>
 
-                <!-- Selected User Info -->
-                <VBox spacing="15" styleClass="settings-section">
+                <!-- Selected User Info Section -->
+                <VBox spacing="10" styleClass="settings-section">
                     <Label styleClass="section-title" text="Selected User Information" />
-                    <Label fx:id="selectedUserLabel" styleClass="selected-user-info" wrapText="true" maxWidth="Infinity"/>
+                    <Label fx:id="selectedUserLabel" styleClass="info-label"/>
                 </VBox>
 
-                <!-- Work Time Table -->
-                <VBox spacing="15" styleClass="settings-section" VBox.vgrow="ALWAYS">
-                    <Label styleClass="section-title" text="Work Time Table" />
+                <!-- Work Time Table Section -->
+                <VBox spacing="10" styleClass="settings-section">
+                    <Label text="Work Time Table" styleClass="section-title"/>
                     <TableView fx:id="workTimeTableView" VBox.vgrow="ALWAYS"/>
                 </VBox>
             </VBox>

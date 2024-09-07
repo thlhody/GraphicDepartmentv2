@@ -33,7 +33,7 @@ public class UserSettingsController extends BaseController {
     @Override
     public void initializeServices(ServiceFactory serviceFactory) {
         super.initializeServices(serviceFactory);
-        LoggerUtil.info("UserSettingsController services initialized: " + serviceFactory.isInitialized());
+        LoggerUtil.info(getClass(),"UserSettingsController services initialized: " + serviceFactory.isInitialized());
         setCurrentFXMLPath(AppPaths.USER_SETTINGS_LAYOUT);
         setupLogoImage();
         loadUserData();
@@ -47,11 +47,11 @@ public class UserSettingsController extends BaseController {
                 usernameField.setText(currentUser.getUsername());
                 employeeIdField.setText(String.valueOf(currentUser.getEmployeeId()));
             } else {
-                LoggerUtil.error("Current user is null");
+                LoggerUtil.error(getClass(),"Current user is null");
                 setStatusMessage("Error: Unable to load user data", false);
             }
         } else {
-            LoggerUtil.error("UserService is not initialized");
+            LoggerUtil.error(getClass(),"UserService is not initialized");
             setStatusMessage("Error: Service not initialized", false);
         }
     }
@@ -64,15 +64,12 @@ public class UserSettingsController extends BaseController {
     @FXML
     private void onUpdateProfile() {
         if (serviceFactory != null && serviceFactory.getUserService() != null && currentUser != null) {
-            String newName = nameField.getText();
-            String newUsername = usernameField.getText();
-            String employeeId = employeeIdField.getText();
 
             boolean success = serviceFactory.getUserService().updateUser(
                     currentUser.getUsername(),
-                    newName,
-                    newUsername,
-                    employeeId,
+                    nameField.getText(),
+                    usernameField.getText(),
+                    employeeIdField.getText(),
                     currentUser.getRole(),
                     currentUser.getPersonalFolderPath()
             );
@@ -84,7 +81,7 @@ public class UserSettingsController extends BaseController {
                 setStatusMessage("Failed to update profile", false);
             }
         } else {
-            LoggerUtil.error("UserService is not initialized or current user is null");
+            LoggerUtil.error(getClass(),"UserService is not initialized or current user is null");
             setStatusMessage("Error: Unable to update profile", false);
         }
     }
@@ -108,7 +105,7 @@ public class UserSettingsController extends BaseController {
                 setStatusMessage("New passwords do not match", false);
             }
         } else {
-            LoggerUtil.error("UserService is not initialized");
+            LoggerUtil.error(getClass(),"UserService is not initialized");
             setStatusMessage("Error: Service not initialized", false);
         }
     }

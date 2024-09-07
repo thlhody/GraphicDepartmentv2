@@ -1,7 +1,6 @@
 package ctgraphdep.utils;
 
 import ctgraphdep.constants.AppPaths;
-import ctgraphdep.constants.JsonPaths;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
@@ -30,7 +29,7 @@ public class SaveFilesUtil {
         try {
             Files.createDirectories(path);
         } catch (IOException e) {
-            LoggerUtil.error("Error creating CT3 folder: " + e.getMessage(), e);
+            LoggerUtil.error(SaveFilesUtil.class,"Error creating CT3 folder: " + e.getMessage(), e);
             throw new RuntimeException("Failed to create CT3 folder", e);
         }
         return fullPath;

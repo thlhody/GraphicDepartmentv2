@@ -3,12 +3,8 @@ package ctgraphdep.controllers;
 import ctgraphdep.services.*;
 import ctgraphdep.utils.LoggerUtil;
 import ctgraphdep.constants.AppPaths;
-import ctgraphdep.utils.WindowUtil;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 public class LauncherController extends BaseController {
 
@@ -22,36 +18,25 @@ public class LauncherController extends BaseController {
     private Button loginButton;
     @FXML
     private Label onlineStatusLabel;
-    @FXML
-    private ImageView logoImage;
-    @FXML
-    private ImageView mainImage;
 
     private FileAccessibilityService fileAccessibilityService;
 
+    @FXML
     @Override
     public void initializeServices(ServiceFactory serviceFactory) {
         super.initializeServices(serviceFactory);
         if (serviceFactory.isInitialized()) {
             setCurrentFXMLPath(AppPaths.LAUNCHER);
             this.fileAccessibilityService = serviceFactory.getFileAccessibilityService();
-            setupLogoImage();
-            setupMainImage();
             updateOnlineStatus();
-            Platform.runLater(() -> {
-                Stage stage = (Stage) loginButton.getScene().getWindow();
-                WindowUtil.initializeMainStage(stage);
-                WindowUtil.adjustStageSize(stage);
-                WindowUtil.centerStage(stage);
-            });
+            setupMainImage();
         } else {
-            LoggerUtil.error("ServiceFactory is not initialized in LauncherController");
+            LoggerUtil.error(getClass(),"ServiceFactory is not initialized in LauncherController");
         }
     }
 
     @FXML
     protected void onLoginButton() {
-
         if (serviceFactory.getAuthenticationService().login(usernameField.getText(), passwordField.getText())) {
             usernameField.clear();
             passwordField.clear();
@@ -65,5 +50,14 @@ public class LauncherController extends BaseController {
 
     private void updateOnlineStatus() {
         fileAccessibilityService.updateOnlineStatus(onlineStatusLabel);
+    }
+
+    protected void setupMainImage() {
+        if (mainImage != null && serviceFactory != null) {
+            serviceFactory.getLogoService().setMainImage(mainImage);
+            LoggerUtil.info(getClass(),"Main image set successfully in " + getClass().getSimpleName());
+        } else {
+            LoggerUtil.warn(getClass(),"mainImage is null or serviceFactory is not initialized in " + getClass().getSimpleName());
+        }
     }
 }

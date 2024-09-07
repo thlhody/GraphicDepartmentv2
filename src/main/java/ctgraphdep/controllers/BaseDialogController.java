@@ -20,7 +20,7 @@ public abstract class BaseDialogController {
     @FXML
     public void initializeServices(ServiceFactory serviceFactory) {
         this.serviceFactory = serviceFactory;
-        LoggerUtil.info("BaseDialogController services initialized: " + serviceFactory.isInitialized());
+        LoggerUtil.info(getClass(),"BaseDialogController services initialized: " + serviceFactory.isInitialized());
         initializeDialog();
     }
 
@@ -31,7 +31,7 @@ public abstract class BaseDialogController {
 
     public void setDialogStage(Stage stage) {
         this.dialogStage = stage;
-        LoggerUtil.info("Dialog stage set for " + this.getClass().getSimpleName());
+        LoggerUtil.info(getClass(),"Dialog stage set for " + this.getClass().getSimpleName());
     }
 
     protected abstract void initializeDialog();
@@ -42,7 +42,7 @@ public abstract class BaseDialogController {
         serviceFactory.getDialogService().setupRefreshButton(refreshButton, this::refreshContent);
     }
 
-    protected void setRefreshButtonImage(String imagePath) {
-        serviceFactory.getDialogService().setRefreshButtonImage(refreshIcon, imagePath);
+    protected void setRefreshButtonImage() {
+        serviceFactory.getDialogService().setRefreshButtonImage(refreshIcon, ctgraphdep.constants.AppPaths.REFRESH_ICON);
     }
 }

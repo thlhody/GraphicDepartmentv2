@@ -28,6 +28,7 @@ public class AppPaths {
     //css
     public static final String TABLE_STYLES_A = "/css/table-styles.css";
     public static final String ABOUT_DIALOG_CSS = "/css/about-dialog.css";
+    public static final String ALERT_CSS = "/css/alert-style.css";
 
     //folder name
     public static final String CT3_FOLDER = "CT3";

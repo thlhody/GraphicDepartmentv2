@@ -1,0 +1,277 @@
+2024-09-07 17:05:02.344 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Executable directory: D:\WorkT\Projects Java\GraphDepC\target
+2024-09-07 17:05:02.345 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Set ADMIN_PATH to: D:\WorkT\Projects Java\GraphDepC\target\default\
+2024-09-07 17:05:02.346 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Attempting to load path config from: D:\WorkT\Projects Java\GraphDepC\target\path_config.json
+2024-09-07 17:05:02.447 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Loaded DATA_PATH from config: D:\CreativeTimeAndTaskTracker\default\
+2024-09-07 17:05:02.447 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Final DATA_PATH: D:\CreativeTimeAndTaskTracker\default\
+2024-09-07 17:05:02.457 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:05:02.593 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:05:02.593 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Logo image set successfully in LauncherController
+2024-09-07 17:05:02.593 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Updating online status
+2024-09-07 17:05:02.593 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking users.json accessibility in new data path
+2024-09-07 17:05:02.594 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking file: D:\CreativeTimeAndTaskTracker\default\users.json
+2024-09-07 17:05:02.594 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File exists: true
+2024-09-07 17:05:02.594 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File is readable: true
+2024-09-07 17:05:02.594 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Users JSON file accessibility in new path: Accessible
+2024-09-07 17:05:03.291 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct3front.png
+2024-09-07 17:05:03.291 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Main image set successfully in LauncherController
+2024-09-07 17:05:03.502 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Status set to Online (using new path)
+2024-09-07 17:05:09.291 [JavaFX Application Thread] INFO  UserActions - Login - Attempt login
+2024-09-07 17:05:09.292 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:05:09.293 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:05:09.294 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - User authenticated successfully: admin
+2024-09-07 17:05:09.294 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Admin
+2024-09-07 17:05:09.295 [JavaFX Application Thread] INFO  ctgraphdep.utils.UserSessionFileHandler - No existing session found for user: admin
+2024-09-07 17:05:09.295 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - No active session found for user: Admin
+2024-09-07 17:05:09.295 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Admin
+2024-09-07 17:05:09.295 [JavaFX Application Thread] INFO  UserActions - Login - Successful login
+2024-09-07 17:05:09.296 [JavaFX Application Thread] INFO  ControllerSwitches - Switching from AuthenticationService to AdminController
+2024-09-07 17:05:09.305 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:05:09.305 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - Logo image set successfully in AdminController
+2024-09-07 17:05:09.305 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - AdminController initializing services
+2024-09-07 17:05:09.325 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Page
+2024-09-07 17:05:10.697 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - Dialog stage set for StatusDialogController
+2024-09-07 17:05:10.698 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - BaseDialogController services initialized: true
+2024-09-07 17:05:10.698 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - Initializing Status dialog
+2024-09-07 17:05:10.701 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Refresh button set up successfully
+2024-09-07 17:05:10.701 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Loading image: /icons/refreshB.png
+2024-09-07 17:05:10.751 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Refresh icon set successfully
+2024-09-07 17:05:10.751 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - Refreshing status content
+2024-09-07 17:05:10.765 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Users status read successfully. Number of users: 18
+2024-09-07 17:05:10.766 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Number of users: 18
+2024-09-07 17:05:10.767 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Hodineanti Tudor (Offline) :: 07/09/2024 - 15:02
+2024-09-07 17:05:10.769 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Simona Polmolea (offline) :: 04/09/2024 - 22:14
+2024-09-07 17:05:10.769 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Laura Polmolea (offline) :: 04/09/2024 - 18:26
+2024-09-07 17:05:10.770 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Silviu Murgu (offline) :: 04/09/2024 - 18:01
+2024-09-07 17:05:10.771 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Eugen Murgu (offline) :: 04/09/2024 - 21:02
+2024-09-07 17:05:10.772 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Alina Tepeneu (offline) :: 04/09/2024 - 21:02
+2024-09-07 17:05:10.772 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Oana Alba (offline) :: 04/09/2024 - 21:03
+2024-09-07 17:05:10.772 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Geo Zgurai (offline) :: 04/09/2024 - 21:03
+2024-09-07 17:05:10.773 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Stefan Dumitru (offline) :: 04/09/2024 - 21:04
+2024-09-07 17:05:10.774 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Ion Domil (offline) :: 04/09/2024 - 21:04
+2024-09-07 17:05:10.775 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Vlad Olari (offline) :: 04/09/2024 - 21:04
+2024-09-07 17:05:10.775 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Mariana Badau (offline) :: 04/09/2024 - 21:21
+2024-09-07 17:05:10.776 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Adina Barbu (offline) :: 04/09/2024 - 21:22
+2024-09-07 17:05:10.776 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Laurentiu Margalin (offline) :: 04/09/2024 - 21:22
+2024-09-07 17:05:10.777 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Marian Negrea (offline) :: 04/09/2024 - 21:23
+2024-09-07 17:05:10.777 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Leo Cicos (offline) :: 04/09/2024 - 21:23
+2024-09-07 17:05:10.778 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Adrian Mihai (offline) :: 04/09/2024 - 21:25
+2024-09-07 17:05:10.779 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Marian Ivanoiu (offline) :: 04/09/2024 - 21:26
+2024-09-07 17:05:10.779 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - User status list updated. Number of rows: 18
+2024-09-07 17:05:10.779 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - StatusDialogController initialized
+2024-09-07 17:05:10.780 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Loading CSS from: file:/D:/WorkT/Projects%20Java/GraphDepC/target/classes/css/about-dialog.css
+2024-09-07 17:05:13.260 [JavaFX Application Thread] INFO  ctgraphdep.controllers.StatusDialogController - Refreshing status content
+2024-09-07 17:05:13.262 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Users status read successfully. Number of users: 18
+2024-09-07 17:05:13.262 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Number of users: 18
+2024-09-07 17:05:13.262 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Hodineanti Tudor (Offline) :: 07/09/2024 - 15:02
+2024-09-07 17:05:13.263 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Simona Polmolea (offline) :: 04/09/2024 - 22:14
+2024-09-07 17:05:13.264 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Laura Polmolea (offline) :: 04/09/2024 - 18:26
+2024-09-07 17:05:13.265 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Silviu Murgu (offline) :: 04/09/2024 - 18:01
+2024-09-07 17:05:13.265 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Eugen Murgu (offline) :: 04/09/2024 - 21:02
+2024-09-07 17:05:13.266 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Alina Tepeneu (offline) :: 04/09/2024 - 21:02
+2024-09-07 17:05:13.266 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Oana Alba (offline) :: 04/09/2024 - 21:03
+2024-09-07 17:05:13.267 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Geo Zgurai (offline) :: 04/09/2024 - 21:03
+2024-09-07 17:05:13.267 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Stefan Dumitru (offline) :: 04/09/2024 - 21:04
+2024-09-07 17:05:13.267 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Ion Domil (offline) :: 04/09/2024 - 21:04
+2024-09-07 17:05:13.268 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Vlad Olari (offline) :: 04/09/2024 - 21:04
+2024-09-07 17:05:13.268 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Mariana Badau (offline) :: 04/09/2024 - 21:21
+2024-09-07 17:05:13.268 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Adina Barbu (offline) :: 04/09/2024 - 21:22
+2024-09-07 17:05:13.268 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Laurentiu Margalin (offline) :: 04/09/2024 - 21:22
+2024-09-07 17:05:13.269 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Marian Negrea (offline) :: 04/09/2024 - 21:23
+2024-09-07 17:05:13.273 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Leo Cicos (offline) :: 04/09/2024 - 21:23
+2024-09-07 17:05:13.273 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Adrian Mihai (offline) :: 04/09/2024 - 21:25
+2024-09-07 17:05:13.274 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - Formatted user status: Marian Ivanoiu (offline) :: 04/09/2024 - 21:26
+2024-09-07 17:05:13.274 [JavaFX Application Thread] INFO  ctgraphdep.services.StatusDialogService - User status list updated. Number of rows: 18
+2024-09-07 17:05:14.039 [JavaFX Application Thread] INFO  ctgraphdep.services.DialogService - Dialog window closed!
+2024-09-07 17:05:14.657 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:05:14.657 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Logo image set successfully in AdminTimeController
+2024-09-07 17:05:14.657 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - AdminTimeController initializing services
+2024-09-07 17:05:14.657 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Setting up UI in AdminTimeController
+2024-09-07 17:05:14.663 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Loading table styles from: file:/D:/WorkT/Projects%20Java/GraphDepC/target/classes/css/table-styles.css
+2024-09-07 17:05:14.663 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - CSS classes added to workTimeTableView and selectedUserLabel
+2024-09-07 17:05:14.672 [JavaFX Application Thread] INFO  ctgraphdep.utils.TableUtil - Number of items in TableView after setup: 0
+2024-09-07 17:05:14.795 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Work Interval
+2024-09-07 17:05:16.276 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Work Time button clicked
+2024-09-07 17:05:16.276 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Refreshing work time data
+2024-09-07 17:05:16.276 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:05:16.276 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Generating monthly summary for 18 non-admin users
+2024-09-07 17:05:16.276 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:05:16.285 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:05:16.286 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Filtered work times (excluding admin): 4
+2024-09-07 17:05:16.286 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 6
+2024-09-07 17:05:16.286 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 4
+2024-09-07 17:05:16.286 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 5
+2024-09-07 17:05:16.286 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.6075 hours on day 7
+2024-09-07 17:05:16.286 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Generated 18 monthly summaries (excluding admin)
+2024-09-07 17:05:16.288 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Refreshed work time data for 2024-9: 18 entries (excluding admin)
+2024-09-07 17:05:24.894 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - National holiday added successfully for date: 2024-09-07
+2024-09-07 17:05:24.894 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Refreshing work time data
+2024-09-07 17:05:24.895 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:05:24.895 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Generating monthly summary for 18 non-admin users
+2024-09-07 17:05:24.895 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:05:24.902 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Filtered work times (excluding admin): 21
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 6
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 4
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 5
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 7
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 3: 0.0 hours on day 7
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 4: 0.0 hours on day 7
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 5: 0.0 hours on day 7
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 6: 0.0 hours on day 7
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 7: 0.0 hours on day 7
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 8: 0.0 hours on day 7
+2024-09-07 17:05:24.903 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 9: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 10: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 11: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 12: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 13: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 14: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 15: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 16: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 17: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 18: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 19: 0.0 hours on day 7
+2024-09-07 17:05:24.904 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Generated 18 monthly summaries (excluding admin)
+2024-09-07 17:05:24.905 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Refreshed work time data for 2024-9: 18 entries (excluding admin)
+2024-09-07 17:05:46.195 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:05:46.195 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - Logo image set successfully in AdminController
+2024-09-07 17:05:46.195 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - AdminController initializing services
+2024-09-07 17:05:46.199 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Page
+2024-09-07 17:05:48.479 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:05:48.479 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminSettingsController - Logo image set successfully in AdminSettingsController
+2024-09-07 17:05:48.480 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminSettingsController - AdminSettingsController services initialized: true
+2024-09-07 17:05:48.498 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Settings
+2024-09-07 17:05:50.501 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:05:50.502 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - Logo image set successfully in AdminController
+2024-09-07 17:05:50.502 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - AdminController initializing services
+2024-09-07 17:05:50.505 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Page
+2024-09-07 17:05:51.247 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - User logged out
+2024-09-07 17:05:51.253 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:05:51.253 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Logo image set successfully in LauncherController
+2024-09-07 17:05:51.253 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Updating online status
+2024-09-07 17:05:51.253 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking users.json accessibility in new data path
+2024-09-07 17:05:51.254 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking file: D:\CreativeTimeAndTaskTracker\default\users.json
+2024-09-07 17:05:51.254 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File exists: true
+2024-09-07 17:05:51.254 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File is readable: true
+2024-09-07 17:05:51.254 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Users JSON file accessibility in new path: Accessible
+2024-09-07 17:05:51.969 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct3front.png
+2024-09-07 17:05:51.969 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Main image set successfully in LauncherController
+2024-09-07 17:05:51.974 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Login
+2024-09-07 17:05:51.974 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Status set to Online (using new path)
+2024-09-07 17:10:10.221 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Executable directory: D:\WorkT\Projects Java\GraphDepC\target
+2024-09-07 17:10:10.223 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Set ADMIN_PATH to: D:\WorkT\Projects Java\GraphDepC\target\default\
+2024-09-07 17:10:10.223 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Attempting to load path config from: D:\WorkT\Projects Java\GraphDepC\target\path_config.json
+2024-09-07 17:10:10.333 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Loaded DATA_PATH from config: D:\CreativeTimeAndTaskTracker\default\
+2024-09-07 17:10:10.333 [JavaFX Application Thread] INFO  ctgraphdep.constants.JsonPaths - Final DATA_PATH: D:\CreativeTimeAndTaskTracker\default\
+2024-09-07 17:10:10.341 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:10:10.477 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:10:10.477 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Logo image set successfully in LauncherController
+2024-09-07 17:10:10.477 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Updating online status
+2024-09-07 17:10:10.477 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking users.json accessibility in new data path
+2024-09-07 17:10:10.478 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Checking file: D:\CreativeTimeAndTaskTracker\default\users.json
+2024-09-07 17:10:10.478 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File exists: true
+2024-09-07 17:10:10.478 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - File is readable: true
+2024-09-07 17:10:10.478 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Users JSON file accessibility in new path: Accessible
+2024-09-07 17:10:11.187 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct3front.png
+2024-09-07 17:10:11.189 [JavaFX Application Thread] INFO  ctgraphdep.controllers.LauncherController - Main image set successfully in LauncherController
+2024-09-07 17:10:11.377 [JavaFX Application Thread] INFO  ctgraphdep.services.FileAccessibilityService - Status set to Online (using new path)
+2024-09-07 17:10:15.353 [JavaFX Application Thread] INFO  UserActions - Login - Attempt login
+2024-09-07 17:10:15.357 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:10:15.359 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - Users loaded successfully. Total users: 19
+2024-09-07 17:10:15.360 [JavaFX Application Thread] INFO  ctgraphdep.services.UserService - User authenticated successfully: admin
+2024-09-07 17:10:15.360 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Admin
+2024-09-07 17:10:15.361 [JavaFX Application Thread] INFO  ctgraphdep.utils.UserSessionFileHandler - No existing session found for user: admin
+2024-09-07 17:10:15.361 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - No active session found for user: Admin
+2024-09-07 17:10:15.361 [JavaFX Application Thread] INFO  ctgraphdep.services.WorkSessionService - Current user set: Admin
+2024-09-07 17:10:15.361 [JavaFX Application Thread] INFO  UserActions - Login - Successful login
+2024-09-07 17:10:15.362 [JavaFX Application Thread] INFO  ControllerSwitches - Switching from AuthenticationService to AdminController
+2024-09-07 17:10:15.372 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:10:15.372 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - Logo image set successfully in AdminController
+2024-09-07 17:10:15.373 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminController - AdminController initializing services
+2024-09-07 17:10:15.392 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Page
+2024-09-07 17:10:16.411 [JavaFX Application Thread] INFO  ctgraphdep.services.LogoService - Image set successfully: /images/ct.png
+2024-09-07 17:10:16.411 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Logo image set successfully in AdminTimeController
+2024-09-07 17:10:16.411 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - AdminTimeController initializing services
+2024-09-07 17:10:16.412 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Setting up UI in AdminTimeController
+2024-09-07 17:10:16.417 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Loading table styles from: file:/D:/WorkT/Projects%20Java/GraphDepC/target/classes/css/table-styles.css
+2024-09-07 17:10:16.417 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - CSS classes added to workTimeTableView and selectedUserLabel
+2024-09-07 17:10:16.426 [JavaFX Application Thread] INFO  ctgraphdep.utils.TableUtil - Number of items in TableView after setup: 0
+2024-09-07 17:10:16.584 [JavaFX Application Thread] INFO  ctgraphdep.services.NavigationService - Navigated to: Admin Work Interval
+2024-09-07 17:10:17.852 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Work Time button clicked
+2024-09-07 17:10:17.852 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Refreshing work time data
+2024-09-07 17:10:17.853 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:10:17.853 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Generating monthly summary for 18 non-admin users
+2024-09-07 17:10:17.853 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:10:17.864 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:10:17.865 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Filtered work times (excluding admin): 21
+2024-09-07 17:10:17.865 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 6
+2024-09-07 17:10:17.865 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 4
+2024-09-07 17:10:17.865 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 5
+2024-09-07 17:10:17.866 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 7
+2024-09-07 17:10:17.866 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 3: 0.0 hours on day 7
+2024-09-07 17:10:17.866 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 4: 0.0 hours on day 7
+2024-09-07 17:10:17.866 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 5: 0.0 hours on day 7
+2024-09-07 17:10:17.866 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 6: 0.0 hours on day 7
+2024-09-07 17:10:17.866 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 7: 0.0 hours on day 7
+2024-09-07 17:10:17.866 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 8: 0.0 hours on day 7
+2024-09-07 17:10:17.866 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 9: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 10: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 11: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 12: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 13: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 14: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 15: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 16: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 17: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 18: 0.0 hours on day 7
+2024-09-07 17:10:17.867 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 19: 0.0 hours on day 7
+2024-09-07 17:10:17.868 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Generated 18 monthly summaries (excluding admin)
+2024-09-07 17:10:17.869 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Refreshed work time data for 2024-9: 18 entries (excluding admin)
+2024-09-07 17:10:42.211 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - National holiday added successfully for date: 2024-09-09
+2024-09-07 17:10:42.212 [JavaFX Application Thread] INFO  ctgraphdep.controllers.AdminTimeController - Refreshing work time data
+2024-09-07 17:10:42.212 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:10:42.212 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Generating monthly summary for 18 non-admin users
+2024-09-07 17:10:42.212 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:10:42.219 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Retrieved 18 non-admin users
+2024-09-07 17:10:42.219 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Filtered work times (excluding admin): 39
+2024-09-07 17:10:42.219 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 6
+2024-09-07 17:10:42.219 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 4
+2024-09-07 17:10:42.219 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 5
+2024-09-07 17:10:42.219 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 3: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 4: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 5: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 6: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 7: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 8: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 9: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 10: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 11: 0.0 hours on day 7
+2024-09-07 17:10:42.220 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 12: 0.0 hours on day 7
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 13: 0.0 hours on day 7
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 14: 0.0 hours on day 7
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 15: 0.0 hours on day 7
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 16: 0.0 hours on day 7
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 17: 0.0 hours on day 7
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 18: 0.0 hours on day 7
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 19: 0.0 hours on day 7
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 2: 0.0 hours on day 9
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 3: 0.0 hours on day 9
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 4: 0.0 hours on day 9
+2024-09-07 17:10:42.221 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 5: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 6: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 7: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 8: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 9: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 10: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 11: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 12: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 13: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 14: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 15: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 16: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 17: 0.0 hours on day 9
+2024-09-07 17:10:42.222 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 18: 0.0 hours on day 9
+2024-09-07 17:10:42.223 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Processing work time for User 19: 0.0 hours on day 9
+2024-09-07 17:10:42.223 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Generated 18 monthly summaries (excluding admin)
+2024-09-07 17:10:42.223 [JavaFX Application Thread] INFO  ctgraphdep.services.AdminTimeService - Refreshed work time data for 2024-9: 18 entries (excluding admin)

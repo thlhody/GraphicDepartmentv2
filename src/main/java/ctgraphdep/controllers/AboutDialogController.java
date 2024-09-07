@@ -19,23 +19,19 @@ public class AboutDialogController extends BaseDialogController {
 
     @Override
     protected void initializeDialog() {
-        LoggerUtil.info("Initializing About dialog");
+        LoggerUtil.info(getClass(),"Initializing About dialog");
         serviceFactory.getDialogService().setDialogImage(dialogImage, serviceFactory.getDialogService().getDialogBoxImagePath());
         serviceFactory.getDialogService().setAboutDialogContent(titleLabel, versionLabel, copyrightLabel);
         serviceFactory.getDialogService().setupImageAnimation(dialogImage);
-        LoggerUtil.info("AboutDialogController initialized");
+        LoggerUtil.info(getClass(),"AboutDialogController initialized");
     }
 
     @Override
     protected void refreshContent() {
-        LoggerUtil.info("Refresh not applicable for About dialog");
+        LoggerUtil.info(getClass(),"Refresh not applicable for About dialog");
     }
 
     public static void openAboutDialog(ServiceFactory serviceFactory) {
-        serviceFactory.getDialogService().openDialog(
-                serviceFactory.getDialogService().getAboutDialogPath(),
-                "About",
-                new AboutDialogController()
-        );
+        serviceFactory.getDialogService().openDialog(serviceFactory.getDialogService().getAboutDialogPath(), "About", new AboutDialogController());
     }
 }

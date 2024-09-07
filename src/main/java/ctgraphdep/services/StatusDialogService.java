@@ -17,47 +17,44 @@ public class StatusDialogService {
 
     public JsonNode getUsersStatus() {
         JsonNode rootNode = JsonUtils.readJsonNode(JsonPaths.getUserStatusJson());
-        LoggerUtil.info("Users status read successfully. Number of users: " + rootNode.size());
+        LoggerUtil.info(getClass(),"Users status read successfully. Number of users: " + rootNode.size());
         return rootNode;
     }
 
     public String formatUserStatus(JsonNode userStatus) {
-        String name = userStatus.get("name").asText();
-        String status = userStatus.get("status").asText();
-        String lastActivity = userStatus.get("lastActivity").asText();
 
-        LocalDateTime activityTime = LocalDateTime.parse(lastActivity, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        LocalDateTime activityTime = LocalDateTime.parse(userStatus.get("lastActivity").asText(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String formattedDate = activityTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String formattedTime = activityTime.format(DateTimeFormatter.ofPattern("HH:mm"));
+        String formattedStatus = String.format("%s (%s) :: %s - %s", userStatus.get("name").asText(), userStatus.get("status").asText(), formattedDate, formattedTime);
 
-        String formattedStatus = String.format("%s (%s) :: %s - %s", name, status, formattedDate, formattedTime);
-        LoggerUtil.info("Formatted user status: " + formattedStatus);
+        LoggerUtil.info(getClass(),"Formatted user status: " + formattedStatus);
         return formattedStatus;
     }
 
     public synchronized void updateUserStatus(int userId, String status) {
         boolean success = JsonUtils.updateUserStatusInJson(userId, status, JsonPaths.getUserStatusJson());
         if (success) {
-            LoggerUtil.info("Updated status for user " + userId + " to " + status);
+            LoggerUtil.info(getClass(),"Updated status for user " + userId + " to " + status);
         } else {
-            LoggerUtil.error("Failed to update status for user " + userId);
+            LoggerUtil.error(getClass(),"Failed to update status for user " + userId);
         }
     }
 
     public void updateUserStatusList(VBox userStatusBox) {
         if (userStatusBox == null) {
-            LoggerUtil.error("userStatusBox is null");
+            LoggerUtil.error(getClass(),"userStatusBox is null");
             return;
         }
         userStatusBox.getChildren().clear();
         JsonNode usersStatus = getUsersStatus();
-        LoggerUtil.info("Number of users: " + usersStatus.size());
+        LoggerUtil.info(getClass(),"Number of users: " + usersStatus.size());
         for (JsonNode userStatus : usersStatus) {
             String statusText = formatUserStatus(userStatus);
             HBox userRow = createUserStatusRow(statusText, userStatus.get("status").asText());
             userStatusBox.getChildren().add(userRow);
         }
-        LoggerUtil.info("User status list updated. Number of rows: " + userStatusBox.getChildren().size());
+        LoggerUtil.info(getClass(),"User status list updated. Number of rows: " + userStatusBox.getChildren().size());
     }
 
     private HBox createUserStatusRow(String statusText, String status) {

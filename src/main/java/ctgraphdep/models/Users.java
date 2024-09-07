@@ -31,4 +31,5 @@ public class Users {
 
     @JsonProperty("personalFolderPath")
     private String personalFolderPath;
+
 }

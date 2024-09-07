@@ -40,7 +40,7 @@ public class TableUtil {
         // Ensure the table uses our custom resize policy
         tableView.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
 
-        LoggerUtil.info("Number of items in TableView after setup: " + tableView.getItems().size());
+        LoggerUtil.info(TableUtil.class,"Number of items in TableView after setup: " + tableView.getItems().size());
     }
 
     private static void addNameColumn(TableView<MonthlyWorkSummary> tableView) {
@@ -164,7 +164,7 @@ public class TableUtil {
     }
 
     // User table column methods
-    public static void setupUserWorkTimeTable(TableView<WorkTimeTable> tableView, int year, int month) {
+    public static void setupUserWorkTimeTable(TableView<WorkTimeTable> tableView, Integer year, Integer month) {
         tableView.getColumns().clear();
         tableView.getStyleClass().add("custom-table");
 
@@ -176,10 +176,10 @@ public class TableUtil {
         addUserColumn(tableView, "Total Time", "totalWorkedSeconds", 100, 1, null);
         addUserColumn(tableView, "Time Off", "timeOffType", 80, 2, null);
 
-        LoggerUtil.info("User Work Time Table setup completed");
+        LoggerUtil.info(TableUtil.class,"User Work Time Table setup completed");
     }
 
-    private static <T> void addUserColumn(TableView<WorkTimeTable> tableView, String title, String property, double width, int columnIndex, DateTimeFormatter formatter) {
+    private static <T> void addUserColumn(TableView<WorkTimeTable> tableView, String title, String property, double width, Integer columnIndex, DateTimeFormatter formatter) {
         TableColumn<WorkTimeTable, T> column = new TableColumn<>(title);
         column.setCellValueFactory(new PropertyValueFactory<>(property));
         column.setPrefWidth(width);
