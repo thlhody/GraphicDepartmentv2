@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserWorkTimeService {
 
-    private final WorkSessionService workSessionService;
+    private WorkSessionService workSessionService;
 
     public UserWorkTimeService(WorkSessionService workSessionService) {
         this.workSessionService = workSessionService;
@@ -46,7 +46,6 @@ public class UserWorkTimeService {
         }
 
         // Calculate expected work hours for the month
-
         Integer workingDaysInMonth = calculateWorkingDaysInMonth(YearMonth.of(year, month));
         Duration expectedMonthlyHours = Duration.ofMinutes((long) (workingDaysInMonth * WorkCode.FULL_WORKDAY_HOURS * 60));
 

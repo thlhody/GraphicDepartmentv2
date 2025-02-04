@@ -119,4 +119,8 @@ public class JsonPaths {
     public static String getUserStatusJson() {
         return DATA_PATH + "users_status.json";
     }
+
+    public static String getUsersSessionsStates() {
+        return DATA_PATH + "work_users_sessions_states.json";
+    }
 }

@@ -20,6 +20,8 @@ public class JsonUtils {
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule())
             .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS).enable(SerializationFeature.INDENT_OUTPUT);
 
+
+
     public static <T> List<T> readListFromJson(String filePath, Class<T> clazz) throws IOException {
         File file = new File(filePath);
         if (!file.exists() || file.length() == 0) {
@@ -31,6 +33,14 @@ public class JsonUtils {
 
     public static <T> void writeListToJson(String filePath, List<T> data) throws IOException {
         objectMapper.writeValue(new File(filePath), data);
+    }
+
+    public static List<WorkUsersSessionsStates> readWorkSessionsFromJson(String filePath) throws IOException {
+        return readListFromJson(filePath, WorkUsersSessionsStates.class);
+    }
+
+    public static void writeWorkSessionsToJson(String filePath, List<WorkUsersSessionsStates> sessions) throws IOException {
+        writeListToJson(filePath, sessions);
     }
 
     public static List<UserStatus> readUserStatusFromJson(String filePath) {

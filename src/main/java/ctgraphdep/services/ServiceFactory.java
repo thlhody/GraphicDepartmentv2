@@ -22,6 +22,7 @@ public class ServiceFactory {
     private UserManagementService userManagementService;
     private FileAccessibilityService fileAccessibilityService;
     private UserWorkTimeService userWorkTimeService;
+    private UserTimeManagementService userTimeManagementService;
 
     private ServiceFactory() {
         // Private constructor to prevent direct instantiation
@@ -75,6 +76,13 @@ public class ServiceFactory {
             LoggerUtil.error(getClass(),"ServiceFactory has not been initialized");
         }
         return userManagementService;
+    }
+
+    public UserTimeManagementService getUserTimeManagementService() {
+        if (userTimeManagementService == null) {
+            userTimeManagementService = new UserTimeManagementService();
+        }
+        return userTimeManagementService;
     }
 
     public boolean isInitialized() {

@@ -60,7 +60,7 @@ public class UserController extends BaseController {
 
     @FXML
     protected void onStartButton() {
-        serviceFactory.getWorkSessionService().startSession();
+        serviceFactory.getWorkSessionService().getCurrentUser();
         updateUserStatus("Online");
         updateButtonStates();
     }

@@ -1,0 +1,78 @@
+<!--
+# Time Tracking System Process Flow
+
+        ## User Data Structure
+        ```json
+        {
+        "userId": 1234,
+        "name": "John Doe",
+        "sessionStatus": "Online",
+        "lastActivity": "2024-09-09 15:01:01",
+        "dayStartTime": "2024-09-09 09:00:00",
+        "currentStartTime": "2024-09-09 14:00:00",
+        "lastPauseTime": null,
+        "totalWorkedMinutes": 360,
+        "lunchBreakDeducted": false,
+        "temporaryStops": [
+        {"startTime": "2024-09-09 10:00:00", "endTime": "2024-09-09 11:00:00", "duration": 60},
+        {"startTime": "2024-09-09 13:00:00", "endTime": "2024-09-09 14:00:00", "duration": 60}
+        ],
+        "totalTemporaryStopMinutes": 120,
+        "temporaryStopCount": 2,
+        "workdayCompleted": false
+        }
+        ```
+
+        ## Process Flow
+
+        1. Start Day
+        - User presses "Start" button
+        - Set `dayStartTime` and `currentStartTime`
+        - Initialize `totalWorkedMinutes` to 0
+        - Set `lunchBreakDeducted` to false
+        - Set `workdayCompleted` to false
+
+        2. During Work
+        - Continuously update `totalWorkedMinutes`
+
+        3. Temporary Stop
+        - User presses "Temporary Stop" button
+        - Record start time of stop
+        - Change `sessionStatus` to "Temporary Stop"
+
+        4. Resume from Temporary Stop
+        - User presses "Resume" button
+        - Record end time of stop
+        - Calculate duration and add to `totalTemporaryStopMinutes`
+        - Add new entry to `temporaryStops` array
+        - Increment `temporaryStopCount`
+
+        5. Ongoing Time Check
+        - Continuously check `totalWorkedMinutes`:
+        - If `totalWorkedMinutes` reaches 510 (8 hours 30 minutes) and `lunchBreakDeducted` is false:
+        - Subtract 30 minutes from `totalWorkedMinutes`
+        - Set `lunchBreakDeducted` to true
+        - Set `workdayCompleted` to true
+        - Display message "Work day finished"
+        - If `totalWorkedMinutes` reaches 720 (12 hours):
+        - If `lunchBreakDeducted` is false, set it to true but don't subtract time
+        - Set `workdayCompleted` to true (if not already)
+        - Display message "Maximum work day reached"
+
+        6. End Day
+        - User presses "End" button
+        - System performs final time check:
+        - If 480 ≤ `totalWorkedMinutes` < 510 and `lunchBreakDeducted` is false:
+        - Subtract 30 minutes from `totalWorkedMinutes`
+        - Set `lunchBreakDeducted` to true
+        - If `totalWorkedMinutes` ≥ 480:
+        - Set `workdayCompleted` to true
+        - Display message "Work day finished"
+        - If `totalWorkedMinutes` < 480:
+        - Display message "Minimum work time not met"
+        - Change `sessionStatus` to "Offline"
+
+        7. Overtime Calculation
+        - If `totalWorkedMinutes` > 480:
+        - Overtime = `totalWorkedMinutes` - 480
+        - Store overtime in a separate structure-->
